@@ -8,6 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        luxury: {
+          charcoal: '#0f0f0f',
+          ink: '#161616',
+          ivory: '#f7f4ee',
+          cream: '#efe9dc',
+          gold: '#c9a24b',
+          'gold-light': '#d4b96a',
+          muted: '#8a8278',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
