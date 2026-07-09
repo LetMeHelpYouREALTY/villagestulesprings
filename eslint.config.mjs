@@ -16,7 +16,25 @@ const compat = new FlatCompat({
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
-  { ignores: [".github/", ".husky/", "node_modules/", ".next/", "src/components/ui", "*.config.ts", "*.mjs"] },
+  {
+    ignores: [
+      ".github/",
+      ".husky/",
+      "node_modules/",
+      ".next/",
+      "src/components/ui",
+      "*.config.ts",
+      "*.config.js",
+      "*.mjs",
+      // Legacy marketing components replaced by src/components/luxury/*
+      "src/components/maravilla-*.tsx",
+      "src/components/home-*.tsx",
+      "src/components/community-features.tsx",
+      "src/components/contact-form.tsx",
+      "src/components/homebuying-search-section.tsx",
+      "src/components/og-meta-tags.tsx",
+    ],
+  },
   {
     languageOptions: {
       globals: globals.browser,
@@ -154,6 +172,13 @@ export default [
 
       // SonarJS: Detect commented-out code
       "sonarjs/no-commented-code": "warn",
+    },
+  },
+  {
+    files: ["src/config/metadata-config.ts"],
+    rules: {
+      complexity: "off",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
     },
   },
 ];
