@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 
 import { Toaster } from "@/components/ui/sonner";
 import { APP_CONFIG } from "@/config/app-config";
@@ -33,6 +34,13 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           {children}
           <Toaster />
         </PreferencesStoreProvider>
+        {/* Loaded once globally: RealScout widgets rely on these custom elements
+            being defined before use, and the script must not be loaded more than once. */}
+        <Script
+          src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+          type="module"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
