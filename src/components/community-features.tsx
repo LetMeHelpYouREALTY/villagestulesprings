@@ -109,8 +109,8 @@ export function CommunityFeatures() {
               <p className="text-gray-600">Premium facilities for your comfort and convenience</p>
             </div>
             <div className="space-y-4">
-              {amenities.map((feature, index) => (
-                <Card key={index} className="border-l-4 border-l-green-500">
+              {amenities.map((feature) => (
+                <Card key={feature.title} className="border-l-4 border-l-green-500">
                   <CardContent className="p-4">
                     <div className="flex items-start space-x-3">
                       <feature.icon className="mt-1 h-5 w-5 flex-shrink-0 text-green-600" />
@@ -135,8 +135,8 @@ export function CommunityFeatures() {
               <p className="text-gray-600">Connect with neighbors and build lasting relationships</p>
             </div>
             <div className="space-y-4">
-              {lifestyle.map((feature, index) => (
-                <Card key={index} className="border-l-4 border-l-blue-500">
+              {lifestyle.map((feature) => (
+                <Card key={feature.title} className="border-l-4 border-l-blue-500">
                   <CardContent className="p-4">
                     <div className="flex items-start space-x-3">
                       <feature.icon className="mt-1 h-5 w-5 flex-shrink-0 text-blue-600" />
@@ -161,8 +161,8 @@ export function CommunityFeatures() {
               <p className="text-gray-600">Prime location with everything you need nearby</p>
             </div>
             <div className="space-y-4">
-              {location.map((feature, index) => (
-                <Card key={index} className="border-l-4 border-l-purple-500">
+              {location.map((feature) => (
+                <Card key={feature.title} className="border-l-4 border-l-purple-500">
                   <CardContent className="p-4">
                     <div className="flex items-start space-x-3">
                       <feature.icon className="mt-1 h-5 w-5 flex-shrink-0 text-purple-600" />

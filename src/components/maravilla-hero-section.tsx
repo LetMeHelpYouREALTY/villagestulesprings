@@ -1,9 +1,8 @@
-import { MapPin, Home, Users, Star, Play, Calendar, Phone, Mail, Search, ArrowRight, CheckCircle } from "lucide-react";
+import { MapPin, Home, Star, Calendar, Phone, Mail, Search, ArrowRight, CheckCircle } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 
 export function MaravillaHeroSection() {
   return (

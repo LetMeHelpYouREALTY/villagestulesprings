@@ -1,12 +1,7 @@
 import {
   TreePine,
-  Car,
-  Users,
   Shield,
-  Wifi,
   Dumbbell,
-  UtensilsCrossed,
-  GraduationCap,
   Heart,
   Sparkles,
   Waves,
@@ -18,7 +13,6 @@ import {
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface MaravillaAmenity {
@@ -114,8 +108,8 @@ export function MaravillaCommunityFeatures() {
         <div className="mb-16">
           <h3 className="mb-8 text-center text-2xl font-semibold text-gray-900">Featured Amenities</h3>
           <div className="grid gap-6 md:grid-cols-3">
-            {featuredAmenities.map((amenity, index) => (
-              <Card key={index} className="border-l-4 border-l-green-500 transition-shadow hover:shadow-lg">
+            {featuredAmenities.map((amenity) => (
+              <Card key={amenity.title} className="border-l-4 border-l-green-500 transition-shadow hover:shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <amenity.icon className="mr-3 h-6 w-6 text-green-600" />
@@ -142,8 +136,8 @@ export function MaravillaCommunityFeatures() {
               <p className="text-sm text-gray-600">Community living at its best</p>
             </div>
             <div className="space-y-4">
-              {lifestyleAmenities.map((amenity, index) => (
-                <Card key={index} className="border-l-4 border-l-green-500">
+              {lifestyleAmenities.map((amenity) => (
+                <Card key={amenity.title} className="border-l-4 border-l-green-500">
                   <CardContent className="p-4">
                     <div className="flex items-start space-x-3">
                       <amenity.icon className="mt-1 h-5 w-5 flex-shrink-0 text-green-600" />
@@ -168,8 +162,8 @@ export function MaravillaCommunityFeatures() {
               <p className="text-sm text-gray-600">Fun and entertainment</p>
             </div>
             <div className="space-y-4">
-              {recreationAmenities.map((amenity, index) => (
-                <Card key={index} className="border-l-4 border-l-blue-500">
+              {recreationAmenities.map((amenity) => (
+                <Card key={amenity.title} className="border-l-4 border-l-blue-500">
                   <CardContent className="p-4">
                     <div className="flex items-start space-x-3">
                       <amenity.icon className="mt-1 h-5 w-5 flex-shrink-0 text-blue-600" />
@@ -194,8 +188,8 @@ export function MaravillaCommunityFeatures() {
               <p className="text-sm text-gray-600">Everything you need nearby</p>
             </div>
             <div className="space-y-4">
-              {convenienceAmenities.map((amenity, index) => (
-                <Card key={index} className="border-l-4 border-l-purple-500">
+              {convenienceAmenities.map((amenity) => (
+                <Card key={amenity.title} className="border-l-4 border-l-purple-500">
                   <CardContent className="p-4">
                     <div className="flex items-start space-x-3">
                       <amenity.icon className="mt-1 h-5 w-5 flex-shrink-0 text-purple-600" />
@@ -220,8 +214,8 @@ export function MaravillaCommunityFeatures() {
               <p className="text-sm text-gray-600">Your wellness matters</p>
             </div>
             <div className="space-y-4">
-              {healthAmenities.map((amenity, index) => (
-                <Card key={index} className="border-l-4 border-l-red-500">
+              {healthAmenities.map((amenity) => (
+                <Card key={amenity.title} className="border-l-4 border-l-red-500">
                   <CardContent className="p-4">
                     <div className="flex items-start space-x-3">
                       <amenity.icon className="mt-1 h-5 w-5 flex-shrink-0 text-red-600" />

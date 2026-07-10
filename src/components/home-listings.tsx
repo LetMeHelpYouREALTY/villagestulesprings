@@ -118,8 +118,8 @@ export function HomeListings() {
                   </div>
 
                   <div className="flex flex-wrap gap-2">
-                    {home.features.map((feature, index) => (
-                      <Badge key={index} variant="outline" className="text-xs">
+                    {home.features.map((feature) => (
+                      <Badge key={feature} variant="outline" className="text-xs">
                         {feature}
                       </Badge>
                     ))}

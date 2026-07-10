@@ -172,9 +172,11 @@ const statusLabels: Record<MaravillaProperty["status"], string> = {
 };
 
 export function getStatusColor(status: MaravillaProperty["status"]): string {
+  // eslint-disable-next-line security/detect-object-injection -- status is a closed literal union, not user-controlled input
   return statusColors[status];
 }
 
 export function getStatusText(status: MaravillaProperty["status"]): string {
+  // eslint-disable-next-line security/detect-object-injection -- status is a closed literal union, not user-controlled input
   return statusLabels[status];
 }

@@ -57,7 +57,8 @@ function PropertyImageGallery({
           <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 transform space-x-2">
             {property.images.map((image, index) => (
               <button
-                key={image + index}
+                // eslint-disable-next-line react/no-array-index-key -- placeholder images are identical; position is the only stable identity
+                key={`${property.id}-dot-${index}`}
                 onClick={() => onImageIndexChange(index)}
                 className={`h-2 w-2 rounded-full transition-colors ${
                   index === currentImageIndex ? "bg-white" : "bg-white/50"

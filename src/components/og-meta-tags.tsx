@@ -96,8 +96,8 @@ function buildArticleOGTags({
   if (author) metaTags.push(<meta key="article:author" property="article:author" content={author} />);
   if (section) metaTags.push(<meta key="article:section" property="article:section" content={section} />);
 
-  tags?.forEach((tag, index) => {
-    metaTags.push(<meta key={`article:tag:${index}`} property="article:tag" content={tag} />);
+  tags?.forEach((tag) => {
+    metaTags.push(<meta key={`article:tag:${tag}`} property="article:tag" content={tag} />);
   });
 
   return metaTags;
@@ -133,8 +133,8 @@ function buildAudioOGTags({ audio, audioType }: Pick<OGMetaTagsProps, "audio" | 
 }
 
 function buildLocaleAlternateOGTags({ localeAlternate }: Pick<OGMetaTagsProps, "localeAlternate">): ReactElement[] {
-  return (localeAlternate ?? []).map((altLocale, index) => (
-    <meta key={`og:locale:alternate:${index}`} property="og:locale:alternate" content={altLocale} />
+  return (localeAlternate ?? []).map((altLocale) => (
+    <meta key={`og:locale:alternate:${altLocale}`} property="og:locale:alternate" content={altLocale} />
   ));
 }
 

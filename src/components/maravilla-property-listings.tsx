@@ -1,20 +1,4 @@
-import {
-  Home,
-  Bed,
-  Bath,
-  Square,
-  MapPin,
-  Calendar,
-  Heart,
-  Share2,
-  Eye,
-  Star,
-  TrendingUp,
-  Clock,
-  Users,
-  Car,
-  TreePine,
-} from "lucide-react";
+import { Home, Bed, Bath, Square, MapPin, Calendar, Heart, Share2, Eye } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -167,8 +151,8 @@ export function MaravillaPropertyCard({ property }: { property: MaravillaPropert
 
           {/* Features */}
           <div className="flex flex-wrap gap-2">
-            {property.features.map((feature, index) => (
-              <Badge key={index} variant="outline" className="text-xs">
+            {property.features.map((feature) => (
+              <Badge key={feature} variant="outline" className="text-xs">
                 {feature}
               </Badge>
             ))}

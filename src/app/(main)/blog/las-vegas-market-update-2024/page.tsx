@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { generateArticleMetadata } from "@/config/metadata-config";
 
@@ -49,11 +50,13 @@ export default function BlogPostPage() {
         </header>
 
         {/* Featured Image */}
-        <div className="mb-12">
-          <img
+        <div className="relative mb-12 h-96 w-full overflow-hidden rounded-lg shadow-lg">
+          <Image
             src="/blog/las-vegas-market-2024.jpg"
             alt="Las Vegas real estate market trends and home prices in 2024"
-            className="h-96 w-full rounded-lg object-cover shadow-lg"
+            fill
+            className="object-cover"
+            priority
           />
         </div>
 
