@@ -20,12 +20,12 @@ export const APP_CONFIG = {
       "Henderson real estate",
       "Las Vegas real estate agent",
       "buy home Las Vegas",
-      "sell home Las Vegas"
+      "sell home Las Vegas",
     ],
     author: "Dr. Janet Duffy",
     location: "Las Vegas, Nevada",
     businessType: "Real Estate Agent",
     phone: "(702) 555-REALTOR",
-        email: "info@villagestulesprings.com"
+    email: "info@villagestulesprings.com",
   },
 };

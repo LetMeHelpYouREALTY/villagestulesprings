@@ -14,7 +14,7 @@ import { salesPipelineChartData, salesPipelineChartConfig, regionSalesData, acti
 export function OperationalCards() {
   const totalSales = regionSalesData.reduce((sum, region) => sum + region.sales, 0);
   return (
-    <div className="grid grid-cols-1 gap-4 *:data-[slot=card]:shadow-xs sm:grid-cols-2 xl:grid-cols-3">
+    <div className="*:data-[slot=card]:shadow-xs grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
       <Card>
         <CardHeader>
           <CardTitle>Sales Pipeline</CardTitle>
@@ -30,7 +30,7 @@ export function OperationalCards() {
           </ChartContainer>
         </CardContent>
         <CardFooter>
-          <p className="text-muted-foreground text-xs">Leads increased by 18.2% since last month.</p>
+          <p className="text-xs text-muted-foreground">Leads increased by 18.2% since last month.</p>
         </CardFooter>
       </Card>
 
@@ -63,14 +63,14 @@ export function OperationalCards() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Progress value={region.percentage} />
-                  <span className="text-muted-foreground text-xs font-medium tabular-nums">{region.percentage}%</span>
+                  <span className="text-xs font-medium tabular-nums text-muted-foreground">{region.percentage}%</span>
                 </div>
               </div>
             ))}
           </div>
         </CardContent>
         <CardFooter>
-          <div className="text-muted-foreground flex justify-between gap-1 text-xs">
+          <div className="flex justify-between gap-1 text-xs text-muted-foreground">
             <span>{regionSalesData.length} regions tracked</span>
             <span>•</span>
             <span>{regionSalesData.filter((r) => r.isPositive).length} regions growing</span>
@@ -92,7 +92,7 @@ export function OperationalCards() {
                   <span
                     className={cn(
                       "w-fit rounded-md px-2 py-1 text-xs font-medium",
-                      item.priority === "High" && "text-destructive bg-destructive/20",
+                      item.priority === "High" && "bg-destructive/20 text-destructive",
                       item.priority === "Medium" && "bg-yellow-500/20 text-yellow-500",
                       item.priority === "Low" && "bg-green-500/20 text-green-500",
                     )}
@@ -100,10 +100,10 @@ export function OperationalCards() {
                     {item.priority}
                   </span>
                 </div>
-                <div className="text-muted-foreground text-xs font-medium">{item.desc}</div>
+                <div className="text-xs font-medium text-muted-foreground">{item.desc}</div>
                 <div className="flex items-center gap-1">
-                  <Clock className="text-muted-foreground size-3" />
-                  <span className="text-muted-foreground text-xs font-medium">{item.due}</span>
+                  <Clock className="size-3 text-muted-foreground" />
+                  <span className="text-xs font-medium text-muted-foreground">{item.due}</span>
                 </div>
               </li>
             ))}

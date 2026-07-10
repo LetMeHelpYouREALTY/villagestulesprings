@@ -1,14 +1,16 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react"
+import { useState } from "react";
+
+import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -21,38 +23,36 @@ export function ContactForm() {
     timeline: "",
     message: "",
     newsletter: false,
-    tour: false
-  })
+    tour: false,
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle form submission here
-    console.log("Form submitted:", formData)
-  }
+    console.log("Form submitted:", formData);
+  };
 
   const handleChange = (field: string, value: string | boolean) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
-  }
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="bg-gray-50 py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Get In Touch
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Ready to find your dream home? Contact Dr. Jan Duffy's team for personalized assistance.
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-gray-900">Get In Touch</h2>
+          <p className="mx-auto max-w-2xl text-xl text-gray-600">
+            Ready to find your dream home? Contact Dr. Jan Duffy&apos;s team for personalized assistance.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="grid gap-12 lg:grid-cols-3">
           {/* Contact Information */}
           <div className="space-y-8">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <MapPin className="w-5 h-5 mr-2 text-green-600" />
+                  <MapPin className="mr-2 h-5 w-5 text-green-600" />
                   Visit Our Office
                 </CardTitle>
               </CardHeader>
@@ -70,7 +70,7 @@ export function ContactForm() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <Phone className="w-5 h-5 mr-2 text-green-600" />
+                  <Phone className="mr-2 h-5 w-5 text-green-600" />
                   Call Us
                 </CardTitle>
               </CardHeader>
@@ -86,7 +86,7 @@ export function ContactForm() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <Mail className="w-5 h-5 mr-2 text-green-600" />
+                  <Mail className="mr-2 h-5 w-5 text-green-600" />
                   Email Us
                 </CardTitle>
               </CardHeader>
@@ -94,7 +94,7 @@ export function ContactForm() {
                 <div className="space-y-2">
                   <p className="font-semibold">General Inquiries</p>
                   <p className="text-gray-600">DrDuffySells@VillagesTuleSprings.com</p>
-                  <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
+                  <p className="text-sm text-gray-500">We&apos;ll respond within 24 hours</p>
                 </div>
               </CardContent>
             </Card>
@@ -102,7 +102,7 @@ export function ContactForm() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <Clock className="w-5 h-5 mr-2 text-green-600" />
+                  <Clock className="mr-2 h-5 w-5 text-green-600" />
                   Office Hours
                 </CardTitle>
               </CardHeader>
@@ -133,7 +133,7 @@ export function ContactForm() {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name *</Label>
                       <Input
@@ -154,7 +154,7 @@ export function ContactForm() {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
                       <Label htmlFor="email">Email *</Label>
                       <Input
@@ -176,9 +176,9 @@ export function ContactForm() {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="interest">I'm interested in</Label>
+                      <Label htmlFor="interest">I&apos;m interested in</Label>
                       <Select value={formData.interest} onValueChange={(value) => handleChange("interest", value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select an option" />
@@ -252,13 +252,13 @@ export function ContactForm() {
                         onCheckedChange={(checked) => handleChange("tour", checked as boolean)}
                       />
                       <Label htmlFor="tour" className="text-sm">
-                        I'd like to schedule a community tour
+                        I&apos;d like to schedule a community tour
                       </Label>
                     </div>
                   </div>
 
                   <Button type="submit" className="w-full bg-green-600 hover:bg-green-700">
-                    <Send className="w-4 h-4 mr-2" />
+                    <Send className="mr-2 h-4 w-4" />
                     Send Message
                   </Button>
                 </form>
@@ -268,5 +268,5 @@ export function ContactForm() {
         </div>
       </div>
     </section>
-  )
+  );
 }
