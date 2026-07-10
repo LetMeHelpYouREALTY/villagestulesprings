@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter, Jost, Playfair_Display } from "next/font/google";
 
+import { RealScoutScript } from "@/components/realscout-script";
 import { Toaster } from "@/components/ui/sonner";
 import { homePageMetadata } from "@/config/metadata-config";
 import { getPreference } from "@/server/server-actions";
@@ -39,6 +40,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       suppressHydrationWarning
     >
       <body className={`${inter.className} ${luxurySerif.variable} ${luxurySans.variable} min-h-screen antialiased`}>
+        <RealScoutScript />
         <PreferencesStoreProvider themeMode={themeMode} themePreset={themePreset}>
           {children}
           <Toaster />

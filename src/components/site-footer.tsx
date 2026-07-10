@@ -38,7 +38,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm">
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-gold-300" />
-              (702) 555-REALTOR
+              702-222-1964
             </li>
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-gold-300" />

@@ -1,7 +1,9 @@
 import { FeaturedPropertiesSection } from "@/components/featured-properties-section";
+import { LocationMapSection } from "@/components/location-map-section";
 import { MaravillaHeroSection } from "@/components/maravilla-hero-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { getRealScoutAgentId } from "@/config/env";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -9,25 +11,33 @@ const structuredData = {
   name: "Dr. Janet Duffy",
   description: "Expert Las Vegas real estate services with 15+ years experience",
   url: "https://villagestulesprings.com",
-  telephone: "(702) 555-REALTOR",
-  email: "info@villagestulesprings.com",
+  telephone: "702-222-1964",
+  email: "DrDuffySells@VillagesTuleSprings.com",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "123 Main Street",
-    addressLocality: "Las Vegas",
+    streetAddress: "Villages at Tule Springs",
+    addressLocality: "North Las Vegas",
     addressRegion: "NV",
-    postalCode: "89101",
+    postalCode: "89084",
     addressCountry: "US",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: "36.1699",
-    longitude: "-115.1398",
+    latitude: "36.2850",
+    longitude: "-115.2000",
   },
   areaServed: [
     {
       "@type": "City",
       name: "Las Vegas",
+      containedInPlace: {
+        "@type": "State",
+        name: "Nevada",
+      },
+    },
+    {
+      "@type": "City",
+      name: "North Las Vegas",
       containedInPlace: {
         "@type": "State",
         name: "Nevada",
@@ -86,6 +96,8 @@ const structuredData = {
 };
 
 export default function Home() {
+  const agentId = getRealScoutAgentId();
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
@@ -107,7 +119,7 @@ export default function Home() {
               </p>
             </div>
             <div className="mx-auto max-w-4xl rounded-lg border border-navy-200/20 bg-cream-50 p-6 md:p-8">
-              <realscout-advanced-search agent-encoded-id="QWdlbnQtMjI1MDUw"></realscout-advanced-search>
+              <realscout-advanced-search agent-encoded-id={agentId}></realscout-advanced-search>
             </div>
           </div>
         </section>
@@ -129,7 +141,7 @@ export default function Home() {
               </p>
             </div>
             <realscout-your-listings
-              agent-encoded-id="QWdlbnQtMjI1MDUw"
+              agent-encoded-id={agentId}
               sort-order="STATUS_AND_SIGNIFICANT_CHANGE"
               listing-status="For Sale"
               property-types="SFR,MF,TC,LAL,MOBILE,OTHER"
@@ -137,8 +149,11 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Location map — uses NEXT_PUBLIC_OPEN_HOUSES_MAP_EMBED_URL or Google Maps API key */}
+        <LocationMapSection />
+
         {/* RealScout Home Valuation */}
-        <section className="bg-navy-800 py-24">
+        <section id="home-valuation" className="bg-navy-800 py-24">
           <div className="container mx-auto px-4">
             <div className="mb-12 text-center">
               <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-300">Complimentary Service</p>
@@ -151,7 +166,7 @@ export default function Home() {
               </p>
             </div>
             <div className="mx-auto max-w-3xl rounded-lg border border-gold-200/20 bg-navy-700/50 p-8">
-              <realscout-home-value agent-encoded-id="QWdlbnQtMjI1MDUw"></realscout-home-value>
+              <realscout-home-value agent-encoded-id={agentId}></realscout-home-value>
             </div>
           </div>
         </section>
