@@ -20,7 +20,7 @@ const lastMonth = format(subMonths(new Date(), 1), "LLLL");
 
 export function OverviewCards() {
   return (
-    <div className="grid grid-cols-1 gap-4 *:data-[slot=card]:shadow-xs sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+    <div className="*:data-[slot=card]:shadow-xs grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
       <Card>
         <CardHeader>
           <CardTitle>New Leads</CardTitle>
@@ -98,8 +98,8 @@ export function OverviewCards() {
 
       <Card>
         <CardHeader>
-          <div className="bg-destructive/10 w-fit rounded-lg p-2">
-            <BadgeDollarSign className="text-destructive size-5" />
+          <div className="w-fit rounded-lg bg-destructive/10 p-2">
+            <BadgeDollarSign className="size-5 text-destructive" />
           </div>
         </CardHeader>
         <CardContent className="flex size-full flex-col justify-between">
@@ -108,7 +108,7 @@ export function OverviewCards() {
             <CardDescription>Last 6 Months</CardDescription>
           </div>
           <p className="text-2xl font-medium tabular-nums">136</p>
-          <div className="text-destructive bg-destructive/10 w-fit rounded-md px-2 py-1 text-xs font-medium">-2.5%</div>
+          <div className="w-fit rounded-md bg-destructive/10 px-2 py-1 text-xs font-medium text-destructive">-2.5%</div>
         </CardContent>
       </Card>
 
@@ -143,7 +143,7 @@ export function OverviewCards() {
           </ChartContainer>
         </CardContent>
         <CardFooter>
-          <p className="text-muted-foreground text-sm">+35% growth since last year</p>
+          <p className="text-sm text-muted-foreground">+35% growth since last year</p>
         </CardFooter>
       </Card>
     </div>

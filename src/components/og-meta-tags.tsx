@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
 import type { ReactElement } from "react";
+
+import type { Metadata } from "next";
 
 /**
  * Component for adding custom Open Graph meta tags to pages
@@ -37,6 +38,7 @@ interface OGMetaTagsProps {
   longitude?: string;
 }
 
+// eslint-disable-next-line complexity -- flat list of independent optional-tag branches, not deeply nested logic
 export function OGMetaTags({
   title,
   description,
@@ -82,14 +84,18 @@ export function OGMetaTags({
   // Image tags
   if (image) {
     metaTags.push(<meta key="og:image" property="og:image" content={image} />);
-    if (imageWidth) metaTags.push(<meta key="og:image:width" property="og:image:width" content={imageWidth.toString()} />);
-    if (imageHeight) metaTags.push(<meta key="og:image:height" property="og:image:height" content={imageHeight.toString()} />);
+    if (imageWidth)
+      metaTags.push(<meta key="og:image:width" property="og:image:width" content={imageWidth.toString()} />);
+    if (imageHeight)
+      metaTags.push(<meta key="og:image:height" property="og:image:height" content={imageHeight.toString()} />);
     if (imageAlt) metaTags.push(<meta key="og:image:alt" property="og:image:alt" content={imageAlt} />);
   }
 
   // Article-specific tags
-  if (publishedTime) metaTags.push(<meta key="article:published_time" property="article:published_time" content={publishedTime} />);
-  if (modifiedTime) metaTags.push(<meta key="article:modified_time" property="article:modified_time" content={modifiedTime} />);
+  if (publishedTime)
+    metaTags.push(<meta key="article:published_time" property="article:published_time" content={publishedTime} />);
+  if (modifiedTime)
+    metaTags.push(<meta key="article:modified_time" property="article:modified_time" content={modifiedTime} />);
   if (author) metaTags.push(<meta key="article:author" property="article:author" content={author} />);
   if (section) metaTags.push(<meta key="article:section" property="article:section" content={section} />);
   if (tags && tags.length > 0) {
@@ -101,8 +107,10 @@ export function OGMetaTags({
   // Video tags
   if (video) {
     metaTags.push(<meta key="og:video" property="og:video" content={video} />);
-    if (videoWidth) metaTags.push(<meta key="og:video:width" property="og:video:width" content={videoWidth.toString()} />);
-    if (videoHeight) metaTags.push(<meta key="og:video:height" property="og:video:height" content={videoHeight.toString()} />);
+    if (videoWidth)
+      metaTags.push(<meta key="og:video:width" property="og:video:width" content={videoWidth.toString()} />);
+    if (videoHeight)
+      metaTags.push(<meta key="og:video:height" property="og:video:height" content={videoHeight.toString()} />);
     if (videoType) metaTags.push(<meta key="og:video:type" property="og:video:type" content={videoType} />);
   }
 
@@ -130,9 +138,7 @@ export function OGMetaTags({
   if (longitude) metaTags.push(<meta key="og:longitude" property="og:longitude" content={longitude} />);
 
   // Add namespace prefix for Open Graph
-  metaTags.unshift(
-    <meta key="og-prefix" prefix="og: https://ogp.me/ns#" />
-  );
+  metaTags.unshift(<meta key="og-prefix" prefix="og: https://ogp.me/ns#" />);
 
   return <>{metaTags}</>;
 }
@@ -160,6 +166,7 @@ interface TwitterMetaTagsProps {
   appUrlGoogleplay?: string;
 }
 
+// eslint-disable-next-line complexity -- flat list of independent optional-tag branches, not deeply nested logic
 export function TwitterMetaTags({
   card = "summary_large_image",
   site,
@@ -182,7 +189,7 @@ export function TwitterMetaTags({
   const metaTags: ReactElement[] = [];
 
   metaTags.push(<meta key="twitter:card" name="twitter:card" content={card} />);
-  
+
   if (site) metaTags.push(<meta key="twitter:site" name="twitter:site" content={site} />);
   if (creator) metaTags.push(<meta key="twitter:creator" name="twitter:creator" content={creator} />);
   if (title) metaTags.push(<meta key="twitter:title" name="twitter:title" content={title} />);
@@ -192,22 +199,34 @@ export function TwitterMetaTags({
 
   if (player) {
     metaTags.push(<meta key="twitter:player" name="twitter:player" content={player} />);
-    if (playerWidth) metaTags.push(<meta key="twitter:player:width" name="twitter:player:width" content={playerWidth.toString()} />);
-    if (playerHeight) metaTags.push(<meta key="twitter:player:height" name="twitter:player:height" content={playerHeight.toString()} />);
+    if (playerWidth)
+      metaTags.push(<meta key="twitter:player:width" name="twitter:player:width" content={playerWidth.toString()} />);
+    if (playerHeight)
+      metaTags.push(
+        <meta key="twitter:player:height" name="twitter:player:height" content={playerHeight.toString()} />,
+      );
   }
 
   if (appName) {
     metaTags.push(<meta key="twitter:app:name:iphone" name="twitter:app:name:iphone" content={appName} />);
     metaTags.push(<meta key="twitter:app:name:ipad" name="twitter:app:name:ipad" content={appName} />);
     metaTags.push(<meta key="twitter:app:name:googleplay" name="twitter:app:name:googleplay" content={appName} />);
-    
-    if (appIdIphone) metaTags.push(<meta key="twitter:app:id:iphone" name="twitter:app:id:iphone" content={appIdIphone} />);
+
+    if (appIdIphone)
+      metaTags.push(<meta key="twitter:app:id:iphone" name="twitter:app:id:iphone" content={appIdIphone} />);
     if (appIdIpad) metaTags.push(<meta key="twitter:app:id:ipad" name="twitter:app:id:ipad" content={appIdIpad} />);
-    if (appIdGoogleplay) metaTags.push(<meta key="twitter:app:id:googleplay" name="twitter:app:id:googleplay" content={appIdGoogleplay} />);
-    
-    if (appUrlIphone) metaTags.push(<meta key="twitter:app:url:iphone" name="twitter:app:url:iphone" content={appUrlIphone} />);
+    if (appIdGoogleplay)
+      metaTags.push(
+        <meta key="twitter:app:id:googleplay" name="twitter:app:id:googleplay" content={appIdGoogleplay} />,
+      );
+
+    if (appUrlIphone)
+      metaTags.push(<meta key="twitter:app:url:iphone" name="twitter:app:url:iphone" content={appUrlIphone} />);
     if (appUrlIpad) metaTags.push(<meta key="twitter:app:url:ipad" name="twitter:app:url:ipad" content={appUrlIpad} />);
-    if (appUrlGoogleplay) metaTags.push(<meta key="twitter:app:url:googleplay" name="twitter:app:url:googleplay" content={appUrlGoogleplay} />);
+    if (appUrlGoogleplay)
+      metaTags.push(
+        <meta key="twitter:app:url:googleplay" name="twitter:app:url:googleplay" content={appUrlGoogleplay} />,
+      );
   }
 
   return <>{metaTags}</>;
@@ -230,4 +249,3 @@ export function SocialMetaTags({
     </>
   );
 }
-

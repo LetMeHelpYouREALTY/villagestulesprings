@@ -72,21 +72,21 @@ export function ExpenseSummary() {
                 stackId="a"
                 cornerRadius={4}
                 fill="var(--color-other)"
-                className="stroke-card stroke-4"
+                className="stroke-4 stroke-card"
               />
               <RadialBar
                 dataKey="transport"
                 stackId="a"
                 cornerRadius={4}
                 fill="var(--color-transport)"
-                className="stroke-card stroke-4"
+                className="stroke-4 stroke-card"
               />
               <RadialBar
                 dataKey="groceries"
                 stackId="a"
                 cornerRadius={4}
                 fill="var(--color-groceries)"
-                className="stroke-card stroke-4"
+                className="stroke-4 stroke-card"
               />
             </RadialBarChart>
           </ChartContainer>
@@ -94,36 +94,36 @@ export function ExpenseSummary() {
         <Separator />
         <div className="flex justify-between gap-4">
           <div className="flex flex-1 flex-col items-center space-y-2">
-            <div className="bg-muted flex size-10 items-center justify-center rounded-full">
-              <ShoppingBasket className="stroke-chart-1 size-5" />
+            <div className="flex size-10 items-center justify-center rounded-full bg-muted">
+              <ShoppingBasket className="size-5 stroke-chart-1" />
             </div>
             <div className="space-y-0.5 text-center">
-              <p className="text-muted-foreground text-xs uppercase">Groceries</p>
+              <p className="text-xs uppercase text-muted-foreground">Groceries</p>
               <p className="font-medium tabular-nums">{formatCurrency(chartData[0].groceries, { noDecimals: true })}</p>
             </div>
           </div>
           <Separator orientation="vertical" className="!h-auto" />
           <div className="flex flex-1 flex-col items-center space-y-2">
-            <div className="bg-muted flex size-10 items-center justify-center rounded-full">
-              <TramFront className="stroke-chart-2 size-5" />
+            <div className="flex size-10 items-center justify-center rounded-full bg-muted">
+              <TramFront className="size-5 stroke-chart-2" />
             </div>
             <div className="space-y-0.5 text-center">
-              <p className="text-muted-foreground text-xs uppercase">Transport</p>
+              <p className="text-xs uppercase text-muted-foreground">Transport</p>
               <p className="font-medium tabular-nums">{formatCurrency(chartData[0].transport, { noDecimals: true })}</p>
             </div>
           </div>
           <Separator orientation="vertical" className="!h-auto" />
           <div className="flex flex-1 flex-col items-center space-y-2">
-            <div className="bg-muted flex size-10 items-center justify-center rounded-full">
-              <Ellipsis className="stroke-chart-3 size-5" />
+            <div className="flex size-10 items-center justify-center rounded-full bg-muted">
+              <Ellipsis className="size-5 stroke-chart-3" />
             </div>
             <div className="space-y-0.5 text-center">
-              <p className="text-muted-foreground text-xs uppercase">Other</p>
+              <p className="text-xs uppercase text-muted-foreground">Other</p>
               <p className="font-medium tabular-nums">{formatCurrency(chartData[0].other, { noDecimals: true })}</p>
             </div>
           </div>
         </div>
-        <span className="text-muted-foreground text-xs tabular-nums">
+        <span className="text-xs tabular-nums text-muted-foreground">
           Weekly spending is capped at {formatCurrency(2000, { noDecimals: true })}
         </span>
       </CardContent>

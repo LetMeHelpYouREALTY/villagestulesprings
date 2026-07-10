@@ -67,13 +67,13 @@ export const recentLeadsColumns: ColumnDef<z.infer<typeof recentLeadSchema>>[] =
   {
     accessorKey: "lastActivity",
     header: ({ column }) => <DataTableColumnHeader column={column} title="Last Activity" />,
-    cell: ({ row }) => <span className="text-muted-foreground tabular-nums">{row.original.lastActivity}</span>,
+    cell: ({ row }) => <span className="tabular-nums text-muted-foreground">{row.original.lastActivity}</span>,
     enableSorting: false,
   },
   {
     id: "actions",
     cell: () => (
-      <Button variant="ghost" className="text-muted-foreground flex size-8" size="icon">
+      <Button variant="ghost" className="flex size-8 text-muted-foreground" size="icon">
         <EllipsisVertical />
         <span className="sr-only">Open menu</span>
       </Button>

@@ -1,21 +1,16 @@
-"use client"
+"use client";
+/* eslint-disable max-lines -- large generated marketing section; candidate for future decomposition */
 
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { 
-  Search, 
-  MapPin, 
-  Home, 
-  DollarSign, 
-  Bed, 
-  Bath, 
-  Square, 
+import { useState } from "react";
+
+import {
+  Search,
+  MapPin,
+  Home,
+  DollarSign,
+  Bed,
+  Bath,
+  Square,
   Car,
   Filter,
   Heart,
@@ -25,22 +20,30 @@ import {
   Star,
   TrendingUp,
   Users,
-  Shield
-} from "lucide-react"
+  Shield,
+} from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface Property {
-  id: string
-  address: string
-  price: number
-  bedrooms: number
-  bathrooms: number
-  squareFeet: number
-  image: string
-  type: string
-  yearBuilt: number
-  features: string[]
-  daysOnMarket: number
-  status: "for-sale" | "pending" | "sold"
+  id: string;
+  address: string;
+  price: number;
+  bedrooms: number;
+  bathrooms: number;
+  squareFeet: number;
+  image: string;
+  type: string;
+  yearBuilt: number;
+  features: string[];
+  daysOnMarket: number;
+  status: "for-sale" | "pending" | "sold";
 }
 
 const mockProperties: Property[] = [
@@ -56,7 +59,7 @@ const mockProperties: Property[] = [
     yearBuilt: 2018,
     features: ["Updated Kitchen", "Hardwood Floors", "Two-Car Garage"],
     daysOnMarket: 12,
-    status: "for-sale"
+    status: "for-sale",
   },
   {
     id: "2",
@@ -70,7 +73,7 @@ const mockProperties: Property[] = [
     yearBuilt: 2020,
     features: ["Modern Appliances", "Balcony", "Pool Access"],
     daysOnMarket: 8,
-    status: "for-sale"
+    status: "for-sale",
   },
   {
     id: "3",
@@ -84,9 +87,9 @@ const mockProperties: Property[] = [
     yearBuilt: 2015,
     features: ["Master Suite", "Gourmet Kitchen", "Pool"],
     daysOnMarket: 25,
-    status: "pending"
-  }
-]
+    status: "pending",
+  },
+];
 
 export function HomebuyingSearchSection() {
   const [searchFilters, setSearchFilters] = useState({
@@ -97,51 +100,51 @@ export function HomebuyingSearchSection() {
     bathrooms: "",
     propertyType: "",
     minSqFt: "",
-    maxSqFt: ""
-  })
+    maxSqFt: "",
+  });
 
-  const [properties] = useState<Property[]>(mockProperties)
+  const [properties] = useState<Property[]>(mockProperties);
 
   const handleFilterChange = (field: string, value: string) => {
-    setSearchFilters(prev => ({ ...prev, [field]: value }))
-  }
+    setSearchFilters((prev) => ({ ...prev, [field]: value }));
+  };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
-    }).format(price)
-  }
+    }).format(price);
+  };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="bg-white py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        <div className="mb-16 text-center">
+          <h2 className="mb-6 text-4xl font-bold text-gray-900 lg:text-5xl">
             Find Your <span className="text-green-600">Perfect Home</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Search thousands of homes for sale in Las Vegas. Use our advanced filters 
-            to find properties that match your exact criteria and budget.
+          <p className="mx-auto max-w-3xl text-xl text-gray-600">
+            Search thousands of homes for sale in Las Vegas. Use our advanced filters to find properties that match your
+            exact criteria and budget.
           </p>
         </div>
 
         {/* Search Filters */}
-        <Card className="shadow-xl mb-12">
+        <Card className="mb-12 shadow-xl">
           <CardHeader>
             <CardTitle className="flex items-center text-2xl">
-              <Filter className="w-6 h-6 mr-3 text-green-600" />
+              <Filter className="mr-3 h-6 w-6 text-green-600" />
               Advanced Search Filters
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div className="mb-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               <div>
                 <Label htmlFor="location">Location</Label>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+                  <MapPin className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
                     id="location"
                     placeholder="City, ZIP, or neighborhood"
@@ -190,7 +193,10 @@ export function HomebuyingSearchSection() {
 
               <div>
                 <Label htmlFor="propertyType">Property Type</Label>
-                <Select value={searchFilters.propertyType} onValueChange={(value) => handleFilterChange("propertyType", value)}>
+                <Select
+                  value={searchFilters.propertyType}
+                  onValueChange={(value) => handleFilterChange("propertyType", value)}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="All Types" />
                   </SelectTrigger>
@@ -206,7 +212,7 @@ export function HomebuyingSearchSection() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div className="mb-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               <div>
                 <Label htmlFor="bedrooms">Bedrooms</Label>
                 <Select value={searchFilters.bedrooms} onValueChange={(value) => handleFilterChange("bedrooms", value)}>
@@ -226,7 +232,10 @@ export function HomebuyingSearchSection() {
 
               <div>
                 <Label htmlFor="bathrooms">Bathrooms</Label>
-                <Select value={searchFilters.bathrooms} onValueChange={(value) => handleFilterChange("bathrooms", value)}>
+                <Select
+                  value={searchFilters.bathrooms}
+                  onValueChange={(value) => handleFilterChange("bathrooms", value)}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Any" />
                   </SelectTrigger>
@@ -264,16 +273,16 @@ export function HomebuyingSearchSection() {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3">
-                <Search className="w-5 h-5 mr-2" />
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <Button className="bg-green-600 px-8 py-3 text-white hover:bg-green-700">
+                <Search className="mr-2 h-5 w-5" />
                 Search Homes
               </Button>
               <Button variant="outline" className="px-8 py-3">
                 Save Search
               </Button>
               <Button variant="outline" className="px-8 py-3">
-                <MapPin className="w-5 h-5 mr-2" />
+                <MapPin className="mr-2 h-5 w-5" />
                 Map View
               </Button>
             </div>
@@ -282,7 +291,7 @@ export function HomebuyingSearchSection() {
 
         {/* Search Results */}
         <div className="mb-8">
-          <div className="flex items-center justify-between mb-6">
+          <div className="mb-6 flex items-center justify-between">
             <h3 className="text-2xl font-bold">Search Results</h3>
             <div className="flex items-center space-x-4">
               <span className="text-gray-600">Sort by:</span>
@@ -300,53 +309,53 @@ export function HomebuyingSearchSection() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {properties.map((property) => (
-              <Card key={property.id} className="shadow-lg hover:shadow-xl transition-shadow group">
+              <Card key={property.id} className="group shadow-lg transition-shadow hover:shadow-xl">
                 <CardContent className="p-0">
                   <div className="relative">
-                    <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                      <Home className="w-16 h-16 text-gray-400" />
+                    <div className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                      <Home className="h-16 w-16 text-gray-400" />
                     </div>
-                    <div className="absolute top-4 left-4">
+                    <div className="absolute left-4 top-4">
                       <Badge variant={property.status === "for-sale" ? "default" : "secondary"}>
                         {property.status === "for-sale" ? "For Sale" : "Pending"}
                       </Badge>
                     </div>
-                    <div className="absolute top-4 right-4 flex space-x-2">
+                    <div className="absolute right-4 top-4 flex space-x-2">
                       <Button size="sm" variant="secondary" className="h-8 w-8 p-0">
-                        <Heart className="w-4 h-4" />
+                        <Heart className="h-4 w-4" />
                       </Button>
                       <Button size="sm" variant="secondary" className="h-8 w-8 p-0">
-                        <Share2 className="w-4 h-4" />
+                        <Share2 className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
-                  
+
                   <div className="p-6">
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="mb-2 flex items-center justify-between">
                       <h4 className="text-xl font-bold text-green-600">{formatPrice(property.price)}</h4>
                       <span className="text-sm text-gray-500">{property.daysOnMarket} days on market</span>
                     </div>
-                    
-                    <p className="text-gray-600 mb-4">{property.address}</p>
-                    
-                    <div className="flex items-center space-x-4 mb-4 text-sm text-gray-600">
+
+                    <p className="mb-4 text-gray-600">{property.address}</p>
+
+                    <div className="mb-4 flex items-center space-x-4 text-sm text-gray-600">
                       <div className="flex items-center">
-                        <Bed className="w-4 h-4 mr-1" />
+                        <Bed className="mr-1 h-4 w-4" />
                         {property.bedrooms}
                       </div>
                       <div className="flex items-center">
-                        <Bath className="w-4 h-4 mr-1" />
+                        <Bath className="mr-1 h-4 w-4" />
                         {property.bathrooms}
                       </div>
                       <div className="flex items-center">
-                        <Square className="w-4 h-4 mr-1" />
+                        <Square className="mr-1 h-4 w-4" />
                         {property.squareFeet.toLocaleString()} sq ft
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="mb-4 flex flex-wrap gap-2">
                       {property.features.slice(0, 2).map((feature, index) => (
                         <Badge key={index} variant="outline" className="text-xs">
                           {feature}
@@ -356,11 +365,11 @@ export function HomebuyingSearchSection() {
 
                     <div className="flex space-x-2">
                       <Button className="flex-1 bg-green-600 hover:bg-green-700">
-                        <Eye className="w-4 h-4 mr-2" />
+                        <Eye className="mr-2 h-4 w-4" />
                         View Details
                       </Button>
                       <Button variant="outline" size="sm">
-                        <Calendar className="w-4 h-4" />
+                        <Calendar className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
@@ -374,24 +383,24 @@ export function HomebuyingSearchSection() {
         <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center text-2xl">
-              <TrendingUp className="w-6 h-6 mr-3 text-green-600" />
+              <TrendingUp className="mr-3 h-6 w-6 text-green-600" />
               Las Vegas Market Insights
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid gap-6 md:grid-cols-3">
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">$485K</div>
+                <div className="mb-2 text-3xl font-bold text-green-600">$485K</div>
                 <div className="text-gray-600">Median Home Price</div>
                 <div className="text-sm text-green-600">+5.2% from last year</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">18</div>
+                <div className="mb-2 text-3xl font-bold text-blue-600">18</div>
                 <div className="text-gray-600">Days on Market</div>
                 <div className="text-sm text-blue-600">-3 days from last month</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600 mb-2">2,847</div>
+                <div className="mb-2 text-3xl font-bold text-purple-600">2,847</div>
                 <div className="text-gray-600">Active Listings</div>
                 <div className="text-sm text-purple-600">+12% inventory increase</div>
               </div>
@@ -400,5 +409,5 @@ export function HomebuyingSearchSection() {
         </Card>
       </div>
     </section>
-  )
+  );
 }

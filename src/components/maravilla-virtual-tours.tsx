@@ -1,18 +1,15 @@
-"use client"
+"use client";
+/* eslint-disable max-lines -- large generated marketing section; candidate for future decomposition */
 
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { 
-  Play, 
-  Camera, 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Calendar, 
+import { useState } from "react";
+
+import {
+  Play,
+  Camera,
+  MapPin,
+  Phone,
+  Mail,
+  Calendar,
   Clock,
   Star,
   Users,
@@ -31,31 +28,37 @@ import {
   Gamepad2,
   UtensilsCrossed,
   Heart,
-  Sparkles
-} from "lucide-react"
+  Sparkles,
+} from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface VirtualTour {
-  id: string
-  title: string
-  type: "360" | "video" | "photos"
-  duration: string
-  thumbnail: string
+  id: string;
+  title: string;
+  type: "360" | "video" | "photos";
+  duration: string;
+  thumbnail: string;
 }
 
 interface MaravillaContactInfo {
   salesOffice: {
-    phone: string
-    email: string
-    address: string
-    hours: string
-  }
+    phone: string;
+    email: string;
+    address: string;
+    hours: string;
+  };
   salesTeam: {
-    name: string
-    title: string
-    phone: string
-    email: string
-    specialties: string[]
-  }[]
+    name: string;
+    title: string;
+    phone: string;
+    email: string;
+    specialties: string[];
+  }[];
 }
 
 const virtualTours: VirtualTour[] = [
@@ -64,30 +67,30 @@ const virtualTours: VirtualTour[] = [
     title: "360° Virtual Tour - Model Home A",
     type: "360",
     duration: "5 min",
-    thumbnail: "/api/placeholder/300/200"
+    thumbnail: "/api/placeholder/300/200",
   },
   {
-    id: "2", 
+    id: "2",
     title: "Video Walkthrough - Model Home B",
     type: "video",
     duration: "8 min",
-    thumbnail: "/api/placeholder/300/200"
+    thumbnail: "/api/placeholder/300/200",
   },
   {
     id: "3",
     title: "Photo Gallery - Community Amenities",
-    type: "photos", 
+    type: "photos",
     duration: "3 min",
-    thumbnail: "/api/placeholder/300/200"
-  }
-]
+    thumbnail: "/api/placeholder/300/200",
+  },
+];
 
 const maravillaContact: MaravillaContactInfo = {
   salesOffice: {
     phone: "(702) 555-MARAVILLA",
     email: "sales@maravillahomes.com",
     address: "123 Maravilla Boulevard, Las Vegas, NV 89134",
-    hours: "Mon-Sun: 9AM-6PM"
+    hours: "Mon-Sun: 9AM-6PM",
   },
   salesTeam: [
     {
@@ -95,95 +98,90 @@ const maravillaContact: MaravillaContactInfo = {
       title: "Senior Sales Consultant",
       phone: "(702) 555-0101",
       email: "sarah.johnson@maravillahomes.com",
-      specialties: ["First-time Buyers", "Family Homes", "Investment Properties"]
+      specialties: ["First-time Buyers", "Family Homes", "Investment Properties"],
     },
     {
       name: "Michael Chen",
-      title: "Luxury Sales Specialist", 
+      title: "Luxury Sales Specialist",
       phone: "(702) 555-0102",
       email: "michael.chen@maravillahomes.com",
-      specialties: ["Executive Homes", "Custom Builds", "Relocation Services"]
+      specialties: ["Executive Homes", "Custom Builds", "Relocation Services"],
     },
     {
       name: "Elena Rodriguez",
       title: "Community Relations Manager",
-      phone: "(702) 555-0103", 
+      phone: "(702) 555-0103",
       email: "elena.rodriguez@maravillahomes.com",
-      specialties: ["Community Events", "Amenities Tours", "New Resident Services"]
-    }
-  ]
-}
+      specialties: ["Community Events", "Amenities Tours", "New Resident Services"],
+    },
+  ],
+};
 
 export function MaravillaVirtualTours() {
-  const [selectedTour, setSelectedTour] = useState<VirtualTour | null>(null)
+  const [selectedTour, setSelectedTour] = useState<VirtualTour | null>(null);
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="bg-gray-50 py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="mb-16 text-center">
           <Badge variant="secondary" className="mb-4">
-            <Play className="w-4 h-4 mr-2" />
+            <Play className="mr-2 h-4 w-4" />
             Virtual Experience
           </Badge>
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Explore Maravilla From Anywhere
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Take a virtual tour of our beautiful homes and community amenities. 
-            Experience Maravilla living before you visit in person.
+          <h2 className="mb-4 text-4xl font-bold text-gray-900">Explore Maravilla From Anywhere</h2>
+          <p className="mx-auto max-w-2xl text-xl text-gray-600">
+            Take a virtual tour of our beautiful homes and community amenities. Experience Maravilla living before you
+            visit in person.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-3">
           {virtualTours.map((tour) => (
-            <Card key={tour.id} className="overflow-hidden hover:shadow-xl transition-shadow group">
+            <Card key={tour.id} className="group overflow-hidden transition-shadow hover:shadow-xl">
               <CardHeader className="p-0">
-                <div className="aspect-video bg-gradient-to-br from-blue-100 to-green-100 flex items-center justify-center relative">
+                <div className="relative flex aspect-video items-center justify-center bg-gradient-to-br from-blue-100 to-green-100">
                   <div className="text-center text-gray-500">
-                    <Camera className="w-16 h-16 mx-auto mb-2 opacity-50" />
+                    <Camera className="mx-auto mb-2 h-16 w-16 opacity-50" />
                     <p className="text-sm">{tour.title}</p>
                   </div>
-                  
+
                   {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
-                    <Button size="lg" className="rounded-full w-16 h-16">
-                      <Play className="w-8 h-8" />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
+                    <Button size="lg" className="h-16 w-16 rounded-full">
+                      <Play className="h-8 w-8" />
                     </Button>
                   </div>
-                  
+
                   {/* Duration Badge */}
-                  <div className="absolute top-4 right-4">
+                  <div className="absolute right-4 top-4">
                     <Badge variant="secondary" className="bg-white/90">
                       {tour.duration}
                     </Badge>
                   </div>
-                  
+
                   {/* Type Badge */}
-                  <div className="absolute top-4 left-4">
+                  <div className="absolute left-4 top-4">
                     <Badge variant="outline" className="bg-white/90">
                       {tour.type === "360" ? "360°" : tour.type === "video" ? "Video" : "Photos"}
                     </Badge>
                   </div>
                 </div>
               </CardHeader>
-              
+
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {tour.title}
-                </h3>
-                <p className="text-sm text-gray-600 mb-4">
-                  {tour.type === "360" 
+                <h3 className="mb-2 text-lg font-semibold text-gray-900">{tour.title}</h3>
+                <p className="mb-4 text-sm text-gray-600">
+                  {tour.type === "360"
                     ? "Interactive 360° tour of our model home"
-                    : tour.type === "video" 
-                    ? "Professional video walkthrough"
-                    : "High-quality photo gallery of community features"
-                  }
+                    : tour.type === "video"
+                      ? "Professional video walkthrough"
+                      : "High-quality photo gallery of community features"}
                 </p>
-                
+
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button className="w-full">
-                      <Play className="w-4 h-4 mr-2" />
+                      <Play className="mr-2 h-4 w-4" />
                       Start Tour
                     </Button>
                   </DialogTrigger>
@@ -191,9 +189,9 @@ export function MaravillaVirtualTours() {
                     <DialogHeader>
                       <DialogTitle>{tour.title}</DialogTitle>
                     </DialogHeader>
-                    <div className="aspect-video bg-gradient-to-br from-blue-100 to-green-100 flex items-center justify-center">
+                    <div className="flex aspect-video items-center justify-center bg-gradient-to-br from-blue-100 to-green-100">
                       <div className="text-center text-gray-500">
-                        <Play className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                        <Play className="mx-auto mb-4 h-16 w-16 opacity-50" />
                         <p className="text-lg">Virtual Tour Player</p>
                         <p className="text-sm">Coming Soon</p>
                       </div>
@@ -206,30 +204,28 @@ export function MaravillaVirtualTours() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 export function MaravillaContactSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="bg-white py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Connect With Our Team
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Our experienced sales team is here to help you find your perfect Maravilla home. 
-            Contact us today to schedule a tour or get more information.
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-gray-900">Connect With Our Team</h2>
+          <p className="mx-auto max-w-2xl text-xl text-gray-600">
+            Our experienced sales team is here to help you find your perfect Maravilla home. Contact us today to
+            schedule a tour or get more information.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid gap-12 lg:grid-cols-2">
           {/* Contact Information */}
           <div className="space-y-8">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <MapPin className="w-5 h-5 mr-2 text-green-600" />
+                  <MapPin className="mr-2 h-5 w-5 text-green-600" />
                   Sales Office
                 </CardTitle>
               </CardHeader>
@@ -240,15 +236,15 @@ export function MaravillaContactSection() {
                     <p className="text-gray-600">{maravillaContact.salesOffice.address}</p>
                   </div>
                   <div className="flex items-center">
-                    <Phone className="w-4 h-4 mr-2 text-green-600" />
+                    <Phone className="mr-2 h-4 w-4 text-green-600" />
                     <span className="font-semibold">{maravillaContact.salesOffice.phone}</span>
                   </div>
                   <div className="flex items-center">
-                    <Mail className="w-4 h-4 mr-2 text-green-600" />
+                    <Mail className="mr-2 h-4 w-4 text-green-600" />
                     <span>{maravillaContact.salesOffice.email}</span>
                   </div>
                   <div className="flex items-center">
-                    <Clock className="w-4 h-4 mr-2 text-green-600" />
+                    <Clock className="mr-2 h-4 w-4 text-green-600" />
                     <span>{maravillaContact.salesOffice.hours}</span>
                   </div>
                 </div>
@@ -264,13 +260,13 @@ export function MaravillaContactSection() {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900">{member.name}</h4>
-                        <p className="text-sm text-gray-600 mb-2">{member.title}</p>
-                        <div className="flex items-center text-sm text-gray-600 mb-2">
-                          <Phone className="w-3 h-3 mr-1" />
+                        <p className="mb-2 text-sm text-gray-600">{member.title}</p>
+                        <div className="mb-2 flex items-center text-sm text-gray-600">
+                          <Phone className="mr-1 h-3 w-3" />
                           {member.phone}
                         </div>
-                        <div className="flex items-center text-sm text-gray-600 mb-3">
-                          <Mail className="w-3 h-3 mr-1" />
+                        <div className="mb-3 flex items-center text-sm text-gray-600">
+                          <Mail className="mr-1 h-3 w-3" />
                           {member.email}
                         </div>
                         <div className="flex flex-wrap gap-1">
@@ -304,17 +300,17 @@ export function MaravillaContactSection() {
                     <TabsTrigger value="info">Get Info</TabsTrigger>
                     <TabsTrigger value="consultation">Consultation</TabsTrigger>
                   </TabsList>
-                  
+
                   <TabsContent value="tour" className="space-y-4">
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label className="text-sm font-medium">Preferred Date</label>
-                          <input type="date" className="w-full p-2 border rounded-md" />
+                          <input type="date" className="w-full rounded-md border p-2" />
                         </div>
                         <div>
                           <label className="text-sm font-medium">Preferred Time</label>
-                          <select className="w-full p-2 border rounded-md">
+                          <select className="w-full rounded-md border p-2">
                             <option>9:00 AM</option>
                             <option>10:00 AM</option>
                             <option>11:00 AM</option>
@@ -326,57 +322,60 @@ export function MaravillaContactSection() {
                       </div>
                       <div>
                         <label className="text-sm font-medium">Your Name</label>
-                        <input type="text" className="w-full p-2 border rounded-md" />
+                        <input type="text" className="w-full rounded-md border p-2" />
                       </div>
                       <div>
                         <label className="text-sm font-medium">Phone Number</label>
-                        <input type="tel" className="w-full p-2 border rounded-md" />
+                        <input type="tel" className="w-full rounded-md border p-2" />
                       </div>
                       <div>
                         <label className="text-sm font-medium">Email</label>
-                        <input type="email" className="w-full p-2 border rounded-md" />
+                        <input type="email" className="w-full rounded-md border p-2" />
                       </div>
                       <Button className="w-full bg-green-600 hover:bg-green-700">
-                        <Calendar className="w-4 h-4 mr-2" />
+                        <Calendar className="mr-2 h-4 w-4" />
                         Schedule Tour
                       </Button>
                     </div>
                   </TabsContent>
-                  
+
                   <TabsContent value="info" className="space-y-4">
                     <div className="space-y-4">
                       <div>
                         <label className="text-sm font-medium">Your Name</label>
-                        <input type="text" className="w-full p-2 border rounded-md" />
+                        <input type="text" className="w-full rounded-md border p-2" />
                       </div>
                       <div>
                         <label className="text-sm font-medium">Email</label>
-                        <input type="email" className="w-full p-2 border rounded-md" />
+                        <input type="email" className="w-full rounded-md border p-2" />
                       </div>
                       <div>
                         <label className="text-sm font-medium">What information are you looking for?</label>
-                        <textarea className="w-full p-2 border rounded-md h-20" placeholder="Tell us about your home buying needs..."></textarea>
+                        <textarea
+                          className="h-20 w-full rounded-md border p-2"
+                          placeholder="Tell us about your home buying needs..."
+                        ></textarea>
                       </div>
                       <Button className="w-full bg-green-600 hover:bg-green-700">
-                        <Mail className="w-4 h-4 mr-2" />
+                        <Mail className="mr-2 h-4 w-4" />
                         Send Request
                       </Button>
                     </div>
                   </TabsContent>
-                  
+
                   <TabsContent value="consultation" className="space-y-4">
                     <div className="space-y-4">
                       <div>
                         <label className="text-sm font-medium">Your Name</label>
-                        <input type="text" className="w-full p-2 border rounded-md" />
+                        <input type="text" className="w-full rounded-md border p-2" />
                       </div>
                       <div>
                         <label className="text-sm font-medium">Phone Number</label>
-                        <input type="tel" className="w-full p-2 border rounded-md" />
+                        <input type="tel" className="w-full rounded-md border p-2" />
                       </div>
                       <div>
                         <label className="text-sm font-medium">Best time to call</label>
-                        <select className="w-full p-2 border rounded-md">
+                        <select className="w-full rounded-md border p-2">
                           <option>Morning (9AM-12PM)</option>
                           <option>Afternoon (12PM-5PM)</option>
                           <option>Evening (5PM-8PM)</option>
@@ -384,7 +383,7 @@ export function MaravillaContactSection() {
                       </div>
                       <div>
                         <label className="text-sm font-medium">Budget Range</label>
-                        <select className="w-full p-2 border rounded-md">
+                        <select className="w-full rounded-md border p-2">
                           <option>$400K - $500K</option>
                           <option>$500K - $600K</option>
                           <option>$600K - $700K</option>
@@ -392,7 +391,7 @@ export function MaravillaContactSection() {
                         </select>
                       </div>
                       <Button className="w-full bg-green-600 hover:bg-green-700">
-                        <Phone className="w-4 h-4 mr-2" />
+                        <Phone className="mr-2 h-4 w-4" />
                         Request Consultation
                       </Button>
                     </div>
@@ -404,5 +403,5 @@ export function MaravillaContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

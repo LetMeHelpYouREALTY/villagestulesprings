@@ -60,8 +60,8 @@ export function LayoutControls(props: LayoutControlsProps) {
       <PopoverContent align="end">
         <div className="flex flex-col gap-5">
           <div className="space-y-1.5">
-            <h4 className="text-sm leading-none font-medium">Layout Settings</h4>
-            <p className="text-muted-foreground text-xs">Customize your dashboard layout preferences.</p>
+            <h4 className="text-sm font-medium leading-none">Layout Settings</h4>
+            <p className="text-xs text-muted-foreground">Customize your dashboard layout preferences.</p>
           </div>
           <div className="space-y-3">
             <div className="space-y-1">
