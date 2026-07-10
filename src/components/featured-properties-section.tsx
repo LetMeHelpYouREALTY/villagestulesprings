@@ -4,7 +4,7 @@ import { CloudinaryImage } from "@/components/cloudinary-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { cloudinaryPublicId, getRealScoutAgentId, isCloudinaryConfigured } from "@/config/env";
+import { cloudinaryPublicId, isCloudinaryConfigured } from "@/config/env";
 
 const FEATURED_PROPERTIES = [
   {
@@ -43,7 +43,6 @@ const FEATURED_PROPERTIES = [
 ];
 
 export function FeaturedPropertiesSection() {
-  const agentId = getRealScoutAgentId();
   const showCloudinary = isCloudinaryConfigured();
 
   return (
@@ -120,17 +119,6 @@ export function FeaturedPropertiesSection() {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="mt-12">
-          <realscout-office-listings
-            agent-encoded-id={agentId}
-            sort-order="PRICE_LOW"
-            listing-status="For Sale"
-            property-types=",SFR,OTHER"
-            price-min="500000"
-            price-max="600000"
-          ></realscout-office-listings>
         </div>
       </div>
     </section>

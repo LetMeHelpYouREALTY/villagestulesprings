@@ -1,21 +1,30 @@
 import type { Metadata } from "next";
 
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { PublicPageShell } from "@/components/public-page-shell";
 import { aboutPageMetadata } from "@/config/metadata-config";
 
 // Use the pre-configured metadata for the about page
 export const metadata: Metadata = aboutPageMetadata;
 
+function AboutHero() {
+  return (
+    <section className="bg-navy-800 px-4 py-20">
+      <div className="container mx-auto max-w-4xl text-center">
+        <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-300">Meet Your Specialist</p>
+        <h1 className="mt-3 font-serif text-4xl text-cream-100 md:text-5xl">About Dr. Janet Duffy</h1>
+        <p className="mx-auto mt-4 max-w-2xl font-sans text-lg font-light text-cream-300">
+          Licensed Nevada REALTOR&reg; with 15+ years guiding buyers and sellers across Las Vegas and North Las Vegas.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 export default function AboutPage() {
   return (
-    <>
-      <SiteHeader />
+    <PublicPageShell hero={<AboutHero />}>
       <main className="bg-cream-50 px-4 py-16">
         <div className="container mx-auto max-w-4xl">
-          <p className="text-xs uppercase tracking-[0.2em] text-gold-600">Meet Your Specialist</p>
-          <h1 className="mb-8 mt-2 font-serif text-4xl text-navy-800">About Dr. Janet Duffy</h1>
-
           <div className="max-w-none">
             <p className="mb-8 text-xl leading-relaxed text-navy-500">
               Dr. Janet Duffy is a licensed real estate professional with over 15 years of experience helping clients
@@ -67,13 +76,13 @@ export default function AboutPage() {
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
                 <a
-                  href="tel:(702) 555-REALTOR"
+                  href="tel:+17022221964"
                   className="rounded-lg bg-navy-700 px-6 py-3 font-sans uppercase tracking-widest text-cream-100 transition-colors hover:bg-navy-800"
                 >
-                  Call (702) 555-REALTOR
+                  Call 702-222-1964
                 </a>
                 <a
-                  href="mailto:info@lasvegasrealestate.com"
+                  href="mailto:DrDuffySells@VillagesTuleSprings.com"
                   className="rounded-lg border border-gold-400 px-6 py-3 font-sans uppercase tracking-widest text-gold-600 transition-colors hover:bg-gold-400 hover:text-navy-800"
                 >
                   Email Dr. Duffy
@@ -83,7 +92,6 @@ export default function AboutPage() {
           </div>
         </div>
       </main>
-      <SiteFooter />
-    </>
+    </PublicPageShell>
   );
 }

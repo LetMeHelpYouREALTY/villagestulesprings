@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { PublicPageShell } from "@/components/public-page-shell";
 import { generateArticleMetadata } from "@/config/metadata-config";
 
 // Generate article-specific metadata with all the required Open Graph properties
@@ -28,11 +28,20 @@ export const metadata: Metadata = generateArticleMetadata({
 
 export default function BlogPostPage() {
   return (
-    <>
-      <SiteHeader />
+    <PublicPageShell
+      hero={
+        <section className="bg-navy-800 px-4 py-20">
+          <div className="container mx-auto max-w-4xl text-center">
+            <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-300">Market Analysis</p>
+            <h1 className="mt-3 font-serif text-3xl text-cream-100 md:text-5xl">
+              Las Vegas Real Estate Market Update: 2024 Trends &amp; Insights
+            </h1>
+          </div>
+        </section>
+      }
+    >
       <main className="bg-cream-50 px-4 py-16">
         <article className="container mx-auto max-w-4xl">
-          {/* Article Header */}
           <header className="mb-12">
             <div className="mb-4 text-sm uppercase tracking-widest text-gold-600">
               <time dateTime="2024-01-15T10:00:00Z">January 15, 2024</time>
@@ -42,17 +51,12 @@ export default function BlogPostPage() {
               <span>Dr. Janet Duffy</span>
             </div>
 
-            <h1 className="mb-6 font-serif text-4xl text-navy-800 md:text-5xl">
-              Las Vegas Real Estate Market Update: 2024 Trends &amp; Insights
-            </h1>
-
             <p className="text-xl leading-relaxed text-navy-500">
               As we move through 2024, the Las Vegas real estate market continues to evolve. Here&apos;s what buyers and
               sellers need to know about current trends, pricing, and opportunities.
             </p>
           </header>
 
-          {/* Featured Image */}
           <div className="mb-12">
             <img
               src="/blog/las-vegas-market-2024.jpg"
@@ -61,7 +65,6 @@ export default function BlogPostPage() {
             />
           </div>
 
-          {/* Article Content */}
           <div className="max-w-none">
             <h2 className="mb-6 font-serif text-3xl text-navy-700">Market Overview</h2>
             <p className="mb-6 text-navy-500">
@@ -153,7 +156,6 @@ export default function BlogPostPage() {
             </p>
           </div>
 
-          {/* Article Footer */}
           <footer className="mt-12 border-t border-gold-200 pt-8">
             <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
               <div>
@@ -164,23 +166,22 @@ export default function BlogPostPage() {
               </div>
               <div className="flex gap-4">
                 <a
-                  href="tel:(702) 555-REALTOR"
+                  href="tel:+17022221964"
                   className="rounded-lg bg-navy-700 px-4 py-2 font-sans uppercase tracking-widest text-cream-100 transition-colors hover:bg-navy-800"
                 >
                   Contact Dr. Duffy
                 </a>
-                <a
-                  href="/listings"
+                <Link
+                  href="/"
                   className="rounded-lg border border-gold-400 px-4 py-2 font-sans uppercase tracking-widest text-gold-600 transition-colors hover:bg-gold-400 hover:text-navy-800"
                 >
                   View Listings
-                </a>
+                </Link>
               </div>
             </div>
           </footer>
         </article>
       </main>
-      <SiteFooter />
-    </>
+    </PublicPageShell>
   );
 }

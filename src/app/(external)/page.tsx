@@ -1,8 +1,7 @@
 import { FeaturedPropertiesSection } from "@/components/featured-properties-section";
 import { LocationMapSection } from "@/components/location-map-section";
 import { MaravillaHeroSection } from "@/components/maravilla-hero-section";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { PublicPageShell } from "@/components/public-page-shell";
 import { getRealScoutAgentId } from "@/config/env";
 
 const structuredData = {
@@ -99,13 +98,13 @@ export default function Home() {
   const agentId = getRealScoutAgentId();
 
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <SiteHeader />
+    <PublicPageShell
+      before={
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      }
+      hero={<MaravillaHeroSection />}
+    >
       <main>
-        {/* Hero Section with RealScout Simple Search */}
-        <MaravillaHeroSection />
-
         {/* RealScout Advanced Search */}
         <section className="bg-cream-100 py-24">
           <div className="container mx-auto px-4">
@@ -124,7 +123,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Featured Properties — luxury card grid + RealScout feed */}
+        {/* Featured Properties — luxury card grid */}
         <FeaturedPropertiesSection />
 
         {/* RealScout Your Listings */}
@@ -171,7 +170,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <SiteFooter />
-    </>
+    </PublicPageShell>
   );
 }
