@@ -20,7 +20,7 @@ export function TableCards() {
   });
 
   return (
-    <div className="grid grid-cols-1 gap-4 *:data-[slot=card]:shadow-xs">
+    <div className="*:data-[slot=card]:shadow-xs grid grid-cols-1 gap-4">
       <Card>
         <CardHeader>
           <CardTitle>Recent Leads</CardTitle>

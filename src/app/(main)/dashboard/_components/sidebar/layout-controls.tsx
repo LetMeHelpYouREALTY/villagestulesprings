@@ -29,9 +29,9 @@ export function LayoutControls(props: LayoutControlsProps) {
   const themePreset = usePreferencesStore((s) => s.themePreset);
   const setThemePreset = usePreferencesStore((s) => s.setThemePreset);
 
-  const handleValueChange = async (key: string, value: any) => {
+  const handleValueChange = async (key: string, value: string) => {
     if (key === "theme_mode") {
-      updateThemeMode(value);
+      updateThemeMode(value as ThemeMode);
       setThemeMode(value as ThemeMode);
     }
 
@@ -41,11 +41,11 @@ export function LayoutControls(props: LayoutControlsProps) {
     }
 
     if (key === "content_layout") {
-      updateContentLayout(value);
+      updateContentLayout(value as ContentLayout);
     }
 
     if (key === "navbar_style") {
-      updateNavbarStyle(value);
+      updateNavbarStyle(value as NavbarStyle);
     }
     await setValueToCookie(key, value);
   };
@@ -60,8 +60,8 @@ export function LayoutControls(props: LayoutControlsProps) {
       <PopoverContent align="end">
         <div className="flex flex-col gap-5">
           <div className="space-y-1.5">
-            <h4 className="text-sm leading-none font-medium">Layout Settings</h4>
-            <p className="text-muted-foreground text-xs">Customize your dashboard layout preferences.</p>
+            <h4 className="text-sm font-medium leading-none">Layout Settings</h4>
+            <p className="text-xs text-muted-foreground">Customize your dashboard layout preferences.</p>
           </div>
           <div className="space-y-3">
             <div className="space-y-1">

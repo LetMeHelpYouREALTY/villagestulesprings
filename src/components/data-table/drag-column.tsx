@@ -15,15 +15,15 @@ function DragHandle({ id }: { id: number }) {
       {...listeners}
       variant="ghost"
       size="icon"
-      className="text-muted-foreground size-7 hover:bg-transparent"
+      className="size-7 text-muted-foreground hover:bg-transparent"
     >
-      <GripVertical className="text-muted-foreground size-3" />
+      <GripVertical className="size-3 text-muted-foreground" />
       <span className="sr-only">Drag to reorder</span>
     </Button>
   );
 }
 
-export const dragColumn: ColumnDef<any> = {
+export const dragColumn: ColumnDef<{ id: number }> = {
   id: "drag",
   header: () => null,
   cell: ({ row }) => <DragHandle id={row.original.id} />,

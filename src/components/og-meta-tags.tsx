@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import type { ReactElement } from "react";
 
 /**
@@ -37,40 +36,20 @@ interface OGMetaTagsProps {
   longitude?: string;
 }
 
-export function OGMetaTags({
+function buildBasicOGTags({
   title,
   description,
   url,
-  type = "website",
-  image,
-  imageWidth,
-  imageHeight,
-  imageAlt,
-  siteName = "Las Vegas Real Estate Expert",
-  locale = "en_US",
+  type,
+  siteName,
+  locale,
   determiner,
-  publishedTime,
-  modifiedTime,
-  author,
-  section,
-  tags,
-  video,
-  videoWidth,
-  videoHeight,
-  videoType,
-  audio,
-  audioType,
-  localeAlternate,
-  email,
-  phoneNumber,
-  countryName,
-  region,
-  latitude,
-  longitude,
-}: OGMetaTagsProps) {
+}: Pick<
+  OGMetaTagsProps,
+  "title" | "description" | "url" | "type" | "siteName" | "locale" | "determiner"
+>): ReactElement[] {
   const metaTags: ReactElement[] = [];
 
-  // Basic Open Graph tags
   if (title) metaTags.push(<meta key="og:title" property="og:title" content={title} />);
   if (description) metaTags.push(<meta key="og:description" property="og:description" content={description} />);
   if (url) metaTags.push(<meta key="og:url" property="og:url" content={url} />);
@@ -79,60 +58,125 @@ export function OGMetaTags({
   if (locale) metaTags.push(<meta key="og:locale" property="og:locale" content={locale} />);
   if (determiner) metaTags.push(<meta key="og:determiner" property="og:determiner" content={determiner} />);
 
-  // Image tags
-  if (image) {
-    metaTags.push(<meta key="og:image" property="og:image" content={image} />);
-    if (imageWidth) metaTags.push(<meta key="og:image:width" property="og:image:width" content={imageWidth.toString()} />);
-    if (imageHeight) metaTags.push(<meta key="og:image:height" property="og:image:height" content={imageHeight.toString()} />);
-    if (imageAlt) metaTags.push(<meta key="og:image:alt" property="og:image:alt" content={imageAlt} />);
-  }
+  return metaTags;
+}
 
-  // Article-specific tags
-  if (publishedTime) metaTags.push(<meta key="article:published_time" property="article:published_time" content={publishedTime} />);
-  if (modifiedTime) metaTags.push(<meta key="article:modified_time" property="article:modified_time" content={modifiedTime} />);
+function buildImageOGTags({
+  image,
+  imageWidth,
+  imageHeight,
+  imageAlt,
+}: Pick<OGMetaTagsProps, "image" | "imageWidth" | "imageHeight" | "imageAlt">): ReactElement[] {
+  if (!image) return [];
+
+  const metaTags: ReactElement[] = [<meta key="og:image" property="og:image" content={image} />];
+
+  if (imageWidth)
+    metaTags.push(<meta key="og:image:width" property="og:image:width" content={imageWidth.toString()} />);
+  if (imageHeight)
+    metaTags.push(<meta key="og:image:height" property="og:image:height" content={imageHeight.toString()} />);
+  if (imageAlt) metaTags.push(<meta key="og:image:alt" property="og:image:alt" content={imageAlt} />);
+
+  return metaTags;
+}
+
+function buildArticleOGTags({
+  publishedTime,
+  modifiedTime,
+  author,
+  section,
+  tags,
+}: Pick<OGMetaTagsProps, "publishedTime" | "modifiedTime" | "author" | "section" | "tags">): ReactElement[] {
+  const metaTags: ReactElement[] = [];
+
+  if (publishedTime)
+    metaTags.push(<meta key="article:published_time" property="article:published_time" content={publishedTime} />);
+  if (modifiedTime)
+    metaTags.push(<meta key="article:modified_time" property="article:modified_time" content={modifiedTime} />);
   if (author) metaTags.push(<meta key="article:author" property="article:author" content={author} />);
   if (section) metaTags.push(<meta key="article:section" property="article:section" content={section} />);
-  if (tags && tags.length > 0) {
-    tags.forEach((tag, index) => {
-      metaTags.push(<meta key={`article:tag:${index}`} property="article:tag" content={tag} />);
-    });
-  }
 
-  // Video tags
-  if (video) {
-    metaTags.push(<meta key="og:video" property="og:video" content={video} />);
-    if (videoWidth) metaTags.push(<meta key="og:video:width" property="og:video:width" content={videoWidth.toString()} />);
-    if (videoHeight) metaTags.push(<meta key="og:video:height" property="og:video:height" content={videoHeight.toString()} />);
-    if (videoType) metaTags.push(<meta key="og:video:type" property="og:video:type" content={videoType} />);
-  }
+  tags?.forEach((tag) => {
+    metaTags.push(<meta key={`article:tag:${tag}`} property="article:tag" content={tag} />);
+  });
 
-  // Audio tags
-  if (audio) {
-    metaTags.push(<meta key="og:audio" property="og:audio" content={audio} />);
-    if (audioType) metaTags.push(<meta key="og:audio:type" property="og:audio:type" content={audioType} />);
-  }
+  return metaTags;
+}
 
-  // Locale alternate tags
-  if (localeAlternate && localeAlternate.length > 0) {
-    localeAlternate.forEach((altLocale, index) => {
-      metaTags.push(<meta key={`og:locale:alternate:${index}`} property="og:locale:alternate" content={altLocale} />);
-    });
-  }
+function buildVideoOGTags({
+  video,
+  videoWidth,
+  videoHeight,
+  videoType,
+}: Pick<OGMetaTagsProps, "video" | "videoWidth" | "videoHeight" | "videoType">): ReactElement[] {
+  if (!video) return [];
 
-  // Contact information
+  const metaTags: ReactElement[] = [<meta key="og:video" property="og:video" content={video} />];
+
+  if (videoWidth)
+    metaTags.push(<meta key="og:video:width" property="og:video:width" content={videoWidth.toString()} />);
+  if (videoHeight)
+    metaTags.push(<meta key="og:video:height" property="og:video:height" content={videoHeight.toString()} />);
+  if (videoType) metaTags.push(<meta key="og:video:type" property="og:video:type" content={videoType} />);
+
+  return metaTags;
+}
+
+function buildAudioOGTags({ audio, audioType }: Pick<OGMetaTagsProps, "audio" | "audioType">): ReactElement[] {
+  if (!audio) return [];
+
+  const metaTags: ReactElement[] = [<meta key="og:audio" property="og:audio" content={audio} />];
+
+  if (audioType) metaTags.push(<meta key="og:audio:type" property="og:audio:type" content={audioType} />);
+
+  return metaTags;
+}
+
+function buildLocaleAlternateOGTags({ localeAlternate }: Pick<OGMetaTagsProps, "localeAlternate">): ReactElement[] {
+  return (localeAlternate ?? []).map((altLocale) => (
+    <meta key={`og:locale:alternate:${altLocale}`} property="og:locale:alternate" content={altLocale} />
+  ));
+}
+
+function buildContactOGTags({ email, phoneNumber }: Pick<OGMetaTagsProps, "email" | "phoneNumber">): ReactElement[] {
+  const metaTags: ReactElement[] = [];
+
   if (email) metaTags.push(<meta key="og:email" property="og:email" content={email} />);
   if (phoneNumber) metaTags.push(<meta key="og:phone_number" property="og:phone_number" content={phoneNumber} />);
 
-  // Location information
+  return metaTags;
+}
+
+function buildLocationOGTags({
+  countryName,
+  region,
+  latitude,
+  longitude,
+}: Pick<OGMetaTagsProps, "countryName" | "region" | "latitude" | "longitude">): ReactElement[] {
+  const metaTags: ReactElement[] = [];
+
   if (countryName) metaTags.push(<meta key="og:country_name" property="og:country_name" content={countryName} />);
   if (region) metaTags.push(<meta key="og:region" property="og:region" content={region} />);
   if (latitude) metaTags.push(<meta key="og:latitude" property="og:latitude" content={latitude} />);
   if (longitude) metaTags.push(<meta key="og:longitude" property="og:longitude" content={longitude} />);
 
-  // Add namespace prefix for Open Graph
-  metaTags.unshift(
-    <meta key="og-prefix" prefix="og: https://ogp.me/ns#" />
-  );
+  return metaTags;
+}
+
+export function OGMetaTags(props: OGMetaTagsProps) {
+  const { type = "website", siteName = "Las Vegas Real Estate Expert", locale = "en_US" } = props;
+
+  const metaTags: ReactElement[] = [
+    <meta key="og-prefix" prefix="og: https://ogp.me/ns#" />,
+    ...buildBasicOGTags({ ...props, type, siteName, locale }),
+    ...buildImageOGTags(props),
+    ...buildArticleOGTags(props),
+    ...buildVideoOGTags(props),
+    ...buildAudioOGTags(props),
+    ...buildLocaleAlternateOGTags(props),
+    ...buildContactOGTags(props),
+    ...buildLocationOGTags(props),
+  ];
 
   return <>{metaTags}</>;
 }
@@ -160,29 +204,20 @@ interface TwitterMetaTagsProps {
   appUrlGoogleplay?: string;
 }
 
-export function TwitterMetaTags({
-  card = "summary_large_image",
+function buildBasicTwitterTags({
+  card,
   site,
   creator,
   title,
   description,
   image,
   imageAlt,
-  player,
-  playerWidth,
-  playerHeight,
-  appName,
-  appIdIphone,
-  appIdIpad,
-  appIdGoogleplay,
-  appUrlIphone,
-  appUrlIpad,
-  appUrlGoogleplay,
-}: TwitterMetaTagsProps) {
-  const metaTags: ReactElement[] = [];
+}: Pick<
+  TwitterMetaTagsProps,
+  "card" | "site" | "creator" | "title" | "description" | "image" | "imageAlt"
+>): ReactElement[] {
+  const metaTags: ReactElement[] = [<meta key="twitter:card" name="twitter:card" content={card} />];
 
-  metaTags.push(<meta key="twitter:card" name="twitter:card" content={card} />);
-  
   if (site) metaTags.push(<meta key="twitter:site" name="twitter:site" content={site} />);
   if (creator) metaTags.push(<meta key="twitter:creator" name="twitter:creator" content={creator} />);
   if (title) metaTags.push(<meta key="twitter:title" name="twitter:title" content={title} />);
@@ -190,25 +225,71 @@ export function TwitterMetaTags({
   if (image) metaTags.push(<meta key="twitter:image" name="twitter:image" content={image} />);
   if (imageAlt) metaTags.push(<meta key="twitter:image:alt" name="twitter:image:alt" content={imageAlt} />);
 
-  if (player) {
-    metaTags.push(<meta key="twitter:player" name="twitter:player" content={player} />);
-    if (playerWidth) metaTags.push(<meta key="twitter:player:width" name="twitter:player:width" content={playerWidth.toString()} />);
-    if (playerHeight) metaTags.push(<meta key="twitter:player:height" name="twitter:player:height" content={playerHeight.toString()} />);
-  }
+  return metaTags;
+}
 
-  if (appName) {
-    metaTags.push(<meta key="twitter:app:name:iphone" name="twitter:app:name:iphone" content={appName} />);
-    metaTags.push(<meta key="twitter:app:name:ipad" name="twitter:app:name:ipad" content={appName} />);
-    metaTags.push(<meta key="twitter:app:name:googleplay" name="twitter:app:name:googleplay" content={appName} />);
-    
-    if (appIdIphone) metaTags.push(<meta key="twitter:app:id:iphone" name="twitter:app:id:iphone" content={appIdIphone} />);
-    if (appIdIpad) metaTags.push(<meta key="twitter:app:id:ipad" name="twitter:app:id:ipad" content={appIdIpad} />);
-    if (appIdGoogleplay) metaTags.push(<meta key="twitter:app:id:googleplay" name="twitter:app:id:googleplay" content={appIdGoogleplay} />);
-    
-    if (appUrlIphone) metaTags.push(<meta key="twitter:app:url:iphone" name="twitter:app:url:iphone" content={appUrlIphone} />);
-    if (appUrlIpad) metaTags.push(<meta key="twitter:app:url:ipad" name="twitter:app:url:ipad" content={appUrlIpad} />);
-    if (appUrlGoogleplay) metaTags.push(<meta key="twitter:app:url:googleplay" name="twitter:app:url:googleplay" content={appUrlGoogleplay} />);
-  }
+function buildPlayerTwitterTags({
+  player,
+  playerWidth,
+  playerHeight,
+}: Pick<TwitterMetaTagsProps, "player" | "playerWidth" | "playerHeight">): ReactElement[] {
+  if (!player) return [];
+
+  const metaTags: ReactElement[] = [<meta key="twitter:player" name="twitter:player" content={player} />];
+
+  if (playerWidth)
+    metaTags.push(<meta key="twitter:player:width" name="twitter:player:width" content={playerWidth.toString()} />);
+  if (playerHeight)
+    metaTags.push(<meta key="twitter:player:height" name="twitter:player:height" content={playerHeight.toString()} />);
+
+  return metaTags;
+}
+
+function buildAppTwitterTags({
+  appName,
+  appIdIphone,
+  appIdIpad,
+  appIdGoogleplay,
+  appUrlIphone,
+  appUrlIpad,
+  appUrlGoogleplay,
+}: Pick<
+  TwitterMetaTagsProps,
+  "appName" | "appIdIphone" | "appIdIpad" | "appIdGoogleplay" | "appUrlIphone" | "appUrlIpad" | "appUrlGoogleplay"
+>): ReactElement[] {
+  if (!appName) return [];
+
+  const metaTags: ReactElement[] = [
+    <meta key="twitter:app:name:iphone" name="twitter:app:name:iphone" content={appName} />,
+    <meta key="twitter:app:name:ipad" name="twitter:app:name:ipad" content={appName} />,
+    <meta key="twitter:app:name:googleplay" name="twitter:app:name:googleplay" content={appName} />,
+  ];
+
+  if (appIdIphone)
+    metaTags.push(<meta key="twitter:app:id:iphone" name="twitter:app:id:iphone" content={appIdIphone} />);
+  if (appIdIpad) metaTags.push(<meta key="twitter:app:id:ipad" name="twitter:app:id:ipad" content={appIdIpad} />);
+  if (appIdGoogleplay)
+    metaTags.push(<meta key="twitter:app:id:googleplay" name="twitter:app:id:googleplay" content={appIdGoogleplay} />);
+
+  if (appUrlIphone)
+    metaTags.push(<meta key="twitter:app:url:iphone" name="twitter:app:url:iphone" content={appUrlIphone} />);
+  if (appUrlIpad) metaTags.push(<meta key="twitter:app:url:ipad" name="twitter:app:url:ipad" content={appUrlIpad} />);
+  if (appUrlGoogleplay)
+    metaTags.push(
+      <meta key="twitter:app:url:googleplay" name="twitter:app:url:googleplay" content={appUrlGoogleplay} />,
+    );
+
+  return metaTags;
+}
+
+export function TwitterMetaTags(props: TwitterMetaTagsProps) {
+  const { card = "summary_large_image" } = props;
+
+  const metaTags: ReactElement[] = [
+    ...buildBasicTwitterTags({ ...props, card }),
+    ...buildPlayerTwitterTags(props),
+    ...buildAppTwitterTags(props),
+  ];
 
   return <>{metaTags}</>;
 }
@@ -230,4 +311,3 @@ export function SocialMetaTags({
     </>
   );
 }
-

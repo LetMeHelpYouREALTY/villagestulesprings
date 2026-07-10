@@ -76,7 +76,7 @@ export function DataTable<TData, TValue>({
 
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
-    if (active && over && active.id !== over.id && onReorder) {
+    if (over && active.id !== over.id && onReorder) {
       const oldIndex = dataIds.indexOf(active.id);
       const newIndex = dataIds.indexOf(over.id);
 
@@ -88,7 +88,7 @@ export function DataTable<TData, TValue>({
 
   const tableContent = (
     <Table>
-      <TableHeader className="bg-muted sticky top-0 z-10">
+      <TableHeader className="sticky top-0 z-10 bg-muted">
         {table.getHeaderGroups().map((headerGroup) => (
           <TableRow key={headerGroup.id}>
             {headerGroup.headers.map((header) => {
