@@ -1,10 +1,9 @@
 import { ReactNode } from "react";
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Jost, Playfair_Display } from "next/font/google";
 
 import { Toaster } from "@/components/ui/sonner";
-import { APP_CONFIG } from "@/config/app-config";
 import { homePageMetadata } from "@/config/metadata-config";
 import { getPreference } from "@/server/server-actions";
 import { PreferencesStoreProvider } from "@/stores/preferences/preferences-provider";
@@ -13,6 +12,17 @@ import { THEME_MODE_VALUES, THEME_PRESET_VALUES, type ThemePreset, type ThemeMod
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const luxurySerif = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-luxury-serif",
+  display: "swap",
+});
+const luxurySans = Jost({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-luxury-sans",
+  display: "swap",
+});
 
 // Use the centralized metadata configuration
 export const metadata: Metadata = homePageMetadata;
@@ -28,7 +38,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       data-theme-preset={themePreset}
       suppressHydrationWarning
     >
-      <body className={`${inter.className} min-h-screen antialiased`}>
+      <body className={`${inter.className} ${luxurySerif.variable} ${luxurySans.variable} min-h-screen antialiased`}>
         <PreferencesStoreProvider themeMode={themeMode} themePreset={themePreset}>
           {children}
           <Toaster />

@@ -1,4 +1,7 @@
+import { FeaturedPropertiesSection } from "@/components/featured-properties-section";
 import { MaravillaHeroSection } from "@/components/maravilla-hero-section";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -86,55 +89,41 @@ export default function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      <SiteHeader />
       <main>
         {/* Hero Section with RealScout Simple Search */}
         <MaravillaHeroSection />
 
         {/* RealScout Advanced Search */}
-        <section className="bg-gray-50 py-16">
+        <section className="bg-cream-100 py-24">
           <div className="container mx-auto px-4">
             <div className="mb-12 text-center">
-              <h2 className="mb-4 text-4xl font-bold text-gray-900">
-                Find Your <span className="text-green-600">Perfect Home</span>
+              <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-600">Advanced Search</p>
+              <h2 className="mb-4 mt-2 font-serif text-4xl text-navy-800 lg:text-5xl">
+                Find Your <span className="text-gold-600">Perfect Home</span>
               </h2>
-              <p className="mx-auto max-w-3xl text-xl text-gray-600">
+              <p className="mx-auto max-w-3xl font-sans text-xl font-light text-navy-500">
                 Use our advanced search to find properties that match your exact criteria and budget.
               </p>
             </div>
-            <realscout-advanced-search agent-encoded-id="QWdlbnQtMjI1MDUw"></realscout-advanced-search>
+            <div className="mx-auto max-w-4xl rounded-lg border border-navy-200/20 bg-cream-50 p-6 md:p-8">
+              <realscout-advanced-search agent-encoded-id="QWdlbnQtMjI1MDUw"></realscout-advanced-search>
+            </div>
           </div>
         </section>
 
-        {/* RealScout Office Listings */}
-        <section className="bg-white py-16">
-          <div className="container mx-auto px-4">
-            <div className="mb-12 text-center">
-              <h2 className="mb-4 text-4xl font-bold text-gray-900">
-                Featured <span className="text-green-600">Properties</span>
-              </h2>
-              <p className="mx-auto max-w-3xl text-xl text-gray-600">
-                Discover our latest listings in the Las Vegas area. From luxury homes to starter properties.
-              </p>
-            </div>
-            <realscout-office-listings
-              agent-encoded-id="QWdlbnQtMjI1MDUw"
-              sort-order="PRICE_LOW"
-              listing-status="For Sale"
-              property-types=",SFR,OTHER"
-              price-min="500000"
-              price-max="600000"
-            ></realscout-office-listings>
-          </div>
-        </section>
+        {/* Featured Properties — luxury card grid + RealScout feed */}
+        <FeaturedPropertiesSection />
 
         {/* RealScout Your Listings */}
-        <section className="bg-gray-50 py-16">
+        <section className="bg-cream-100 py-24">
           <div className="container mx-auto px-4">
             <div className="mb-12 text-center">
-              <h2 className="mb-4 text-4xl font-bold text-gray-900">
-                My <span className="text-green-600">Featured Listings</span>
+              <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-600">Exclusive Listings</p>
+              <h2 className="mb-4 mt-2 font-serif text-4xl text-navy-800 lg:text-5xl">
+                My <span className="text-gold-600">Featured Listings</span>
               </h2>
-              <p className="mx-auto max-w-3xl text-xl text-gray-600">
+              <p className="mx-auto max-w-3xl font-sans text-xl font-light text-navy-500">
                 Explore my exclusive listings across Las Vegas. Each property is carefully selected and professionally
                 marketed for the best results.
               </p>
@@ -149,21 +138,25 @@ export default function Home() {
         </section>
 
         {/* RealScout Home Valuation */}
-        <section className="bg-gradient-to-br from-blue-50 to-green-50 py-16">
+        <section className="bg-navy-800 py-24">
           <div className="container mx-auto px-4">
             <div className="mb-12 text-center">
-              <h2 className="mb-4 text-4xl font-bold text-gray-900">
-                Get Your <span className="text-green-600">Home Valuation</span>
+              <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-300">Complimentary Service</p>
+              <h2 className="mb-4 mt-2 font-serif text-4xl text-cream-100 lg:text-5xl">
+                Get Your <span className="text-gold-300">Home Valuation</span>
               </h2>
-              <p className="mx-auto max-w-3xl text-xl text-gray-600">
-                Discover your home&apos;s current market value with our free, professional valuation service. accurate
+              <p className="mx-auto max-w-3xl font-sans text-xl font-light text-cream-300">
+                Discover your home&apos;s current market value with our free, professional valuation service. Accurate
                 insights based on recent sales and market trends in your area.
               </p>
             </div>
-            <realscout-home-value agent-encoded-id="QWdlbnQtMjI1MDUw"></realscout-home-value>
+            <div className="mx-auto max-w-3xl rounded-lg border border-gold-200/20 bg-navy-700/50 p-8">
+              <realscout-home-value agent-encoded-id="QWdlbnQtMjI1MDUw"></realscout-home-value>
+            </div>
           </div>
         </section>
       </main>
+      <SiteFooter />
     </>
   );
 }

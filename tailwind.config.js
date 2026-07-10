@@ -7,7 +7,41 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        serif: ['var(--font-luxury-serif)', 'Georgia', 'serif'],
+        sans: ['var(--font-luxury-sans)', 'var(--font-luxury-body)', 'Helvetica', 'Arial', 'sans-serif'],
+      },
       colors: {
+        navy: {
+          50: '#eef1f5',
+          100: '#d7dee7',
+          200: '#aebccf',
+          300: '#8098b3',
+          400: '#4f6a8f',
+          500: '#2a3a4d',
+          600: '#1a2433',
+          700: '#14202e',
+          800: '#0f1826',
+          900: '#0a1628',
+        },
+        cream: {
+          50: '#fafaf8',
+          100: '#f6f4ee',
+          200: '#f5f1e6',
+          300: '#e3ddcc',
+          400: '#d8cfb4',
+        },
+        gold: {
+          50: '#fdf8ec',
+          100: '#f6ecc9',
+          200: '#e6cf8f',
+          300: '#d4b14a',
+          400: '#cfae4e',
+          500: '#b08d2f',
+          600: '#9a7b22',
+          700: '#7a611a',
+          800: '#4a3000',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
