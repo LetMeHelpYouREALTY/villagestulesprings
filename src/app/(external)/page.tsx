@@ -51,7 +51,7 @@ export default function Home() {
             <HeadingPhoto asset={MEDIA.featuredListings} className="mx-auto mb-10 max-w-5xl" />
             <div
               dangerouslySetInnerHTML={{
-                __html: realScoutTag("your-listings", 'sort-order="NEWEST" listing-status="For Sale"'),
+                __html: realScoutTag("your-listings", 'sort-order="NEWEST_LISTING" listing-status="For Sale"'),
               }}
             />
           </div>
