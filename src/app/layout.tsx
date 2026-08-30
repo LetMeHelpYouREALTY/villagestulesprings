@@ -3,6 +3,8 @@ import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter, Jost, Playfair_Display } from "next/font/google";
 
+import { Analytics } from "@vercel/analytics/next";
+
 import { CalendlyScript } from "@/components/calendly-script";
 import { RealScoutScript } from "@/components/realscout-script";
 import { Toaster } from "@/components/ui/sonner";
@@ -50,6 +52,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           {children}
           <Toaster />
         </PreferencesStoreProvider>
+        <Analytics />
       </body>
     </html>
   );
