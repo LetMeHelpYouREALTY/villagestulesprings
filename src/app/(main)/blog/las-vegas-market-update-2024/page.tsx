@@ -5,6 +5,7 @@ import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { CalendlyButton } from "@/components/calendly-button";
 import { CalendlyInlineWidget } from "@/components/calendly-inline-widget";
 import { DrJanPortrait } from "@/components/dr-jan-portrait";
+import { FaqSection } from "@/components/faq-section";
 import { HeadingPhoto } from "@/components/heading-photo";
 import { JsonLd } from "@/components/json-ld";
 import { PublicPageShell } from "@/components/public-page-shell";
@@ -34,6 +35,19 @@ export const metadata: Metadata = generateArticleMetadata({
   featuredImage: "/blog/las-vegas-market-2024.jpg",
 });
 
+const articleFaqs = [
+  {
+    question: "Is this 2024 market article current for Villages at Tule Springs?",
+    answer:
+      "It is dated January 15, 2024 and is valley context, not a live 89084 median. Call Dr. Janet Duffy at 702-222-1964 for a dated MLS pull.",
+  },
+  {
+    question: "Who wrote this market update?",
+    answer:
+      "Dr. Janet Duffy, REALTOR®, Berkshire Hathaway HomeServices Nevada Properties, Nevada license S.0197614.LLC.",
+  },
+];
+
 const articleSchema = articleJsonLd({
   path: "/blog/las-vegas-market-update-2024",
   title: "Las Vegas Real Estate Market Update: 2024 Trends & Insights",
@@ -41,6 +55,7 @@ const articleSchema = articleJsonLd({
     "Discover the latest Las Vegas real estate market trends for 2024. Dr. Janet Duffy shares expert insights on home prices, inventory levels, and what buyers and sellers need to know.",
   datePublished: "2024-01-15T10:00:00Z",
   dateModified: "2024-01-15T15:30:00Z",
+  faqs: articleFaqs,
 });
 
 const blogBreadcrumbs = [
@@ -232,6 +247,7 @@ export default function BlogPostPage() {
           </footer>
         </article>
       </main>
+      <FaqSection items={articleFaqs} />
     </PublicPageShell>
   );
 }

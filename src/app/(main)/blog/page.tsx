@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
+import { FaqSection } from "@/components/faq-section";
 import { HeadingPhoto } from "@/components/heading-photo";
 import { JsonLd } from "@/components/json-ld";
 import { PublicPageShell } from "@/components/public-page-shell";
@@ -26,12 +27,25 @@ const breadcrumbs = [
   { name: "Market Insights", path: PATH },
 ];
 
+const blogFaqs = [
+  {
+    question: "Where is the latest Villages at Tule Springs market article?",
+    answer:
+      "Read Las Vegas Real Estate Market Update: 2024 Trends & Insights on this site. For a current 89084 pull, call Dr. Janet Duffy at 702-222-1964.",
+  },
+  {
+    question: "Are the 2024 numbers still the list price for 89084?",
+    answer: "No. That article is dated January 15, 2024. Dr. Duffy prepares a dated MLS set for the address you name.",
+  },
+];
+
 const jsonLd = buildPageJsonLd({
   path: PATH,
   title: TITLE,
   description: DESCRIPTION,
   pageType: "CollectionPage",
   breadcrumbs,
+  faqs: blogFaqs,
   itemList: {
     name: "Articles",
     items: [
@@ -79,6 +93,7 @@ export default function BlogIndexPage() {
           </p>
         </article>
       </main>
+      <FaqSection items={blogFaqs} />
     </PublicPageShell>
   );
 }

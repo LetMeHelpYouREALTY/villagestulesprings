@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
+import { FaqSection } from "@/components/faq-section";
 import { HeadingPhoto } from "@/components/heading-photo";
 import { JsonLd } from "@/components/json-ld";
 import { PublicPageShell } from "@/components/public-page-shell";
@@ -27,6 +28,18 @@ const breadcrumbs = [
   { name: "Neighborhoods", path: PATH },
 ];
 
+const neighborhoodFaqs = [
+  {
+    question: "Which neighborhood pages are on this site?",
+    answer:
+      "Villages at Tule Springs, North Las Vegas, Tule Springs, Aliante, Skye Canyon, Centennial Hills, Heartland, Providence, Eldorado, Valley Vista, Summerlin, Henderson, and zip 89031 — each with unique copy and Place schema.",
+  },
+  {
+    question: "Who can show homes in these North Las Vegas areas?",
+    answer: "Dr. Janet Duffy, 702-222-1964. Book a 30-minute tour on this site’s calendar.",
+  },
+];
+
 const jsonLd = buildPageJsonLd({
   path: PATH,
   title: TITLE,
@@ -40,13 +53,7 @@ const jsonLd = buildPageJsonLd({
       path: `/neighborhoods/${place.slug}`,
     })),
   },
-  faqs: [
-    {
-      question: "Which neighborhood pages are on this site?",
-      answer:
-        "Villages at Tule Springs, North Las Vegas, Tule Springs, Aliante, Skye Canyon, Centennial Hills, Heartland, Providence, Eldorado, Valley Vista, Summerlin, Henderson, and zip 89031 — each with unique copy and Place schema.",
-    },
-  ],
+  faqs: neighborhoodFaqs,
 });
 
 export default function NeighborhoodsIndexPage() {
@@ -82,6 +89,7 @@ export default function NeighborhoodsIndexPage() {
           ))}
         </div>
       </main>
+      <FaqSection items={neighborhoodFaqs} />
     </PublicPageShell>
   );
 }

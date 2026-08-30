@@ -227,35 +227,36 @@ export function articleJsonLd(input: {
   description: string;
   datePublished: string;
   dateModified: string;
+  faqs?: FaqItem[];
 }): SchemaNode {
   const pageUrl = originPath(input.path);
-  return {
-    "@context": CONTEXT,
-    "@graph": [
-      realEstateAgentNode(),
-      webSiteNode(),
-      {
-        "@type": "Article",
-        "@id": `${pageUrl}#article`,
-        headline: input.title,
-        description: input.description,
-        datePublished: input.datePublished,
-        dateModified: input.dateModified,
-        author: { "@id": `${BUSINESS.url}/#agent` },
-        publisher: { "@id": `${BUSINESS.url}/#agent` },
-        mainEntityOfPage: pageUrl,
-        image: BUSINESS.image,
-        inLanguage: "en-US",
-        speakable: {
-          "@type": "SpeakableSpecification",
-          cssSelector: [".seo-direct-answer"],
-        },
+  const graph: SchemaNode[] = [
+    realEstateAgentNode(),
+    webSiteNode(),
+    {
+      "@type": "Article",
+      "@id": `${pageUrl}#article`,
+      headline: input.title,
+      description: input.description,
+      datePublished: input.datePublished,
+      dateModified: input.dateModified,
+      author: { "@id": `${BUSINESS.url}/#agent` },
+      publisher: { "@id": `${BUSINESS.url}/#agent` },
+      mainEntityOfPage: pageUrl,
+      image: BUSINESS.image,
+      inLanguage: "en-US",
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: [".seo-direct-answer", ".faq-answer"],
       },
-      breadcrumbListNode([
-        { name: "Home", path: "/" },
-        { name: "Market Insights", path: "/blog" },
-        { name: input.title, path: input.path },
-      ]),
-    ],
-  };
+    },
+    breadcrumbListNode([
+      { name: "Home", path: "/" },
+      { name: "Market Insights", path: "/blog" },
+      { name: input.title, path: input.path },
+    ]),
+  ];
+  const faq = faqPageNode(input.path, input.faqs ?? []);
+  if (faq) graph.push(faq);
+  return { "@context": CONTEXT, "@graph": graph };
 }
