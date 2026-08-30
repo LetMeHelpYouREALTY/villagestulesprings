@@ -3,15 +3,13 @@ import { Home, TrendingUp } from "lucide-react";
 import { CalendlyInlineWidget } from "@/components/calendly-inline-widget";
 import { DrJanPortrait } from "@/components/dr-jan-portrait";
 import { Card, CardContent } from "@/components/ui/card";
-import { getRealScoutAgentId } from "@/config/env";
+import { realScoutTag } from "@/lib/realscout-widget";
 
 /**
  * Home valuation section — RealScout instant value plus Calendly to walk through the numbers.
  * Replaces the former lead-capture form.
  */
 export function HomeValuationSection() {
-  const agentId = getRealScoutAgentId();
-
   return (
     <section className="bg-cream-50 py-20">
       <div className="container mx-auto px-4">
@@ -27,9 +25,10 @@ export function HomeValuationSection() {
 
         <div className="grid gap-12 lg:grid-cols-2">
           <div className="space-y-8">
-            <div className="rounded-lg border border-navy-200/20 bg-white p-6">
-              <realscout-home-value agent-encoded-id={agentId}></realscout-home-value>
-            </div>
+            <div
+              className="rounded-lg border border-navy-200/20 bg-white p-6"
+              dangerouslySetInnerHTML={{ __html: realScoutTag("home-value") }}
+            />
             <CalendlyInlineWidget
               event="conversation"
               title="Schedule a valuation consultation with Dr. Jan Duffy"
