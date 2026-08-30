@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { APEX_HOST, WWW_HOST } from "@/lib/site-urls";
+import { WWW_HOST } from "@/lib/site-urls";
 
 export default function robots(): MetadataRoute.Robots {
   return {
