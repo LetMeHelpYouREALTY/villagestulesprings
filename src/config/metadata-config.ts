@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
+import { SITE_ORIGIN, canonicalPathFromUrl } from "@/lib/site-urls";
+
 import { APP_CONFIG } from "./app-config";
+import { BUSINESS, NAP_LINE } from "./business";
 
-// Base URL for the website
-const baseUrl = "https://villagestulesprings.com";
+const baseUrl = SITE_ORIGIN;
 
-const homebuyerOgAlt = "Luxury home for sale at Villages at Tule Springs, North Las Vegas — Dr. Janet Duffy";
+const homebuyerOgAlt = "Homes at Villages at Tule Springs, North Las Vegas 89084 — Dr. Janet Duffy";
 
 // Default Open Graph image — 1200x630 only.
 // Do not list the square crop here: some crawlers emit the last og:image tag.
@@ -36,27 +38,12 @@ export const baseOpenGraphConfig = {
   images: defaultOGImages,
 };
 
-// Base Twitter configuration
+// Base Twitter configuration — no invented app deep links
 export const baseTwitterConfig = {
   card: "summary_large_image" as const,
   images: defaultTwitterImage,
-  creator: "@lasvegasrealtor",
-  site: "@lasvegasrealestate",
-  app: {
-    name: "Las Vegas Real Estate Expert",
-    id: {
-      iphone: "lasvegasrealestate://",
-      ipad: "lasvegasrealestate://",
-      googleplay: "com.lasvegasrealestate.app",
-    },
-    url: {
-      iphone: baseUrl,
-      ipad: baseUrl,
-    },
-  },
 };
 
-// Base robots configuration
 export const baseRobotsConfig = {
   index: true,
   follow: true,
@@ -71,22 +58,37 @@ export const baseRobotsConfig = {
   },
 };
 
-// Custom meta tags for real estate business
-export const realEstateBusinessMeta = {
-  "business:contact_data:street_address": "123 Main Street, Las Vegas, NV 89101",
-  "business:contact_data:locality": "Las Vegas",
-  "business:contact_data:region": "Nevada",
-  "business:contact_data:postal_code": "89101",
-  "business:contact_data:country_name": "United States",
-  "place:location:latitude": "36.1699",
-  "place:location:longitude": "-115.1398",
-  "og:business:hours": "Mo-Fr 09:00-18:00",
-  "og:business:category": "Real Estate Services",
-  "og:business:contact_data:email": APP_CONFIG.meta.email,
-  "og:business:contact_data:phone_number": APP_CONFIG.meta.phone,
+export const noindexRobotsConfig = {
+  index: false,
+  follow: false,
+  nocache: true,
+  googleBot: {
+    index: false,
+    follow: false,
+    noimageindex: true,
+    "max-video-preview": 0,
+    "max-image-preview": "none" as const,
+    "max-snippet": 0,
+  },
 };
 
-// Function to generate page-specific metadata
+export const noindexMetadata: Metadata = {
+  robots: noindexRobotsConfig,
+};
+
+export const realEstateBusinessMeta = {
+  "business:contact_data:street_address": NAP_LINE,
+  "business:contact_data:locality": BUSINESS.addressLocality,
+  "business:contact_data:region": "Nevada",
+  "business:contact_data:postal_code": BUSINESS.postalCode,
+  "business:contact_data:country_name": "United States",
+  "place:location:latitude": String(BUSINESS.latitude),
+  "place:location:longitude": String(BUSINESS.longitude),
+  "og:business:category": "Real Estate Services",
+  "og:business:contact_data:email": BUSINESS.email,
+  "og:business:contact_data:phone_number": BUSINESS.phoneDisplay,
+};
+
 export interface PageMetadataOptions {
   title?: string;
   description?: string;
@@ -101,6 +103,14 @@ export interface PageMetadataOptions {
   tags?: string[];
   noindex?: boolean;
   canonical?: string;
+}
+
+function toAbsolutePageUrl(url: string): string {
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+  const path = url.startsWith("/") ? url : `/${url}`;
+  return path === "/" ? `${baseUrl}/` : `${baseUrl}${path}`;
 }
 
 // eslint-disable-next-line complexity -- destructures many independent optional SEO fields, not deeply nested logic
@@ -121,10 +131,12 @@ export function generatePageMetadata(options: PageMetadataOptions = {}): Metadat
     canonical,
   } = options;
 
+  const absoluteUrl = toAbsolutePageUrl(url);
+  const canonicalPath = canonicalPathFromUrl(absoluteUrl, canonical);
+
   const metadata: Metadata = {
     title,
     description,
-    keywords: APP_CONFIG.meta.keywords,
     authors: [{ name: author }],
     creator: author,
     publisher: author,
@@ -143,13 +155,13 @@ export function generatePageMetadata(options: PageMetadataOptions = {}): Metadat
       apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
     },
     alternates: {
-      canonical: canonical ?? "/",
+      canonical: canonicalPath,
     },
     openGraph: {
       ...baseOpenGraphConfig,
       title,
       description,
-      url,
+      url: absoluteUrl,
       type,
       images,
       ...(publishedTime && { publishedTime }),
@@ -163,16 +175,7 @@ export function generatePageMetadata(options: PageMetadataOptions = {}): Metadat
       description,
       images: twitterImages,
     },
-    robots: {
-      ...baseRobotsConfig,
-      index: !noindex,
-      follow: !noindex,
-    },
-    verification: {
-      google: "your-google-verification-code",
-      yandex: "your-yandex-verification-code",
-      yahoo: "your-yahoo-verification-code",
-    },
+    robots: noindex ? noindexRobotsConfig : baseRobotsConfig,
     category: "Real Estate",
     classification: "Business",
     other: realEstateBusinessMeta,
@@ -181,24 +184,26 @@ export function generatePageMetadata(options: PageMetadataOptions = {}): Metadat
   return metadata;
 }
 
-// Pre-configured metadata for common page types
 export const homePageMetadata = generatePageMetadata({
   title: APP_CONFIG.meta.title,
   description: APP_CONFIG.meta.description,
   url: baseUrl,
+  canonical: "/",
 });
 
 export const aboutPageMetadata = generatePageMetadata({
-  title: `About Dr. Janet Duffy | ${APP_CONFIG.name}`,
-  description: `Learn about Dr. Janet Duffy, your trusted Las Vegas real estate expert with 15+ years of experience helping clients buy and sell homes in Las Vegas, Henderson, and surrounding areas.`,
+  title: "About Dr. Janet Duffy | Villages at Tule Springs",
+  description: `Dr. Janet Duffy, ${BUSINESS.brokerage} (license ${BUSINESS.license}), helps buyers and sellers in Villages at Tule Springs, North Las Vegas ${BUSINESS.postalCode}. Call ${BUSINESS.phoneDisplay}.`,
   url: `${baseUrl}/about`,
   type: "profile",
+  canonical: "/about",
 });
 
 export const listingsPageMetadata = generatePageMetadata({
-  title: `Las Vegas Homes for Sale | ${APP_CONFIG.name}`,
-  description: `Browse exclusive Las Vegas home listings with Dr. Janet Duffy. Find your dream home with our comprehensive property search and expert real estate guidance.`,
+  title: `Homes for Sale | Villages at Tule Springs ${BUSINESS.postalCode}`,
+  description: `Browse homes for sale in Villages at Tule Springs, North Las Vegas ${BUSINESS.postalCode}, with Dr. Janet Duffy. Call ${BUSINESS.phoneDisplay}.`,
   url: `${baseUrl}/listings`,
+  canonical: "/listings",
   images: [
     {
       url: "/og-listings.jpg",
@@ -206,22 +211,24 @@ export const listingsPageMetadata = generatePageMetadata({
       type: "image/jpeg" as const,
       width: 1200,
       height: 630,
-      alt: "Las Vegas Homes for Sale - Exclusive Listings with Dr. Janet Duffy",
+      alt: "Homes for sale in Villages at Tule Springs, North Las Vegas 89084",
     },
   ],
 });
 
 export const contactPageMetadata = generatePageMetadata({
-  title: `Contact Dr. Janet Duffy | ${APP_CONFIG.name}`,
-  description: `Get in touch with Dr. Janet Duffy for expert Las Vegas real estate services. Schedule a consultation for buying, selling, or home valuation services.`,
+  title: `Contact Dr. Janet Duffy | ${BUSINESS.phoneDisplay}`,
+  description: `Contact Dr. Janet Duffy at Villages at Tule Springs, North Las Vegas ${BUSINESS.postalCode}. Call ${BUSINESS.phoneDisplay} or email ${BUSINESS.email}.`,
   url: `${baseUrl}/contact`,
+  canonical: "/contact",
   type: "website",
 });
 
 export const homeValuationPageMetadata = generatePageMetadata({
-  title: `Free Home Valuation | ${APP_CONFIG.name}`,
-  description: `Get a free, professional home valuation for your Las Vegas property. Dr. Janet Duffy provides accurate market analysis and pricing insights for your home.`,
+  title: `Home Valuation | Villages at Tule Springs ${BUSINESS.postalCode}`,
+  description: `Request a home valuation in Villages at Tule Springs and North Las Vegas ${BUSINESS.postalCode} from Dr. Janet Duffy. Call ${BUSINESS.phoneDisplay}.`,
   url: `${baseUrl}/home-valuation`,
+  canonical: "/home-valuation",
   images: [
     {
       url: "/og-valuation.jpg",
@@ -229,12 +236,11 @@ export const homeValuationPageMetadata = generatePageMetadata({
       type: "image/jpeg" as const,
       width: 1200,
       height: 630,
-      alt: "Free Home Valuation Service - Dr. Janet Duffy Las Vegas Real Estate",
+      alt: "Home valuation for Villages at Tule Springs, North Las Vegas 89084",
     },
   ],
 });
 
-// Function to generate article metadata for blog posts
 export function generateArticleMetadata(options: {
   title: string;
   description: string;
@@ -262,7 +268,7 @@ export function generateArticleMetadata(options: {
     ? [
         {
           url: featuredImage,
-          secureUrl: `${baseUrl}${featuredImage}`,
+          secureUrl: featuredImage.startsWith("http") ? featuredImage : `${baseUrl}${featuredImage}`,
           type: "image/jpeg" as const,
           width: 1200,
           height: 630,
@@ -282,5 +288,6 @@ export function generateArticleMetadata(options: {
     author,
     section,
     tags,
+    canonical: canonicalPathFromUrl(url),
   });
 }

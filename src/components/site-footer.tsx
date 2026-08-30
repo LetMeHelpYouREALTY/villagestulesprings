@@ -4,6 +4,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 import { CalendlyButton } from "@/components/calendly-button";
 import { DrJanPortrait } from "@/components/dr-jan-portrait";
+import { BUSINESS } from "@/config/business";
 
 const FOOTER_LINKS = [
   { href: "/", label: "Home" },
@@ -63,6 +64,9 @@ export function SiteFooter() {
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-4 w-4 text-gold-300" />
               Villages at Tule Springs, North Las Vegas, NV 89084
+            </li>
+            <li className="text-xs text-cream-300">
+              {BUSINESS.brokerage} &middot; License {BUSINESS.license}
             </li>
             <li>
               <CalendlyButton

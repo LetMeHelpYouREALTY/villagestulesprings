@@ -72,7 +72,7 @@ export function getCalendlyEmbedUrl(event: CalendlyEvent, extras: EmbedParams = 
   const params: Record<string, string> = {
     hide_gdpr_banner: extras.hideGdprBanner === false ? "0" : "1",
     primary_color: PRIMARY_COLOR,
-    embed_domain: "villagestulesprings.com",
+    embed_domain: "www.villagestulesprings.com",
     embed_type: "Inline",
   };
   if (extras.utmSource) params.utm_source = extras.utmSource;

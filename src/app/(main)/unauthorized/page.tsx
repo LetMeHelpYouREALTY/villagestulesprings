@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Lock } from "lucide-react";
+
+import { noindexMetadata } from "@/config/metadata-config";
+
+export const metadata: Metadata = noindexMetadata;
 
 export default function page() {
   return (

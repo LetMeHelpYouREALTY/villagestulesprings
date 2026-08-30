@@ -7,16 +7,46 @@
  * can inline them at build time.
  */
 
-const FALLBACK_REALSCOUT_AGENT_ID = "QWdlbnQtMjI1MDUw";
+/** Base64("Agent-225050") — the ID RealScout widget APIs accept. */
+export const FALLBACK_REALSCOUT_AGENT_ID = "QWdlbnQtMjI1MDUw";
 
 function nonempty(value: string | undefined): string | undefined {
   const trimmed = value?.trim();
   return trimmed && trimmed.length > 0 ? trimmed : undefined;
 }
 
+function utf8ToBase64(value: string): string {
+  return btoa(value);
+}
+
+/**
+ * RealScout widgets require `agent-encoded-id` as Base64("Agent-<id>").
+ * A numeric Vercel env like `225050` 404s the listing APIs.
+ */
+export function normalizeRealScoutAgentId(raw: string): string {
+  const trimmed = raw.trim();
+  if (!trimmed) return FALLBACK_REALSCOUT_AGENT_ID;
+
+  if (trimmed.startsWith("QWdlbnQt") && /^[A-Za-z0-9+/]+=*$/.test(trimmed)) {
+    return trimmed;
+  }
+
+  if (/^\d+$/.test(trimmed)) {
+    return utf8ToBase64(`Agent-${trimmed}`);
+  }
+
+  const named = /^Agent-(\d+)$/i.exec(trimmed);
+  if (named) {
+    return utf8ToBase64(`Agent-${named[1]}`);
+  }
+
+  return trimmed;
+}
+
 /** RealScout agent encoded ID used by all widget tags. */
 export function getRealScoutAgentId(): string {
-  return nonempty(process.env.NEXT_PUBLIC_REALSCOUT_AGENT_ID) ?? FALLBACK_REALSCOUT_AGENT_ID;
+  const fromEnv = nonempty(process.env.NEXT_PUBLIC_REALSCOUT_AGENT_ID);
+  return normalizeRealScoutAgentId(fromEnv ?? FALLBACK_REALSCOUT_AGENT_ID);
 }
 
 /** Cloudinary cloud name (required for next-cloudinary CldImage). */
