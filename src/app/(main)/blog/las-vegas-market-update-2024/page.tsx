@@ -5,16 +5,19 @@ import { CalendlyButton } from "@/components/calendly-button";
 import { CalendlyInlineWidget } from "@/components/calendly-inline-widget";
 import { DrJanPortrait } from "@/components/dr-jan-portrait";
 import { HeadingPhoto } from "@/components/heading-photo";
+import { JsonLd } from "@/components/json-ld";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { generateArticleMetadata } from "@/config/metadata-config";
 import { MEDIA } from "@/lib/media-catalog";
+import { articleJsonLd, breadcrumbJsonLd } from "@/lib/schema";
+import { SITE_ORIGIN } from "@/lib/site-urls";
 
 // Generate article-specific metadata with all the required Open Graph properties
 export const metadata: Metadata = generateArticleMetadata({
-  title: "Las Vegas Real Estate Market Update: 2024 Trends & Insights",
+  title: "Las Vegas Valley Market Update 2024 | Villages at Tule Springs",
   description:
-    "Discover the latest Las Vegas real estate market trends for 2024. Dr. Janet Duffy shares expert insights on home prices, inventory levels, and what buyers and sellers need to know.",
-  url: "https://villagestulesprings.com/blog/las-vegas-market-update-2024",
+    "2024 Las Vegas Valley housing notes from Dr. Janet Duffy, including North Las Vegas 89084 and Villages at Tule Springs. Call 702-222-1964.",
+  url: `${SITE_ORIGIN}/blog/las-vegas-market-update-2024`,
   publishedTime: "2024-01-15T10:00:00Z",
   modifiedTime: "2024-01-15T15:30:00Z",
   author: "Dr. Janet Duffy",
@@ -34,12 +37,32 @@ export const metadata: Metadata = generateArticleMetadata({
 export default function BlogPostPage() {
   return (
     <PublicPageShell
+      before={
+        <>
+          <JsonLd
+            data={breadcrumbJsonLd([
+              { name: "Home", path: "/" },
+              { name: "2024 Market Update", path: "/blog/las-vegas-market-update-2024" },
+            ])}
+          />
+          <JsonLd
+            data={articleJsonLd({
+              title: "Las Vegas Valley Market Update 2024 | Villages at Tule Springs",
+              description:
+                "2024 Las Vegas Valley housing notes from Dr. Janet Duffy, including North Las Vegas 89084 and Villages at Tule Springs.",
+              path: "/blog/las-vegas-market-update-2024",
+              datePublished: "2024-01-15T10:00:00Z",
+              dateModified: "2024-01-15T15:30:00Z",
+            })}
+          />
+        </>
+      }
       hero={
         <section className="bg-navy-800 px-4 py-20">
           <div className="container mx-auto max-w-4xl text-center">
             <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-300">Market Analysis</p>
             <h1 className="mt-3 font-serif text-3xl text-cream-100 md:text-5xl">
-              Las Vegas Real Estate Market Update: 2024 Trends &amp; Insights
+              Las Vegas Valley Housing Market Update 2024
             </h1>
           </div>
         </section>
@@ -90,7 +113,7 @@ export default function BlogPostPage() {
             <HeadingPhoto asset={MEDIA.inventoryLevels} className="mb-6" />
             <p className="mb-6 text-navy-500">
               Inventory levels have improved from the historic lows of 2021-2022, providing buyers with more options.
-              However, well-priced homes in desirable neighborhoods still move quickly, often receiving multiple offers.
+              However, well-priced homes still move quickly, often receiving multiple offers.
             </p>
 
             <h3 className="mb-4 font-serif text-2xl text-navy-700">Interest Rates</h3>
@@ -135,8 +158,8 @@ export default function BlogPostPage() {
             <h3 className="mb-4 font-serif text-2xl text-navy-700">Henderson</h3>
             <HeadingPhoto asset={MEDIA.henderson} className="mb-4" />
             <p className="mb-4 text-navy-500">
-              Henderson&apos;s diverse neighborhoods offer opportunities for buyers at various price points. The
-              area&apos;s proximity to Las Vegas and strong school districts maintain its appeal.
+              Henderson&apos;s neighborhoods offer a range of home sizes, amenities, and commute times to the Las Vegas
+              Strip corridor.
             </p>
 
             <h3 className="mb-4 font-serif text-2xl text-navy-700">Downtown Las Vegas</h3>

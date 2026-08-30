@@ -1,31 +1,21 @@
 import packageJson from "../../package.json";
 
+import { BUSINESS, NAP_LINE } from "./business";
+
 const currentYear = new Date().getFullYear();
 
 export const APP_CONFIG = {
-  name: "Las Vegas Real Estate Expert",
+  name: BUSINESS.name,
   version: packageJson.version,
-  copyright: `© ${currentYear}, Las Vegas Real Estate Expert.`,
+  copyright: `© ${currentYear}, ${BUSINESS.name}.`,
   meta: {
-    title: "Las Vegas Real Estate Expert | Find Your Dream Home | Dr. Janet Duffy",
-    description:
-      "Expert Las Vegas real estate services with Dr. Janet Duffy. Find your dream home, get free home valuations, and access exclusive listings. Licensed realtor with 15+ years experience serving Las Vegas, Henderson, and surrounding areas.",
-    keywords: [
-      "Las Vegas real estate",
-      "Las Vegas homes for sale",
-      "Las Vegas realtor",
-      "Dr. Janet Duffy",
-      "home valuation Las Vegas",
-      "Las Vegas property search",
-      "Henderson real estate",
-      "Las Vegas real estate agent",
-      "buy home Las Vegas",
-      "sell home Las Vegas",
-    ],
-    author: "Dr. Janet Duffy",
-    location: "Las Vegas, Nevada",
+    title: "Villages at Tule Springs Homes | North Las Vegas 89084",
+    description: `Homes in Villages at Tule Springs, North Las Vegas 89084. Dr. Janet Duffy, ${BUSINESS.brokerage}, license ${BUSINESS.license}. Call ${BUSINESS.phoneDisplay}.`,
+    author: BUSINESS.agentName,
+    location: `${BUSINESS.addressLocality}, Nevada ${BUSINESS.postalCode}`,
     businessType: "Real Estate Agent",
-    phone: "(702) 555-REALTOR",
-    email: "info@villagestulesprings.com",
+    phone: BUSINESS.phoneDisplay,
+    email: BUSINESS.email,
+    address: NAP_LINE,
   },
 };

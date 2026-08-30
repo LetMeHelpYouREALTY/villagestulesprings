@@ -1,4 +1,4 @@
-import { MapPin, Star, Search, ArrowRight, CheckCircle, Calendar } from "lucide-react";
+import { MapPin, Search, ArrowRight, CheckCircle, Calendar } from "lucide-react";
 
 import { CalendlyButton } from "@/components/calendly-button";
 import { DrJanPortrait } from "@/components/dr-jan-portrait";
@@ -27,15 +27,15 @@ export function MaravillaHeroSection() {
                   className="w-fit border border-gold-400/40 bg-transparent font-sans uppercase tracking-widest text-gold-300"
                 >
                   <MapPin className="mr-2 h-4 w-4" />
-                  Las Vegas, NV &bull; Prime Location
+                  North Las Vegas, NV 89084
                 </Badge>
               </div>
               <h1 className="font-serif text-5xl leading-tight text-cream-100 duration-1000 animate-in slide-in-from-bottom-4 lg:text-7xl">
-                Find Your <span className="text-gold-300">Dream Home</span>
+                Homes in <span className="text-gold-300">Villages at Tule Springs</span>
               </h1>
               <p className="max-w-lg font-sans text-xl font-light leading-relaxed text-cream-300 delay-300 duration-1000 animate-in fade-in">
-                Institutional-grade market knowledge, local execution. Whether you&apos;re buying, selling, or
-                investing, navigate the Las Vegas market with a verified specialist.
+                North Las Vegas 89084. Dr. Janet Duffy, BHHS Nevada Properties, license S.0197614.LLC. Call 702-222-1964
+                to tour homes for sale.
               </p>
             </div>
 
@@ -69,7 +69,7 @@ export function MaravillaHeroSection() {
             {/* Quick Search */}
             <Card className="border-cream-100/10 bg-navy-700/60 delay-700 duration-1000 animate-in fade-in">
               <CardContent className="p-6">
-                <h3 className="mb-4 font-serif text-lg text-cream-100">Quick Home Search</h3>
+                <p className="mb-4 font-serif text-lg text-cream-100">Search homes in 89084</p>
                 <div dangerouslySetInnerHTML={{ __html: realScoutTag("simple-search") }} />
               </CardContent>
             </Card>
@@ -77,22 +77,23 @@ export function MaravillaHeroSection() {
             {/* Enhanced Stats */}
             <div className="grid grid-cols-3 gap-6 border-t border-cream-100/10 pt-8 delay-1000 duration-1000 animate-in fade-in">
               <div className="group text-center">
-                <div className="font-serif text-4xl text-gold-300 transition-transform group-hover:scale-110">500+</div>
-                <div className="text-sm text-cream-300">Homes Sold</div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-gold-400">Trusted Experience</div>
+                <div className="font-serif text-xl text-gold-300 transition-transform group-hover:scale-110 sm:text-2xl">
+                  S.0197614.LLC
+                </div>
+                <div className="text-sm text-cream-300">Nevada License</div>
+                <div className="mt-1 text-xs uppercase tracking-widest text-gold-400">BHHS Nevada Properties</div>
               </div>
               <div className="group text-center">
-                <div className="font-serif text-4xl text-gold-300 transition-transform group-hover:scale-110">4.9</div>
-                <div className="flex items-center justify-center text-sm text-cream-300">
-                  <Star className="mr-1 h-4 w-4 fill-current" />
-                  Rating
+                <div className="font-serif text-4xl text-gold-300 transition-transform group-hover:scale-110">
+                  89084
                 </div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-gold-400">Based on 200+ Reviews</div>
+                <div className="text-sm text-cream-300">North Las Vegas</div>
+                <div className="mt-1 text-xs uppercase tracking-widest text-gold-400">Villages at Tule Springs</div>
               </div>
               <div className="group text-center">
                 <div className="font-serif text-4xl text-gold-300 transition-transform group-hover:scale-110">15+</div>
-                <div className="text-sm text-cream-300">Years Experience</div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-gold-400">Las Vegas Market</div>
+                <div className="text-sm text-cream-300">Years in Market</div>
+                <div className="mt-1 text-xs uppercase tracking-widest text-gold-400">Las Vegas Valley</div>
               </div>
             </div>
 
@@ -100,7 +101,7 @@ export function MaravillaHeroSection() {
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-4 delay-1000 duration-1000 animate-in fade-in">
               <div className="flex items-center text-sm text-cream-300">
                 <CheckCircle className="mr-2 h-4 w-4 text-gold-300" />
-                Licensed Realtor
+                License S.0197614.LLC
               </div>
               <div className="flex items-center text-sm text-cream-300">
                 <CheckCircle className="mr-2 h-4 w-4 text-gold-300" />

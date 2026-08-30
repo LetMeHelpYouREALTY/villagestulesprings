@@ -8,6 +8,9 @@ export type SiteHost = "apex" | "www";
 export const APEX_HOST = "villagestulesprings.com";
 export const WWW_HOST = `www.${APEX_HOST}`;
 
+/** Canonical origin. Vercel Domains 307s apex → www; do not emit apex in metadata. */
+export const SITE_ORIGIN = `https://${WWW_HOST}`;
+
 export const PUBLIC_SITEMAP_PATHS: readonly {
   path: string;
   changeFrequency: "weekly" | "monthly";
@@ -66,4 +69,23 @@ export function buildSitemapXml(hostHeader: string | null): string {
 ${urls.join("\n")}
 </urlset>
 `;
+}
+
+/** Pathname for Next.js metadata.alternates.canonical. */
+export function canonicalPathFromUrl(url?: string, canonical?: string): string {
+  if (canonical && canonical.length > 0) {
+    return canonical.startsWith("/") ? canonical : `/${canonical}`;
+  }
+  if (!url) {
+    return "/";
+  }
+  try {
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+      const pathname = new URL(url).pathname;
+      return pathname.length > 0 ? pathname : "/";
+    }
+    return url.startsWith("/") ? url : `/${url}`;
+  } catch {
+    return "/";
+  }
 }

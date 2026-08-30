@@ -49,7 +49,7 @@ interface Property {
 const mockProperties: Property[] = [
   {
     id: "1",
-    address: "123 Main Street, Las Vegas, NV 89101",
+    address: "Villages at Tule Springs, North Las Vegas, NV 89084",
     price: 485000,
     bedrooms: 3,
     bathrooms: 2,

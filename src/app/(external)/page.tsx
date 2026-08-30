@@ -1,110 +1,17 @@
 import { FeaturedPropertiesSection } from "@/components/featured-properties-section";
 import { HeadingPhoto } from "@/components/heading-photo";
+import { JsonLd } from "@/components/json-ld";
 import { LocationMapSection } from "@/components/location-map-section";
 import { MaravillaHeroSection } from "@/components/maravilla-hero-section";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { SectionIntro } from "@/components/section-intro";
 import { MEDIA } from "@/lib/media-catalog";
 import { realScoutTag } from "@/lib/realscout-widget";
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  name: "Dr. Janet Duffy",
-  description: "Expert Las Vegas real estate services with 15+ years experience",
-  url: "https://villagestulesprings.com",
-  telephone: "702-222-1964",
-  email: "DrDuffySells@VillagesTuleSprings.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Villages at Tule Springs",
-    addressLocality: "North Las Vegas",
-    addressRegion: "NV",
-    postalCode: "89084",
-    addressCountry: "US",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: "36.2850",
-    longitude: "-115.2000",
-  },
-  areaServed: [
-    {
-      "@type": "City",
-      name: "Las Vegas",
-      containedInPlace: {
-        "@type": "State",
-        name: "Nevada",
-      },
-    },
-    {
-      "@type": "City",
-      name: "North Las Vegas",
-      containedInPlace: {
-        "@type": "State",
-        name: "Nevada",
-      },
-    },
-    {
-      "@type": "City",
-      name: "Henderson",
-      containedInPlace: {
-        "@type": "State",
-        name: "Nevada",
-      },
-    },
-  ],
-  serviceType: ["Real Estate Sales", "Property Valuation", "Home Buying Consultation", "Home Selling Consultation"],
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Real Estate Services",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Home Buying Services",
-          description: "Expert assistance finding and purchasing your dream home",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Home Selling Services",
-          description: "Professional marketing and sales support for your property",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Property Valuation",
-          description: "Free home valuation and market analysis",
-        },
-      },
-    ],
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "200",
-  },
-  sameAs: [
-    "https://www.facebook.com/villagestulesprings",
-    "https://www.instagram.com/villagestulesprings",
-    "https://www.linkedin.com/in/drjanetduffy",
-  ],
-};
+import { webSiteJsonLd } from "@/lib/schema";
 
 export default function Home() {
   return (
-    <PublicPageShell
-      before={
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      }
-      hero={<MaravillaHeroSection />}
-    >
+    <PublicPageShell before={<JsonLd data={webSiteJsonLd()} />} hero={<MaravillaHeroSection />}>
       <main>
         {/* RealScout Advanced Search */}
         <section className="bg-cream-100 py-24">
@@ -113,10 +20,10 @@ export default function Home() {
               kicker="Advanced Search"
               title={
                 <>
-                  Find Your <span className="text-gold-600">Perfect Home</span>
+                  Search homes in <span className="text-gold-600">North Las Vegas 89084</span>
                 </>
               }
-              subtitle="Use our advanced search to find properties that match your exact criteria and budget."
+              subtitle="Filter by beds, baths, price, and property type for Villages at Tule Springs and nearby North Las Vegas listings."
             />
             <HeadingPhoto asset={MEDIA.perfectHome} className="mx-auto mb-10 max-w-5xl" />
             <div
@@ -136,10 +43,10 @@ export default function Home() {
               kicker="Exclusive Listings"
               title={
                 <>
-                  My <span className="text-gold-600">Featured Listings</span>
+                  Featured <span className="text-gold-600">listings</span>
                 </>
               }
-              subtitle="Explore my exclusive listings across Las Vegas. Each property is carefully selected and professionally marketed for the best results."
+              subtitle="Homes currently marketed across the Las Vegas Valley, including Villages at Tule Springs in North Las Vegas 89084."
             />
             <HeadingPhoto asset={MEDIA.featuredListings} className="mx-auto mb-10 max-w-5xl" />
             <div
@@ -161,10 +68,10 @@ export default function Home() {
               kicker="Complimentary Service"
               title={
                 <>
-                  Get Your <span className="text-gold-300">Home Valuation</span>
+                  Get a <span className="text-gold-300">home valuation</span>
                 </>
               }
-              subtitle="Discover your home's current market value with our free, professional valuation service. Accurate insights based on recent sales and market trends in your area."
+              subtitle="See how recent sales in North Las Vegas 89084 compare to your property. Call 702-222-1964 to walk through the numbers."
             />
             <HeadingPhoto asset={MEDIA.homeValuation} className="mx-auto mb-10 max-w-5xl" />
             <div

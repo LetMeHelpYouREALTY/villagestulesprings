@@ -29,8 +29,8 @@ function asset(filename: string, heading: string, alt: string, aspect: MediaAspe
 export const MEDIA = {
   heroDreamHome: asset(
     "hero-dream-home",
-    "Find Your Dream Home",
-    "Luxury desert home at Villages at Tule Springs in North Las Vegas",
+    "Homes in Villages at Tule Springs",
+    "Single-family home exterior at Villages at Tule Springs in North Las Vegas 89084",
     "4:3",
   ),
   quickHomeSearch: asset(
