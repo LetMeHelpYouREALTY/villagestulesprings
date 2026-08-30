@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Inter, Jost, Playfair_Display } from "next/font/google";
 
 import { CalendlyScript } from "@/components/calendly-script";
-import { RealScoutScript } from "@/components/realscout-script";
+import { RealScoutHead } from "@/components/realscout-script";
 import { Toaster } from "@/components/ui/sonner";
 import { homePageMetadata } from "@/config/metadata-config";
 import { getPreference } from "@/server/server-actions";
@@ -41,10 +41,10 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       suppressHydrationWarning
     >
       <head>
+        <RealScoutHead />
         <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
       </head>
       <body className={`${inter.className} ${luxurySerif.variable} ${luxurySans.variable} min-h-screen antialiased`}>
-        <RealScoutScript />
         <CalendlyScript />
         <PreferencesStoreProvider themeMode={themeMode} themePreset={themePreset}>
           {children}

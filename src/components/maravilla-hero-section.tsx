@@ -6,12 +6,10 @@ import { SiteImage } from "@/components/site-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { getRealScoutAgentId } from "@/config/env";
 import { MEDIA } from "@/lib/media-catalog";
+import { realScoutTag } from "@/lib/realscout-widget";
 
 export function MaravillaHeroSection() {
-  const agentId = getRealScoutAgentId();
-
   return (
     <section className="relative min-h-screen overflow-hidden bg-navy-800">
       {/* Subtle gold texture */}
@@ -72,7 +70,7 @@ export function MaravillaHeroSection() {
             <Card className="border-cream-100/10 bg-navy-700/60 delay-700 duration-1000 animate-in fade-in">
               <CardContent className="p-6">
                 <h3 className="mb-4 font-serif text-lg text-cream-100">Quick Home Search</h3>
-                <realscout-simple-search agent-encoded-id={agentId}></realscout-simple-search>
+                <div dangerouslySetInnerHTML={{ __html: realScoutTag("simple-search") }} />
               </CardContent>
             </Card>
 

@@ -1,16 +1,22 @@
-import Script from "next/script";
-
 /**
- * Loads the RealScout widget script once globally.
- * Widgets call em.realscout.com for the script and www.realscout.com for API data —
- * both must be allowed in CSP (see next.config.mjs).
+ * RealScout official embed — script + listing CSS in <head>, once.
+ * type="module" is deferred by spec; the Next.js sync-scripts rule is a false positive here.
  */
-export function RealScoutScript() {
+export function RealScoutHead() {
   return (
-    <Script
-      src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-      type="module"
-      strategy="afterInteractive"
-    />
+    <>
+      {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+      <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module" />
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+  realscout-office-listings {
+    --rs-listing-divider-color: rgb(101, 141, 172);
+    width: 100%;
+  }
+`,
+        }}
+      />
+    </>
   );
 }
