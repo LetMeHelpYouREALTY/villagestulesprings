@@ -5,15 +5,15 @@ import { FaqSection } from "@/components/faq-section";
 import { HeadingPhoto } from "@/components/heading-photo";
 import { BUSINESS } from "@/config/business";
 import type { MarketingPageContent } from "@/content/marketing-types";
+import { realScoutWidgetHtml } from "@/lib/realscout-widget";
 
 const SEARCH_SLUGS = new Set(["listings", "buyers", "townhomes", "single-family-homes", "zip-89084", "luxury-homes"]);
 
 type MarketingPageBodyProps = {
   page: MarketingPageContent;
-  agentId: string;
 };
 
-export function MarketingPageBody({ page, agentId }: MarketingPageBodyProps) {
+export function MarketingPageBody({ page }: MarketingPageBodyProps) {
   return (
     <main className="bg-cream-50">
       {page.sections.map((section) => (
@@ -32,8 +32,8 @@ export function MarketingPageBody({ page, agentId }: MarketingPageBodyProps) {
 
       {page.itemList ? <ItemListBlock list={page.itemList} /> : null}
       {page.howTo ? <HowToBlock howTo={page.howTo} /> : null}
-      {SEARCH_SLUGS.has(page.slug) ? <SearchBlock agentId={agentId} /> : null}
-      {page.slug === "home-valuation" ? <ValuationBlock agentId={agentId} /> : null}
+      {SEARCH_SLUGS.has(page.slug) ? <SearchBlock /> : null}
+      {page.slug === "home-valuation" ? <ValuationBlock /> : null}
       {page.slug === "contact" ? <ContactBlock /> : null}
 
       <FaqSection items={page.faqs} />
@@ -80,27 +80,29 @@ function HowToBlock({ howTo }: { howTo: NonNullable<MarketingPageContent["howTo"
   );
 }
 
-function SearchBlock({ agentId }: { agentId: string }) {
+function SearchBlock() {
   return (
     <section className="px-4 py-16">
       <div className="container mx-auto max-w-4xl">
         <h2 className="mb-6 font-serif text-3xl text-navy-800">Search live listings</h2>
-        <div className="rounded-lg border border-navy-200/20 bg-cream-100 p-6">
-          <realscout-advanced-search agent-encoded-id={agentId}></realscout-advanced-search>
-        </div>
+        <div
+          className="rounded-lg border border-navy-200/20 bg-cream-100 p-6"
+          dangerouslySetInnerHTML={{ __html: realScoutWidgetHtml("advanced-search") }}
+        />
       </div>
     </section>
   );
 }
 
-function ValuationBlock({ agentId }: { agentId: string }) {
+function ValuationBlock() {
   return (
     <section className="bg-navy-800 px-4 py-16">
       <div className="container mx-auto max-w-3xl">
         <h2 className="mb-6 font-serif text-3xl text-cream-100">Instant estimate</h2>
-        <div className="rounded-lg border border-gold-200/20 bg-navy-700/50 p-8">
-          <realscout-home-value agent-encoded-id={agentId}></realscout-home-value>
-        </div>
+        <div
+          className="rounded-lg border border-gold-200/20 bg-navy-700/50 p-8"
+          dangerouslySetInnerHTML={{ __html: realScoutWidgetHtml("home-value") }}
+        />
       </div>
     </section>
   );

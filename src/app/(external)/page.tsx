@@ -7,9 +7,9 @@ import { MaravillaHeroSection } from "@/components/maravilla-hero-section";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { SectionIntro } from "@/components/section-intro";
 import { APP_CONFIG } from "@/config/app-config";
-import { getRealScoutAgentId } from "@/config/env";
 import { HOME_DIRECT_ANSWER, HOME_FAQS, HOME_SERVICE_LINKS } from "@/content/home";
 import { MEDIA } from "@/lib/media-catalog";
+import { realScoutWidgetHtml } from "@/lib/realscout-widget";
 import { buildPageJsonLd } from "@/lib/schema";
 
 const homeJsonLd = buildPageJsonLd({
@@ -30,8 +30,6 @@ const homeJsonLd = buildPageJsonLd({
 });
 
 export default function Home() {
-  const agentId = getRealScoutAgentId();
-
   return (
     <PublicPageShell before={<JsonLd data={homeJsonLd} />} hero={<MaravillaHeroSection />}>
       <main>
@@ -48,9 +46,10 @@ export default function Home() {
               subtitle="Use our advanced search to find properties that match your exact criteria and budget."
             />
             <HeadingPhoto asset={MEDIA.perfectHome} className="mx-auto mb-10 max-w-5xl" />
-            <div className="mx-auto max-w-4xl rounded-lg border border-navy-200/20 bg-cream-50 p-6 md:p-8">
-              <realscout-advanced-search agent-encoded-id={agentId}></realscout-advanced-search>
-            </div>
+            <div
+              className="mx-auto max-w-4xl rounded-lg border border-navy-200/20 bg-cream-50 p-6 md:p-8"
+              dangerouslySetInnerHTML={{ __html: realScoutWidgetHtml("advanced-search") }}
+            />
           </div>
         </section>
 
@@ -70,12 +69,15 @@ export default function Home() {
               subtitle="Explore my exclusive listings across Las Vegas. Each property is carefully selected and professionally marketed for the best results."
             />
             <HeadingPhoto asset={MEDIA.featuredListings} className="mx-auto mb-10 max-w-5xl" />
-            <realscout-your-listings
-              agent-encoded-id={agentId}
-              sort-order="STATUS_AND_SIGNIFICANT_CHANGE"
-              listing-status="For Sale"
-              property-types="SFR,MF,TC,LAL,MOBILE,OTHER"
-            ></realscout-your-listings>
+            <div
+              className="realscout-wrapper"
+              dangerouslySetInnerHTML={{
+                __html: realScoutWidgetHtml("your-listings", {
+                  "sort-order": "NEWEST",
+                  "listing-status": "For Sale",
+                }),
+              }}
+            />
           </div>
         </section>
 
@@ -98,9 +100,10 @@ export default function Home() {
               subtitle="Discover your home's current market value with our free, professional valuation service. Accurate insights based on recent sales and market trends in your area."
             />
             <HeadingPhoto asset={MEDIA.homeValuation} className="mx-auto mb-10 max-w-5xl" />
-            <div className="mx-auto max-w-3xl rounded-lg border border-gold-200/20 bg-navy-700/50 p-8">
-              <realscout-home-value agent-encoded-id={agentId}></realscout-home-value>
-            </div>
+            <div
+              className="mx-auto max-w-3xl rounded-lg border border-gold-200/20 bg-navy-700/50 p-8"
+              dangerouslySetInnerHTML={{ __html: realScoutWidgetHtml("home-value") }}
+            />
             <p className="mt-8 text-center font-sans text-cream-300">
               Want to walk through the numbers together?{" "}
               <a href="#schedule" className="text-gold-300 underline-offset-4 hover:underline">

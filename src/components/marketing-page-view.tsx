@@ -3,7 +3,6 @@ import { HeadingPhoto } from "@/components/heading-photo";
 import { JsonLd } from "@/components/json-ld";
 import { MarketingPageBody } from "@/components/marketing-page-body";
 import { PublicPageShell } from "@/components/public-page-shell";
-import { getRealScoutAgentId } from "@/config/env";
 import type { MarketingPageContent } from "@/content/marketing-pages";
 import { buildPageJsonLd } from "@/lib/schema";
 
@@ -46,7 +45,7 @@ export function MarketingPageView({ page }: MarketingPageViewProps) {
       }
     >
       <BreadcrumbNav items={breadcrumbs} />
-      <MarketingPageBody page={page} agentId={getRealScoutAgentId()} />
+      <MarketingPageBody page={page} />
     </PublicPageShell>
   );
 }
