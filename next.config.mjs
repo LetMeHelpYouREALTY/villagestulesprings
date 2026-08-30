@@ -56,9 +56,17 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: "/:path*",
+        source: "/",
         has: [{ type: "host", value: "www.villagestulesprings.com" }],
-        destination: "https://villagestulesprings.com/:path*",
+        destination: "https://villagestulesprings.com/",
+        permanent: true,
+      },
+      {
+        // Keep /sitemap.xml and /robots.txt on the requested host so GSC
+        // URL-prefix properties (www vs apex) only see same-host <loc> URLs.
+        source: "/:path((?!sitemap\\.xml|robots\\.txt).*)",
+        has: [{ type: "host", value: "www.villagestulesprings.com" }],
+        destination: "https://villagestulesprings.com/:path",
         permanent: true,
       },
     ];
