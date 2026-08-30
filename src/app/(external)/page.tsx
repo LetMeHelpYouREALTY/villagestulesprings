@@ -1,8 +1,10 @@
 import { FeaturedPropertiesSection } from "@/components/featured-properties-section";
+import { HeadingPhoto } from "@/components/heading-photo";
 import { LocationMapSection } from "@/components/location-map-section";
 import { MaravillaHeroSection } from "@/components/maravilla-hero-section";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { getRealScoutAgentId } from "@/config/env";
+import { MEDIA } from "@/lib/media-catalog";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -117,6 +119,7 @@ export default function Home() {
                 Use our advanced search to find properties that match your exact criteria and budget.
               </p>
             </div>
+            <HeadingPhoto asset={MEDIA.perfectHome} className="mx-auto mb-10 max-w-5xl" />
             <div className="mx-auto max-w-4xl rounded-lg border border-navy-200/20 bg-cream-50 p-6 md:p-8">
               <realscout-advanced-search agent-encoded-id={agentId}></realscout-advanced-search>
             </div>
@@ -139,6 +142,7 @@ export default function Home() {
                 marketed for the best results.
               </p>
             </div>
+            <HeadingPhoto asset={MEDIA.featuredListings} className="mx-auto mb-10 max-w-5xl" />
             <realscout-your-listings
               agent-encoded-id={agentId}
               sort-order="STATUS_AND_SIGNIFICANT_CHANGE"
@@ -164,6 +168,7 @@ export default function Home() {
                 insights based on recent sales and market trends in your area.
               </p>
             </div>
+            <HeadingPhoto asset={MEDIA.homeValuation} className="mx-auto mb-10 max-w-5xl" />
             <div className="mx-auto max-w-3xl rounded-lg border border-gold-200/20 bg-navy-700/50 p-8">
               <realscout-home-value agent-encoded-id={agentId}></realscout-home-value>
             </div>

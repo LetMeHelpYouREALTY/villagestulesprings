@@ -4,7 +4,6 @@
 import { useState } from "react";
 
 import {
-  Home,
   Bed,
   Bath,
   Square,
@@ -25,7 +24,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Slider } from "@/components/ui/slider";
+import { MEDIA } from "@/lib/media-catalog";
 
 interface MaravillaProperty {
   id: string;
@@ -70,8 +69,8 @@ const maravillaProperties: MaravillaProperty[] = [
     squareFeet: 1950,
     address: "123 Maravilla Drive",
     status: "available",
-    image: "/api/placeholder/400/300",
-    images: ["/api/placeholder/400/300", "/api/placeholder/400/300", "/api/placeholder/400/300"],
+    image: MEDIA.listingVilla.gitSrc,
+    images: [MEDIA.listingVilla.gitSrc, MEDIA.interiorLiving.gitSrc, MEDIA.interiorKitchen.gitSrc],
     features: ["Granite Countertops", "Stainless Appliances", "Open Floor Plan", "Solar Ready", "Smart Home"],
     description:
       "Beautiful single-story home featuring modern finishes and energy-efficient design with smart home technology.",
@@ -101,8 +100,8 @@ const maravillaProperties: MaravillaProperty[] = [
     squareFeet: 2250,
     address: "456 Desert Vista Lane",
     status: "available",
-    image: "/api/placeholder/400/300",
-    images: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
+    image: MEDIA.listingTwoStory.gitSrc,
+    images: [MEDIA.listingTwoStory.gitSrc, MEDIA.interiorMaster.gitSrc],
     features: ["Master Suite", "Gourmet Kitchen", "Two-Car Garage", "Patio", "Waves Ready"],
     description: "Perfect for growing families with spacious rooms, modern amenities, and pool-ready backyard.",
     yearBuilt: 2024,
@@ -130,12 +129,12 @@ const maravillaProperties: MaravillaProperty[] = [
     squareFeet: 2650,
     address: "789 Canyon Ridge Court",
     status: "pending",
-    image: "/api/placeholder/400/300",
+    image: MEDIA.listingExecutive.gitSrc,
     images: [
-      "/api/placeholder/400/300",
-      "/api/placeholder/400/300",
-      "/api/placeholder/400/300",
-      "/api/placeholder/400/300",
+      MEDIA.listingExecutive.gitSrc,
+      MEDIA.interiorLiving.gitSrc,
+      MEDIA.interiorKitchen.gitSrc,
+      MEDIA.interiorBath.gitSrc,
     ],
     features: ["High Ceilings", "Premium Finishes", "Smart Home", "Waves Ready", "Wine Cellar"],
     description: "Executive-level home with premium finishes, smart home technology, and wine cellar.",
@@ -164,8 +163,8 @@ const maravillaProperties: MaravillaProperty[] = [
     squareFeet: 1650,
     address: "321 Garden View Place",
     status: "coming-soon",
-    image: "/api/placeholder/400/300",
-    images: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
+    image: MEDIA.listingTownhome.gitSrc,
+    images: [MEDIA.listingTownhome.gitSrc, MEDIA.interiorGarage.gitSrc],
     features: ["Low Maintenance", "Modern Appliances", "Patio", "Attached Garage"],
     description: "Low-maintenance townhome perfect for first-time buyers or downsizers.",
     yearBuilt: 2024,
@@ -223,14 +222,12 @@ export function MaravillaPropertyCard({ property }: { property: MaravillaPropert
   return (
     <Card className="group overflow-hidden border-0 shadow-lg transition-all duration-500 hover:shadow-2xl">
       <CardHeader className="relative p-0">
-        <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-blue-100 to-green-100">
-          <div className="z-10 text-center text-gray-500">
-            <Home className="mx-auto mb-2 h-16 w-16 opacity-50 transition-transform group-hover:scale-110" />
-            <p className="text-sm font-medium">Maravilla Home</p>
-            <p className="text-xs">
-              Image {currentImageIndex + 1} of {property.images.length}
-            </p>
-          </div>
+        <div className="relative aspect-[4/3] overflow-hidden bg-navy-100">
+          <img
+            src={property.images[currentImageIndex] ?? property.image}
+            alt={property.title}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
 
           {/* Image Navigation */}
           {property.images.length > 1 && (

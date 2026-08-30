@@ -1,8 +1,10 @@
-import { Home, Bed, Bath, Square, MapPin, Calendar } from "lucide-react";
+import { Bath, Bed, Calendar, MapPin, Square } from "lucide-react";
 
+import { SiteImage } from "@/components/site-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { MEDIA, type MediaAsset } from "@/lib/media-catalog";
 
 interface Home {
   id: string;
@@ -13,7 +15,7 @@ interface Home {
   squareFeet: number;
   address: string;
   status: "available" | "pending" | "sold";
-  image: string;
+  image: MediaAsset;
   features: string[];
 }
 
@@ -27,7 +29,7 @@ const sampleHomes: Home[] = [
     squareFeet: 1850,
     address: "123 Tule Springs Dr",
     status: "available",
-    image: "/api/placeholder/400/300",
+    image: MEDIA.listingVilla,
     features: ["Solar Ready", "Energy Efficient", "Open Floor Plan"],
   },
   {
@@ -39,7 +41,7 @@ const sampleHomes: Home[] = [
     squareFeet: 2200,
     address: "456 Desert View Ave",
     status: "available",
-    image: "/api/placeholder/400/300",
+    image: MEDIA.listingTwoStory,
     features: ["Master Suite", "Gourmet Kitchen", "Two-Car Garage"],
   },
   {
@@ -51,7 +53,7 @@ const sampleHomes: Home[] = [
     squareFeet: 1450,
     address: "789 Canyon Ridge Ln",
     status: "pending",
-    image: "/api/placeholder/400/300",
+    image: MEDIA.listingTownhome,
     features: ["Low Maintenance", "Modern Appliances", "Patio"],
   },
 ];
@@ -71,12 +73,9 @@ export function HomeListings() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {sampleHomes.map((home) => (
             <Card key={home.id} className="overflow-hidden transition-shadow hover:shadow-xl">
-              <CardHeader className="p-0">
-                <div className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-green-100 to-blue-100">
-                  <div className="text-center text-gray-500">
-                    <Home className="mx-auto mb-2 h-16 w-16 opacity-50" />
-                    <p className="text-sm">Home Image</p>
-                  </div>
+              <CardHeader className="relative p-0">
+                <div className="relative aspect-[4/3] overflow-hidden bg-navy-100">
+                  <SiteImage asset={home.image} fill sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
                 <div className="absolute right-4 top-4">
                   <Badge

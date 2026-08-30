@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 
+import { HeadingPhoto } from "@/components/heading-photo";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { aboutPageMetadata } from "@/config/metadata-config";
+import { MEDIA } from "@/lib/media-catalog";
 
 // Use the pre-configured metadata for the about page
 export const metadata: Metadata = aboutPageMetadata;
@@ -15,6 +17,7 @@ function AboutHero() {
         <p className="mx-auto mt-4 max-w-2xl font-sans text-lg font-light text-cream-300">
           Licensed Nevada REALTOR&reg; with 15+ years guiding buyers and sellers across Las Vegas and North Las Vegas.
         </p>
+        <HeadingPhoto asset={MEDIA.aboutHero} className="mx-auto mt-10 max-w-3xl" priority />
       </div>
     </section>
   );
@@ -33,6 +36,7 @@ export default function AboutPage() {
 
             <div className="mb-12 grid gap-8 md:grid-cols-2">
               <div>
+                <HeadingPhoto asset={MEDIA.experienceExpertise} className="mb-4" />
                 <h2 className="mb-4 font-serif text-2xl text-navy-700">Experience &amp; Expertise</h2>
                 <ul className="space-y-2 text-navy-500">
                   <li>&bull; 15+ years in Las Vegas real estate</li>
@@ -44,6 +48,7 @@ export default function AboutPage() {
               </div>
 
               <div>
+                <HeadingPhoto asset={MEDIA.areasServed} className="mb-4" />
                 <h2 className="mb-4 font-serif text-2xl text-navy-700">Areas Served</h2>
                 <ul className="space-y-2 text-navy-500">
                   <li>&bull; Las Vegas</li>
@@ -56,6 +61,7 @@ export default function AboutPage() {
             </div>
 
             <div className="rounded-lg border border-gold-200 bg-cream-100 p-8">
+              <HeadingPhoto asset={MEDIA.professionalApproach} className="mb-6" />
               <h2 className="mb-4 font-serif text-2xl text-navy-700">Professional Approach</h2>
               <p className="mb-4 text-navy-500">
                 Dr. Janet Duffy combines deep local market knowledge with a personalized approach to help clients

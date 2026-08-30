@@ -5,7 +5,6 @@ import { useState } from "react";
 
 import {
   Play,
-  Camera,
   MapPin,
   Phone,
   Mail,
@@ -36,6 +35,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { MEDIA } from "@/lib/media-catalog";
 
 interface VirtualTour {
   id: string;
@@ -67,21 +67,21 @@ const virtualTours: VirtualTour[] = [
     title: "360° Virtual Tour - Model Home A",
     type: "360",
     duration: "5 min",
-    thumbnail: "/api/placeholder/300/200",
+    thumbnail: MEDIA.listingVilla.gitSrc,
   },
   {
     id: "2",
     title: "Video Walkthrough - Model Home B",
     type: "video",
     duration: "8 min",
-    thumbnail: "/api/placeholder/300/200",
+    thumbnail: MEDIA.listingTwoStory.gitSrc,
   },
   {
     id: "3",
     title: "Photo Gallery - Community Amenities",
     type: "photos",
     duration: "3 min",
-    thumbnail: "/api/placeholder/300/200",
+    thumbnail: MEDIA.amenityPool.gitSrc,
   },
 ];
 
@@ -139,11 +139,8 @@ export function MaravillaVirtualTours() {
           {virtualTours.map((tour) => (
             <Card key={tour.id} className="group overflow-hidden transition-shadow hover:shadow-xl">
               <CardHeader className="p-0">
-                <div className="relative flex aspect-video items-center justify-center bg-gradient-to-br from-blue-100 to-green-100">
-                  <div className="text-center text-gray-500">
-                    <Camera className="mx-auto mb-2 h-16 w-16 opacity-50" />
-                    <p className="text-sm">{tour.title}</p>
-                  </div>
+                <div className="relative aspect-video overflow-hidden bg-navy-100">
+                  <img src={tour.thumbnail} alt={tour.title} className="h-full w-full object-cover" />
 
                   {/* Play Button Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">

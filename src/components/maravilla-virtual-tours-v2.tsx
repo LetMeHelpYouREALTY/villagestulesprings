@@ -44,6 +44,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { MEDIA } from "@/lib/media-catalog";
 
 interface VirtualTour {
   id: string;
@@ -73,7 +74,7 @@ const virtualTours: VirtualTour[] = [
     title: "360° Virtual Tour - Model Home A",
     type: "360",
     duration: "5 min",
-    thumbnail: "/api/placeholder/300/200",
+    thumbnail: MEDIA.listingVilla.gitSrc,
     description:
       "Interactive 360° tour of our luxury single-story model home featuring modern finishes and smart home technology.",
     propertyId: "1",
@@ -87,7 +88,7 @@ const virtualTours: VirtualTour[] = [
     title: "Video Walkthrough - Model Home B",
     type: "video",
     duration: "8 min",
-    thumbnail: "/api/placeholder/300/200",
+    thumbnail: MEDIA.listingTwoStory.gitSrc,
     description: "Professional video walkthrough showcasing the spacious two-story family home with premium amenities.",
     propertyId: "2",
     features: ["HD Video", "Narrated Tour", "Property Highlights", "Neighborhood Views"],
@@ -100,7 +101,7 @@ const virtualTours: VirtualTour[] = [
     title: "Photo Gallery - Community Amenities",
     type: "photos",
     duration: "3 min",
-    thumbnail: "/api/placeholder/300/200",
+    thumbnail: MEDIA.amenityPool.gitSrc,
     description:
       "High-quality photo gallery showcasing community amenities including pool, fitness center, and walking trails.",
     propertyId: "community",
@@ -114,7 +115,7 @@ const virtualTours: VirtualTour[] = [
     title: "Live Walkthrough - Executive Home",
     type: "walkthrough",
     duration: "12 min",
-    thumbnail: "/api/placeholder/300/200",
+    thumbnail: MEDIA.listingExecutive.gitSrc,
     description: "Live agent walkthrough of the executive home with real-time Q&A and detailed property information.",
     propertyId: "3",
     features: ["Live Agent", "Real-time Q&A", "Detailed Information", "Custom Scheduling"],
@@ -128,35 +129,35 @@ const tourRooms: TourRoom[] = [
   {
     id: "living",
     name: "Living Room",
-    thumbnail: "/api/placeholder/200/150",
+    thumbnail: MEDIA.interiorLiving.gitSrc,
     hotspots: 5,
     description: "Spacious living room with high ceilings and modern finishes",
   },
   {
     id: "kitchen",
     name: "Gourmet Kitchen",
-    thumbnail: "/api/placeholder/200/150",
+    thumbnail: MEDIA.interiorKitchen.gitSrc,
     hotspots: 8,
     description: "Modern kitchen with granite countertops and stainless appliances",
   },
   {
     id: "master",
     name: "Master Suite",
-    thumbnail: "/api/placeholder/200/150",
+    thumbnail: MEDIA.interiorMaster.gitSrc,
     hotspots: 4,
     description: "Luxurious master bedroom with walk-in closet and ensuite bathroom",
   },
   {
     id: "bathroom",
     name: "Master Bathroom",
-    thumbnail: "/api/placeholder/200/150",
+    thumbnail: MEDIA.interiorBath.gitSrc,
     hotspots: 3,
     description: "Spa-like bathroom with dual vanities and walk-in shower",
   },
   {
     id: "garage",
     name: "Two-Car Garage",
-    thumbnail: "/api/placeholder/200/150",
+    thumbnail: MEDIA.interiorGarage.gitSrc,
     hotspots: 2,
     description: "Spacious garage with storage and direct home access",
   },
@@ -201,11 +202,8 @@ export function MaravillaVirtualTours() {
             {virtualTours.map((tour) => (
               <Card key={tour.id} className="group overflow-hidden transition-all duration-300 hover:shadow-xl">
                 <CardHeader className="p-0">
-                  <div className="relative flex aspect-video items-center justify-center bg-gradient-to-br from-blue-100 to-green-100">
-                    <div className="text-center text-gray-500">
-                      <Camera className="mx-auto mb-2 h-16 w-16 opacity-50 transition-transform group-hover:scale-110" />
-                      <p className="text-sm font-medium">{tour.title}</p>
-                    </div>
+                  <div className="relative aspect-video overflow-hidden bg-navy-100">
+                    <img src={tour.thumbnail} alt={tour.title} className="h-full w-full object-cover" />
 
                     {/* Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
@@ -342,11 +340,8 @@ export function MaravillaVirtualTours() {
                   onClick={() => setSelectedRoom(room)}
                 >
                   <CardHeader className="p-0">
-                    <div className="flex aspect-video items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                      <div className="text-center text-gray-500">
-                        <Home className="mx-auto mb-2 h-12 w-12 opacity-50" />
-                        <p className="text-sm">{room.name}</p>
-                      </div>
+                    <div className="relative aspect-video overflow-hidden bg-navy-100">
+                      <img src={room.thumbnail} alt={room.name} className="h-full w-full object-cover" />
                     </div>
                   </CardHeader>
                   <CardContent className="p-4">

@@ -12,6 +12,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "res.cloudinary.com",
       },
+      {
+        protocol: "https",
+        hostname: "imagedelivery.net",
+      },
     ],
   },
   async headers() {
@@ -49,6 +53,12 @@ const nextConfig = {
         source: "/dashboard",
         destination: "/dashboard/default",
         permanent: false,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.villagestulesprings.com" }],
+        destination: "https://villagestulesprings.com/:path*",
+        permanent: true,
       },
     ];
   },

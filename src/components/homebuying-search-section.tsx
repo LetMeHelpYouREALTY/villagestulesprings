@@ -29,7 +29,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { MEDIA } from "@/lib/media-catalog";
 
 interface Property {
   id: string;
@@ -54,7 +54,7 @@ const mockProperties: Property[] = [
     bedrooms: 3,
     bathrooms: 2,
     squareFeet: 1850,
-    image: "/api/placeholder/400/300",
+    image: MEDIA.listingVilla.gitSrc,
     type: "Single Family",
     yearBuilt: 2018,
     features: ["Updated Kitchen", "Hardwood Floors", "Two-Car Garage"],
@@ -68,7 +68,7 @@ const mockProperties: Property[] = [
     bedrooms: 2,
     bathrooms: 2,
     squareFeet: 1200,
-    image: "/api/placeholder/400/300",
+    image: MEDIA.listingTownhome.gitSrc,
     type: "Condo",
     yearBuilt: 2020,
     features: ["Modern Appliances", "Balcony", "Pool Access"],
@@ -82,7 +82,7 @@ const mockProperties: Property[] = [
     bedrooms: 4,
     bathrooms: 3,
     squareFeet: 2400,
-    image: "/api/placeholder/400/300",
+    image: MEDIA.listingExecutive.gitSrc,
     type: "Single Family",
     yearBuilt: 2015,
     features: ["Master Suite", "Gourmet Kitchen", "Pool"],
@@ -314,8 +314,8 @@ export function HomebuyingSearchSection() {
               <Card key={property.id} className="group shadow-lg transition-shadow hover:shadow-xl">
                 <CardContent className="p-0">
                   <div className="relative">
-                    <div className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                      <Home className="h-16 w-16 text-gray-400" />
+                    <div className="relative aspect-[4/3] overflow-hidden bg-navy-100">
+                      <img src={property.image} alt={property.address} className="h-full w-full object-cover" />
                     </div>
                     <div className="absolute left-4 top-4">
                       <Badge variant={property.status === "for-sale" ? "default" : "secondary"}>

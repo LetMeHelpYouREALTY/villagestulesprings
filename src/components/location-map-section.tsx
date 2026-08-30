@@ -1,14 +1,12 @@
 import { MapPin, Navigation } from "lucide-react";
 
+import { HeadingPhoto } from "@/components/heading-photo";
 import { Button } from "@/components/ui/button";
 import { getMapEmbedUrl } from "@/config/env";
+import { MEDIA } from "@/lib/media-catalog";
 
 export function LocationMapSection() {
   const embedUrl = getMapEmbedUrl();
-
-  if (!embedUrl) {
-    return null;
-  }
 
   return (
     <section className="bg-cream-50 py-24">
@@ -23,16 +21,20 @@ export function LocationMapSection() {
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-lg border border-navy-200/20 shadow-sm">
-          <iframe
-            title="Villages at Tule Springs map"
-            src={embedUrl}
-            className="h-[420px] w-full border-0 md:h-[520px]"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
-        </div>
+        <HeadingPhoto asset={MEDIA.tuleSprings} className="mx-auto mb-8 max-w-5xl" />
+
+        {embedUrl ? (
+          <div className="overflow-hidden rounded-lg border border-navy-200/20 shadow-sm">
+            <iframe
+              title="Villages at Tule Springs map"
+              src={embedUrl}
+              className="h-[420px] w-full border-0 md:h-[520px]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+        ) : null}
 
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button asChild className="bg-gold-400 font-sans uppercase tracking-widest text-navy-800 hover:bg-gold-300">

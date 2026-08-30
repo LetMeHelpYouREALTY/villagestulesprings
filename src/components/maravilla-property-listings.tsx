@@ -1,5 +1,4 @@
 import {
-  Home,
   Bed,
   Bath,
   Square,
@@ -16,10 +15,12 @@ import {
   TreePine,
 } from "lucide-react";
 
+import { SiteImage } from "@/components/site-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { MEDIA, type MediaAsset } from "@/lib/media-catalog";
 
 interface MaravillaProperty {
   id: string;
@@ -30,7 +31,7 @@ interface MaravillaProperty {
   squareFeet: number;
   address: string;
   status: "available" | "pending" | "sold";
-  image: string;
+  image: MediaAsset;
   features: string[];
   description: string;
   yearBuilt: number;
@@ -48,7 +49,7 @@ const maravillaProperties: MaravillaProperty[] = [
     squareFeet: 1950,
     address: "123 Maravilla Drive",
     status: "available",
-    image: "/api/placeholder/400/300",
+    image: MEDIA.listingVilla,
     features: ["Granite Countertops", "Stainless Appliances", "Open Floor Plan", "Solar Ready"],
     description: "Beautiful single-story home featuring modern finishes and energy-efficient design.",
     yearBuilt: 2024,
@@ -64,7 +65,7 @@ const maravillaProperties: MaravillaProperty[] = [
     squareFeet: 2250,
     address: "456 Desert Vista Lane",
     status: "available",
-    image: "/api/placeholder/400/300",
+    image: MEDIA.listingTwoStory,
     features: ["Master Suite", "Gourmet Kitchen", "Two-Car Garage", "Patio"],
     description: "Perfect for growing families with spacious rooms and modern amenities.",
     yearBuilt: 2024,
@@ -80,7 +81,7 @@ const maravillaProperties: MaravillaProperty[] = [
     squareFeet: 2650,
     address: "789 Canyon Ridge Court",
     status: "pending",
-    image: "/api/placeholder/400/300",
+    image: MEDIA.listingExecutive,
     features: ["High Ceilings", "Premium Finishes", "Smart Home", "Waves Ready"],
     description: "Executive-level home with premium finishes and smart home technology.",
     yearBuilt: 2024,
@@ -93,11 +94,8 @@ export function MaravillaPropertyCard({ property }: { property: MaravillaPropert
   return (
     <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl">
       <CardHeader className="relative p-0">
-        <div className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-blue-100 to-green-100">
-          <div className="text-center text-gray-500">
-            <Home className="mx-auto mb-2 h-16 w-16 opacity-50" />
-            <p className="text-sm">Maravilla Home</p>
-          </div>
+        <div className="relative aspect-[4/3] overflow-hidden bg-navy-100">
+          <SiteImage asset={property.image} fill sizes="(max-width: 768px) 100vw, 33vw" />
         </div>
 
         {/* Status Badge */}

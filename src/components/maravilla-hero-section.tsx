@@ -1,14 +1,14 @@
-import { MapPin, Home, Star, Phone, Search, ArrowRight, CheckCircle } from "lucide-react";
+import { MapPin, Star, Phone, Search, ArrowRight, CheckCircle } from "lucide-react";
 
-import { CloudinaryImage } from "@/components/cloudinary-image";
+import { SiteImage } from "@/components/site-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { cloudinaryPublicId, getRealScoutAgentId, isCloudinaryConfigured } from "@/config/env";
+import { getRealScoutAgentId } from "@/config/env";
+import { MEDIA } from "@/lib/media-catalog";
 
 export function MaravillaHeroSection() {
   const agentId = getRealScoutAgentId();
-  const showCloudinary = isCloudinaryConfigured();
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-navy-800">
@@ -115,27 +115,13 @@ export function MaravillaHeroSection() {
             <Card className="hover:shadow-3xl group overflow-hidden border-gold-300/20 shadow-2xl transition-all duration-500">
               <CardContent className="p-0">
                 <div className="relative aspect-[4/3] overflow-hidden bg-navy-600">
-                  {showCloudinary ? (
-                    <CloudinaryImage
-                      src={cloudinaryPublicId("hero")}
-                      alt="Luxury home at Villages at Tule Springs, Las Vegas"
-                      width={960}
-                      height={720}
-                      crop="fill"
-                      gravity="auto"
-                      className="h-full w-full object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      priority
-                    />
-                  ) : (
-                    <div className="flex h-full items-center justify-center text-center text-cream-200">
-                      <div>
-                        <Home className="mx-auto mb-4 h-20 w-20 text-gold-300 opacity-70 transition-transform group-hover:scale-110" />
-                        <p className="font-serif text-xl">Las Vegas Real Estate</p>
-                        <p className="font-sans text-sm text-cream-300">Your Dream Home Awaits</p>
-                      </div>
-                    </div>
-                  )}
+                  <SiteImage
+                    asset={MEDIA.heroDreamHome}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="transition-transform duration-700 group-hover:scale-105"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
                 </div>
               </CardContent>

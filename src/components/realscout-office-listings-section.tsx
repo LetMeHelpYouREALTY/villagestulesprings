@@ -1,4 +1,6 @@
+import { HeadingPhoto } from "@/components/heading-photo";
 import { getRealScoutAgentId } from "@/config/env";
+import { MEDIA } from "@/lib/media-catalog";
 
 /**
  * RealScout office listings — placed below the hero on every public page.
@@ -20,6 +22,7 @@ export function RealScoutOfficeListingsSection() {
             Single-family homes currently listed through our office — sorted by newest sold activity.
           </p>
         </div>
+        <HeadingPhoto asset={MEDIA.homes800k1m} className="mx-auto mb-10 max-w-5xl" />
         <style
           dangerouslySetInnerHTML={{
             __html: `

@@ -1,10 +1,10 @@
-import { Bath, Bed, Home, MapPin, Ruler } from "lucide-react";
+import { Bath, Bed, MapPin, Ruler } from "lucide-react";
 
-import { CloudinaryImage } from "@/components/cloudinary-image";
+import { SiteImage } from "@/components/site-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { cloudinaryPublicId, isCloudinaryConfigured } from "@/config/env";
+import { MEDIA } from "@/lib/media-catalog";
 
 const FEATURED_PROPERTIES = [
   {
@@ -16,7 +16,7 @@ const FEATURED_PROPERTIES = [
     baths: 3.5,
     sqft: "3,420",
     status: "For Sale" as const,
-    image: "property-1",
+    image: MEDIA.featuredDesertVista,
   },
   {
     id: "2",
@@ -27,7 +27,7 @@ const FEATURED_PROPERTIES = [
     baths: 2.5,
     sqft: "2,610",
     status: "New Listing" as const,
-    image: "property-2",
+    image: MEDIA.featuredMaravillaCourtyard,
   },
   {
     id: "3",
@@ -38,13 +38,11 @@ const FEATURED_PROPERTIES = [
     baths: 3,
     sqft: "2,980",
     status: "For Sale" as const,
-    image: "property-3",
+    image: MEDIA.featuredAliante,
   },
 ];
 
 export function FeaturedPropertiesSection() {
-  const showCloudinary = isCloudinaryConfigured();
-
   return (
     <section className="bg-cream-50 py-24">
       <div className="container mx-auto px-4">
@@ -66,22 +64,7 @@ export function FeaturedPropertiesSection() {
               className="overflow-hidden rounded-lg border border-navy-200/20 bg-cream-50 shadow-none transition-shadow hover:shadow-md"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-navy-100">
-                {showCloudinary ? (
-                  <CloudinaryImage
-                    src={cloudinaryPublicId(property.image)}
-                    alt={`${property.title} in ${property.address}`}
-                    width={800}
-                    height={600}
-                    crop="fill"
-                    gravity="auto"
-                    className="h-full w-full object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                ) : (
-                  <div className="flex h-full items-center justify-center">
-                    <Home className="h-14 w-14 text-navy-400/50" />
-                  </div>
-                )}
+                <SiteImage asset={property.image} fill sizes="(max-width: 768px) 100vw, 33vw" />
                 <Badge className="absolute right-3 top-3 rounded-md border-0 bg-gold-400 font-sans text-xs uppercase tracking-widest text-navy-800 hover:bg-gold-400">
                   {property.status}
                 </Badge>

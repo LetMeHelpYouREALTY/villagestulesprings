@@ -14,7 +14,9 @@
     "prepare": "husky",
     "generate:presets": "tsx src/scripts/generate-theme-presets.ts",
     "analyze": "ANALYZE=true next build",
-    "validate:metadata": "tsx scripts/validate-metadata.ts"
+    "validate:metadata": "tsx scripts/validate-metadata.ts",
+    "images:optimize": "node scripts/optimize-git-images.mjs",
+    "images:upload": "node scripts/upload-cloudflare-images.mjs"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [

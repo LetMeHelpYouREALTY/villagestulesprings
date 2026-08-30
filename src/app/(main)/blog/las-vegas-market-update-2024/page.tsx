@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { HeadingPhoto } from "@/components/heading-photo";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { generateArticleMetadata } from "@/config/metadata-config";
+import { MEDIA } from "@/lib/media-catalog";
 
 // Generate article-specific metadata with all the required Open Graph properties
 export const metadata: Metadata = generateArticleMetadata({
@@ -58,15 +60,12 @@ export default function BlogPostPage() {
           </header>
 
           <div className="mb-12">
-            <img
-              src="/blog/las-vegas-market-2024.jpg"
-              alt="Las Vegas real estate market trends and home prices in 2024"
-              className="h-96 w-full rounded-lg object-cover shadow-lg"
-            />
+            <HeadingPhoto asset={MEDIA.blogMarket2024} priority />
           </div>
 
           <div className="max-w-none">
             <h2 className="mb-6 font-serif text-3xl text-navy-700">Market Overview</h2>
+            <HeadingPhoto asset={MEDIA.marketOverview} className="mb-6" />
             <p className="mb-6 text-navy-500">
               The Las Vegas real estate market in 2024 shows signs of stabilization after the volatility of recent
               years. While interest rates remain elevated compared to historic lows, the market is adapting to new
@@ -76,6 +75,7 @@ export default function BlogPostPage() {
             <h2 className="mb-6 font-serif text-3xl text-navy-700">Key Trends</h2>
 
             <h3 className="mb-4 font-serif text-2xl text-navy-700">Home Prices</h3>
+            <HeadingPhoto asset={MEDIA.homePrices} className="mb-6" />
             <p className="mb-6 text-navy-500">
               Median home prices in Las Vegas have shown modest appreciation year-over-year, with luxury properties in
               areas like Summerlin and Henderson continuing to perform well. The market is seeing more balanced
@@ -83,6 +83,7 @@ export default function BlogPostPage() {
             </p>
 
             <h3 className="mb-4 font-serif text-2xl text-navy-700">Inventory Levels</h3>
+            <HeadingPhoto asset={MEDIA.inventoryLevels} className="mb-6" />
             <p className="mb-6 text-navy-500">
               Inventory levels have improved from the historic lows of 2021-2022, providing buyers with more options.
               However, well-priced homes in desirable neighborhoods still move quickly, often receiving multiple offers.
@@ -121,18 +122,21 @@ export default function BlogPostPage() {
             <h2 className="mb-6 font-serif text-3xl text-navy-700">Neighborhood Highlights</h2>
 
             <h3 className="mb-4 font-serif text-2xl text-navy-700">Summerlin</h3>
+            <HeadingPhoto asset={MEDIA.summerlin} className="mb-4" />
             <p className="mb-4 text-navy-500">
               Summerlin continues to be a top performer with strong demand for luxury homes and master-planned community
               amenities. New construction is limited, supporting resale values.
             </p>
 
             <h3 className="mb-4 font-serif text-2xl text-navy-700">Henderson</h3>
+            <HeadingPhoto asset={MEDIA.henderson} className="mb-4" />
             <p className="mb-4 text-navy-500">
               Henderson&apos;s diverse neighborhoods offer opportunities for buyers at various price points. The
               area&apos;s proximity to Las Vegas and strong school districts maintain its appeal.
             </p>
 
             <h3 className="mb-4 font-serif text-2xl text-navy-700">Downtown Las Vegas</h3>
+            <HeadingPhoto asset={MEDIA.downtownLasVegas} className="mb-6" />
             <p className="mb-6 text-navy-500">
               Downtown continues its transformation with new residential developments and entertainment options. This
               area offers unique opportunities for investors and urban living enthusiasts.
