@@ -57,7 +57,7 @@ export const CORE_MARKETING_PAGES_A: MarketingPageContent[] = [
       {
         question: "What price range is shown on this site?",
         answer:
-          "The office listings widget on every page currently filters single-family homes listed from $800,000 to $1,000,000. Ask Dr. Duffy for a search at any other budget.",
+          "The office listings widget sits under the hero on every page and shows live For Sale inventory through RealScout. Ask Dr. Duffy for a search at any other budget or property type.",
       },
     ],
   },
@@ -208,9 +208,9 @@ export const CORE_MARKETING_PAGES_A: MarketingPageContent[] = [
     h1: "Homes for Sale in Villages at Tule Springs",
     title: "Homes for Sale | Villages at Tule Springs | Dr. Janet Duffy",
     description:
-      "Browse homes for sale in Villages at Tule Springs with Dr. Janet Duffy. Live office listings $800K–$1M plus MLS search. 702-222-1964.",
+      "Browse homes for sale in Villages at Tule Springs with Dr. Janet Duffy. Live office listings plus MLS search. 702-222-1964.",
     directAnswer:
-      "Office listings on this site currently show single-family homes from $800,000 to $1,000,000. Use the search widgets for other prices, or call 702-222-1964.",
+      "Office listings on this site show current For Sale inventory from the office widget. Use the search widgets for a custom price or type, or call 702-222-1964.",
     photo: MEDIA.featuredListings,
     pageType: "CollectionPage",
     sections: [

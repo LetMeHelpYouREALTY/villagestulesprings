@@ -17,7 +17,7 @@ export const HOME_FAQS: FaqItem[] = [
   {
     question: "What price range is shown in the office listings widget?",
     answer:
-      "That module currently filters single-family homes listed from $800,000 to $1,000,000. Ask Dr. Duffy for any other budget.",
+      "The office listings block under the hero is live MLS inventory through RealScout. Ask Dr. Duffy for a custom price or property-type search.",
   },
   {
     question: "How do I schedule a showing?",

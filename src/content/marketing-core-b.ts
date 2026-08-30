@@ -49,9 +49,9 @@ export const CORE_MARKETING_PAGES_B: MarketingPageContent[] = [
     h1: "Luxury Homes in Villages at Tule Springs",
     title: "Luxury Homes for Sale | Villages at Tule Springs | Dr. Janet Duffy",
     description:
-      "Tour luxury and upper-tier homes in Villages at Tule Springs with Dr. Janet Duffy. Larger lots, single-story plans, and $800K–$1M office listings. 702-222-1964.",
+      "Tour luxury and upper-tier homes in Villages at Tule Springs with Dr. Janet Duffy. Larger lots, single-story plans, and live office listings. 702-222-1964.",
     directAnswer:
-      "Upper-tier homes in Villages at Tule Springs concentrate on larger floor plans and premium lots. This site’s office widget currently filters $800,000–$1,000,000 single-family listings. Call 702-222-1964.",
+      "Upper-tier homes in Villages at Tule Springs concentrate on larger floor plans and premium lots. This site’s office widget shows live For Sale listings. Call 702-222-1964.",
     photo: MEDIA.heroDreamHome,
     pageType: "WebPage",
     service: {
@@ -80,7 +80,7 @@ export const CORE_MARKETING_PAGES_B: MarketingPageContent[] = [
       {
         question: "Do you work above $1 million?",
         answer:
-          "Yes. The on-site office widget is capped at $1,000,000 for that module only. Call 702-222-1964 for a custom search.",
+          "Yes. Call 702-222-1964 for a custom search at any price. The office widget is not a cap on what Dr. Duffy can show.",
       },
     ],
   },
@@ -144,7 +144,7 @@ export const CORE_MARKETING_PAGES_B: MarketingPageContent[] = [
         photo: MEDIA.homePrices,
         body: [
           "Median sale prices, DOM, and inventory counts move weekly. A number without a dated MLS pull is not used on this page.",
-          "The office listings widget shows a live slice: single-family homes listed $800,000–$1,000,000.",
+          "The office listings widget shows a live For Sale slice from RealScout. Ask Dr. Duffy for a dated pull on a specific subdivision.",
         ],
       },
       {

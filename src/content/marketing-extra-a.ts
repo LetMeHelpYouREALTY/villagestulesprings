@@ -178,15 +178,14 @@ export const EXTRA_MARKETING_PAGES_A: MarketingPageContent[] = [
         photo: MEDIA.interiorLiving,
         body: [
           "Same bed count can hide different interior square footage and a different HOA fee. We export both attached and detached actives before you tour.",
-          "The office listings widget on every page currently filters single-family homes from $800,000 to $1,000,000. Ask for a townhome-only search at any budget.",
+          "The office listings widget on every page shows live For Sale inventory through RealScout. Ask for a townhome-only search at any budget.",
         ],
       },
     ],
     faqs: [
       {
         question: "Are townhomes included in the office listings widget?",
-        answer:
-          "That module currently filters single-family product in an $800,000–$1,000,000 band. Call 702-222-1964 for a live townhome search.",
+        answer: "That module shows current office For Sale listings. Call 702-222-1964 for a live townhome search.",
       },
     ],
   },
@@ -198,7 +197,7 @@ export const EXTRA_MARKETING_PAGES_A: MarketingPageContent[] = [
     description:
       "Search single-family homes in Villages at Tule Springs, North Las Vegas 89084, with Dr. Janet Duffy. Call 702-222-1964.",
     directAnswer:
-      "Most Villages at Tule Springs inventory is detached single-family. This site’s office widget currently shows SFR listings from $800,000 to $1,000,000. Call Dr. Janet Duffy at 702-222-1964 for other prices.",
+      "Most Villages at Tule Springs inventory is detached single-family. This site’s office widget shows live For Sale listings. Call Dr. Janet Duffy at 702-222-1964 for a custom search.",
     photo: MEDIA.listingTwoStory,
     pageType: "WebPage",
     service: {
@@ -226,8 +225,7 @@ export const EXTRA_MARKETING_PAGES_A: MarketingPageContent[] = [
     faqs: [
       {
         question: "Does the on-site listings widget show single-family homes?",
-        answer:
-          "Yes. It currently filters SFR listings from $800,000 to $1,000,000. Call 702-222-1964 for a custom price band.",
+        answer: "Yes. It currently shows For Sale office inventory. Call 702-222-1964 for a custom price band.",
       },
     ],
   },

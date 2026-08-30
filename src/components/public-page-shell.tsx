@@ -25,6 +25,7 @@ export function PublicPageShell({ children, hero, before }: PublicPageShellProps
       <SiteHeader />
       <NapBar />
       {hero}
+      {/* Listings widget must sit directly under the hero on every public page. */}
       <RealScoutOfficeListingsSection />
       {children}
       <CalendlyScheduleSection />
