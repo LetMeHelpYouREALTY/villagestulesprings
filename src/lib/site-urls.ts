@@ -3,19 +3,42 @@
  * Never include a foreign host (e.g. lasvegasrealestate.com) — Google Search Console
  * rejects those as "URL not allowed" for a sitemap at this location.
  */
+import { marketingSlugs } from "@/content/marketing-pages";
+import { neighborhoodSlugs } from "@/content/neighborhoods";
+
 export type SiteHost = "apex" | "www";
 
 export const APEX_HOST = "villagestulesprings.com";
 export const WWW_HOST = `www.${APEX_HOST}`;
 
-export const PUBLIC_SITEMAP_PATHS: readonly {
+const STATIC_SITEMAP_PATHS: readonly {
   path: string;
   changeFrequency: "weekly" | "monthly";
   priority: number;
 }[] = [
   { path: "/", changeFrequency: "weekly", priority: 1 },
   { path: "/about", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/blog", changeFrequency: "monthly", priority: 0.7 },
   { path: "/blog/las-vegas-market-update-2024", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/neighborhoods", changeFrequency: "weekly", priority: 0.9 },
+];
+
+export const PUBLIC_SITEMAP_PATHS: readonly {
+  path: string;
+  changeFrequency: "weekly" | "monthly";
+  priority: number;
+}[] = [
+  ...STATIC_SITEMAP_PATHS,
+  ...marketingSlugs().map((slug) => ({
+    path: `/${slug}`,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  })),
+  ...neighborhoodSlugs().map((slug) => ({
+    path: `/neighborhoods/${slug}`,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  })),
 ];
 
 export function resolveSiteHost(hostHeader: string | null): SiteHost {

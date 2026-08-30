@@ -1,14 +1,44 @@
 import type { Metadata } from "next";
 
+import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { CalendlyButton } from "@/components/calendly-button";
 import { CalendlyInlineWidget } from "@/components/calendly-inline-widget";
 import { DrJanPortrait } from "@/components/dr-jan-portrait";
+import { FaqSection } from "@/components/faq-section";
 import { HeadingPhoto } from "@/components/heading-photo";
+import { JsonLd } from "@/components/json-ld";
 import { PublicPageShell } from "@/components/public-page-shell";
+import { BUSINESS } from "@/config/business";
 import { aboutPageMetadata } from "@/config/metadata-config";
 import { MEDIA } from "@/lib/media-catalog";
+import { buildPageJsonLd } from "@/lib/schema";
 
 export const metadata: Metadata = aboutPageMetadata;
+
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "About Dr. Janet Duffy", path: "/about" },
+];
+
+const aboutFaqs = [
+  {
+    question: "What is Dr. Janet Duffy’s license number?",
+    answer: `Nevada real estate license ${BUSINESS.license}, Berkshire Hathaway HomeServices Nevada Properties.`,
+  },
+  {
+    question: "Where does Dr. Duffy work?",
+    answer: `${BUSINESS.addressLine}. Client line ${BUSINESS.telephoneDisplay}.`,
+  },
+];
+
+const aboutJsonLd = buildPageJsonLd({
+  path: "/about",
+  title: "About Dr. Janet Duffy | Villages at Tule Springs REALTOR®",
+  description: aboutPageMetadata.description ?? "",
+  pageType: "AboutPage",
+  breadcrumbs,
+  faqs: aboutFaqs,
+});
 
 function AboutHero() {
   return (
@@ -17,8 +47,9 @@ function AboutHero() {
         <DrJanPortrait size="xl" priority className="mx-auto mb-6 ring-4 ring-gold-300" />
         <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-300">Meet Your Specialist</p>
         <h1 className="mt-3 font-serif text-4xl text-cream-100 md:text-5xl">About Dr. Janet Duffy</h1>
-        <p className="mx-auto mt-4 max-w-2xl font-sans text-lg font-light text-cream-300">
-          Licensed Nevada REALTOR&reg; with 15+ years guiding buyers and sellers across Las Vegas and North Las Vegas.
+        <p className="seo-direct-answer mx-auto mt-4 max-w-2xl font-sans text-lg font-light text-cream-300">
+          Licensed Nevada REALTOR&reg; {BUSINESS.license} with Berkshire Hathaway HomeServices Nevada Properties.
+          Villages at Tule Springs, North Las Vegas, NV 89084. Call {BUSINESS.telephoneDisplay}.
         </p>
         <HeadingPhoto asset={MEDIA.aboutHero} className="mx-auto mt-10 max-w-3xl" />
       </div>
@@ -28,7 +59,8 @@ function AboutHero() {
 
 export default function AboutPage() {
   return (
-    <PublicPageShell hero={<AboutHero />}>
+    <PublicPageShell before={<JsonLd data={aboutJsonLd} />} hero={<AboutHero />}>
+      <BreadcrumbNav items={breadcrumbs} />
       <main className="bg-cream-50 px-4 py-16">
         <div className="container mx-auto max-w-4xl">
           <div className="max-w-none">
@@ -45,11 +77,11 @@ export default function AboutPage() {
                 </div>
                 <HeadingPhoto asset={MEDIA.experienceExpertise} className="mb-4" />
                 <ul className="space-y-2 text-navy-500">
-                  <li>&bull; 15+ years in Las Vegas real estate</li>
-                  <li>&bull; Licensed Nevada Real Estate Agent</li>
-                  <li>&bull; Certified Home Valuation Specialist</li>
-                  <li>&bull; Luxury Home Marketing Expert</li>
-                  <li>&bull; First-Time Homebuyer Specialist</li>
+                  <li>&bull; Nevada license {BUSINESS.license}</li>
+                  <li>&bull; {BUSINESS.brokerage}</li>
+                  <li>&bull; Buyer and seller representation in 89084</li>
+                  <li>&bull; New-construction registration and contract review</li>
+                  <li>&bull; Home valuation from recent comps — not a guessed median</li>
                 </ul>
               </div>
 
@@ -60,11 +92,11 @@ export default function AboutPage() {
                 </div>
                 <HeadingPhoto asset={MEDIA.areasServed} className="mb-4" />
                 <ul className="space-y-2 text-navy-500">
+                  <li>&bull; Villages at Tule Springs (89084)</li>
+                  <li>&bull; North Las Vegas</li>
                   <li>&bull; Las Vegas</li>
                   <li>&bull; Henderson</li>
                   <li>&bull; Summerlin</li>
-                  <li>&bull; Green Valley</li>
-                  <li>&bull; Anthem</li>
                 </ul>
               </div>
             </div>
@@ -81,9 +113,8 @@ export default function AboutPage() {
                 investing in Las Vegas real estate, Dr. Duffy provides expert guidance every step of the way.
               </p>
               <p className="text-navy-500">
-                Her commitment to excellence and client satisfaction has earned her recognition as one of Las
-                Vegas&apos;s top real estate professionals, with hundreds of successful transactions and satisfied
-                clients.
+                Transactions are confirmed in writing with current MLS and title documents — this page does not publish
+                a review count or a guessed production total.
               </p>
             </div>
 
@@ -125,6 +156,7 @@ export default function AboutPage() {
           </div>
         </div>
       </main>
+      <FaqSection items={aboutFaqs} />
     </PublicPageShell>
   );
 }
