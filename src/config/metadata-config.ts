@@ -5,7 +5,10 @@ import { APP_CONFIG } from "./app-config";
 // Base URL for the website
 const baseUrl = "https://villagestulesprings.com";
 
-// Default Open Graph image configuration
+const homebuyerOgAlt = "Luxury home for sale at Villages at Tule Springs, North Las Vegas — Dr. Janet Duffy";
+
+// Default Open Graph image — 1200x630 only.
+// Do not list the square crop here: some crawlers emit the last og:image tag.
 export const defaultOGImages = [
   {
     url: "/og-image.jpg",
@@ -13,22 +16,14 @@ export const defaultOGImages = [
     type: "image/jpeg" as const,
     width: 1200,
     height: 630,
-    alt: "Las Vegas Real Estate Expert - Dr. Janet Duffy helping clients find their dream home",
-  },
-  {
-    url: "/og-image-square.jpg",
-    secureUrl: `${baseUrl}/og-image-square.jpg`,
-    type: "image/jpeg" as const,
-    width: 800,
-    height: 800,
-    alt: "Dr. Janet Duffy - Licensed Las Vegas Real Estate Agent",
+    alt: homebuyerOgAlt,
   },
 ];
 
-// Default Twitter Card image configuration
+// Default Twitter Card image configuration (summary_large_image requires 1200x630)
 export const defaultTwitterImage = {
   url: "/og-image.jpg",
-  alt: "Las Vegas Real Estate Expert - Dr. Janet Duffy",
+  alt: homebuyerOgAlt,
   width: 1200,
   height: 630,
 };

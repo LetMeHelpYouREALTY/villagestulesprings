@@ -210,14 +210,14 @@ export const MEDIA = {
   ),
   ogImage: asset(
     "og-image",
-    "Villages at Tule Springs",
-    "Luxury North Las Vegas home at Villages at Tule Springs",
+    "Find Your Dream Home",
+    "Luxury home for sale at Villages at Tule Springs, North Las Vegas — Dr. Janet Duffy",
     "16:9",
   ),
   ogImageSquare: asset(
     "og-image-square",
-    "Dr. Janet Duffy",
-    "Luxury desert home in North Las Vegas — Dr. Janet Duffy, REALTOR",
+    "Find Your Dream Home",
+    "Luxury home at Villages at Tule Springs, North Las Vegas",
     "1:1",
   ),
 } as const;
