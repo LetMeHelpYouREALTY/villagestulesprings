@@ -1,31 +1,33 @@
+import { BUSINESS } from "@/config/business";
+
 import packageJson from "../../package.json";
 
 const currentYear = new Date().getFullYear();
 
 export const APP_CONFIG = {
-  name: "Las Vegas Real Estate Expert",
+  name: "Villages at Tule Springs",
   version: packageJson.version,
-  copyright: `© ${currentYear}, Las Vegas Real Estate Expert.`,
+  copyright: `© ${currentYear}, Villages at Tule Springs — Dr. Janet Duffy.`,
   meta: {
-    title: "Las Vegas Real Estate Expert | Find Your Dream Home | Dr. Janet Duffy",
+    title: "Villages at Tule Springs Homes | North Las Vegas REALTOR® | Dr. Janet Duffy",
     description:
-      "Expert Las Vegas real estate services with Dr. Janet Duffy. Find your dream home, get free home valuations, and access exclusive listings. Licensed realtor with 15+ years experience serving Las Vegas, Henderson, and surrounding areas.",
+      "Buy or sell in Villages at Tule Springs, North Las Vegas NV 89084, with Dr. Janet Duffy. Live MLS search, 702-222-1964. License S.0197614.LLC.",
     keywords: [
-      "Las Vegas real estate",
-      "Las Vegas homes for sale",
-      "Las Vegas realtor",
+      "Villages at Tule Springs",
+      "North Las Vegas real estate",
+      "89084 homes for sale",
+      "Tule Springs realtor",
       "Dr. Janet Duffy",
-      "home valuation Las Vegas",
-      "Las Vegas property search",
-      "Henderson real estate",
-      "Las Vegas real estate agent",
-      "buy home Las Vegas",
-      "sell home Las Vegas",
+      "North Las Vegas realtor",
+      "new construction North Las Vegas",
+      "Las Vegas real estate",
+      "home valuation 89084",
+      "Aliante homes",
     ],
-    author: "Dr. Janet Duffy",
-    location: "Las Vegas, Nevada",
+    author: BUSINESS.legalName,
+    location: `${BUSINESS.addressLocality}, ${BUSINESS.addressRegion}`,
     businessType: "Real Estate Agent",
-    phone: "(702) 555-REALTOR",
-    email: "info@villagestulesprings.com",
+    phone: BUSINESS.telephoneDisplay,
+    email: BUSINESS.email,
   },
 };

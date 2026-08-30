@@ -1,112 +1,37 @@
 import { FeaturedPropertiesSection } from "@/components/featured-properties-section";
 import { HeadingPhoto } from "@/components/heading-photo";
+import { HomeSeoSections } from "@/components/home-seo-sections";
+import { JsonLd } from "@/components/json-ld";
 import { LocationMapSection } from "@/components/location-map-section";
 import { MaravillaHeroSection } from "@/components/maravilla-hero-section";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { SectionIntro } from "@/components/section-intro";
-import { getRealScoutAgentId } from "@/config/env";
+import { APP_CONFIG } from "@/config/app-config";
+import { HOME_DIRECT_ANSWER, HOME_FAQS, HOME_SERVICE_LINKS } from "@/content/home";
 import { MEDIA } from "@/lib/media-catalog";
+import { realScoutWidgetHtml } from "@/lib/realscout-widget";
+import { buildPageJsonLd } from "@/lib/schema";
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  name: "Dr. Janet Duffy",
-  description: "Expert Las Vegas real estate services with 15+ years experience",
-  url: "https://villagestulesprings.com",
-  telephone: "702-222-1964",
-  email: "DrDuffySells@VillagesTuleSprings.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Villages at Tule Springs",
-    addressLocality: "North Las Vegas",
-    addressRegion: "NV",
-    postalCode: "89084",
-    addressCountry: "US",
+const homeJsonLd = buildPageJsonLd({
+  path: "/",
+  title: APP_CONFIG.meta.title,
+  description: APP_CONFIG.meta.description,
+  pageType: "WebPage",
+  breadcrumbs: [{ name: "Home", path: "/" }],
+  faqs: HOME_FAQS,
+  service: {
+    name: "Villages at Tule Springs real estate",
+    description: HOME_DIRECT_ANSWER,
   },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: "36.2850",
-    longitude: "-115.2000",
+  itemList: {
+    name: "Real estate services",
+    items: HOME_SERVICE_LINKS.map((item) => ({ name: item.label, path: item.href })),
   },
-  areaServed: [
-    {
-      "@type": "City",
-      name: "Las Vegas",
-      containedInPlace: {
-        "@type": "State",
-        name: "Nevada",
-      },
-    },
-    {
-      "@type": "City",
-      name: "North Las Vegas",
-      containedInPlace: {
-        "@type": "State",
-        name: "Nevada",
-      },
-    },
-    {
-      "@type": "City",
-      name: "Henderson",
-      containedInPlace: {
-        "@type": "State",
-        name: "Nevada",
-      },
-    },
-  ],
-  serviceType: ["Real Estate Sales", "Property Valuation", "Home Buying Consultation", "Home Selling Consultation"],
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Real Estate Services",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Home Buying Services",
-          description: "Expert assistance finding and purchasing your dream home",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Home Selling Services",
-          description: "Professional marketing and sales support for your property",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Property Valuation",
-          description: "Free home valuation and market analysis",
-        },
-      },
-    ],
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "200",
-  },
-  sameAs: [
-    "https://www.facebook.com/villagestulesprings",
-    "https://www.instagram.com/villagestulesprings",
-    "https://www.linkedin.com/in/drjanetduffy",
-  ],
-};
+});
 
 export default function Home() {
-  const agentId = getRealScoutAgentId();
-
   return (
-    <PublicPageShell
-      before={
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      }
-      hero={<MaravillaHeroSection />}
-    >
+    <PublicPageShell before={<JsonLd data={homeJsonLd} />} hero={<MaravillaHeroSection />}>
       <main>
         {/* RealScout Advanced Search */}
         <section className="bg-cream-100 py-24">
@@ -121,9 +46,10 @@ export default function Home() {
               subtitle="Use our advanced search to find properties that match your exact criteria and budget."
             />
             <HeadingPhoto asset={MEDIA.perfectHome} className="mx-auto mb-10 max-w-5xl" />
-            <div className="mx-auto max-w-4xl rounded-lg border border-navy-200/20 bg-cream-50 p-6 md:p-8">
-              <realscout-advanced-search agent-encoded-id={agentId}></realscout-advanced-search>
-            </div>
+            <div
+              className="mx-auto max-w-4xl rounded-lg border border-navy-200/20 bg-cream-50 p-6 md:p-8"
+              dangerouslySetInnerHTML={{ __html: realScoutWidgetHtml("advanced-search") }}
+            />
           </div>
         </section>
 
@@ -143,17 +69,22 @@ export default function Home() {
               subtitle="Explore my exclusive listings across Las Vegas. Each property is carefully selected and professionally marketed for the best results."
             />
             <HeadingPhoto asset={MEDIA.featuredListings} className="mx-auto mb-10 max-w-5xl" />
-            <realscout-your-listings
-              agent-encoded-id={agentId}
-              sort-order="STATUS_AND_SIGNIFICANT_CHANGE"
-              listing-status="For Sale"
-              property-types="SFR,MF,TC,LAL,MOBILE,OTHER"
-            ></realscout-your-listings>
+            <div
+              className="realscout-wrapper"
+              dangerouslySetInnerHTML={{
+                __html: realScoutWidgetHtml("your-listings", {
+                  "sort-order": "NEWEST",
+                  "listing-status": "For Sale",
+                }),
+              }}
+            />
           </div>
         </section>
 
         {/* Location map — uses NEXT_PUBLIC_OPEN_HOUSES_MAP_EMBED_URL or Google Maps API key */}
         <LocationMapSection />
+
+        <HomeSeoSections />
 
         {/* RealScout Home Valuation */}
         <section id="home-valuation" className="bg-navy-800 py-24">
@@ -169,9 +100,10 @@ export default function Home() {
               subtitle="Discover your home's current market value with our free, professional valuation service. Accurate insights based on recent sales and market trends in your area."
             />
             <HeadingPhoto asset={MEDIA.homeValuation} className="mx-auto mb-10 max-w-5xl" />
-            <div className="mx-auto max-w-3xl rounded-lg border border-gold-200/20 bg-navy-700/50 p-8">
-              <realscout-home-value agent-encoded-id={agentId}></realscout-home-value>
-            </div>
+            <div
+              className="mx-auto max-w-3xl rounded-lg border border-gold-200/20 bg-navy-700/50 p-8"
+              dangerouslySetInnerHTML={{ __html: realScoutWidgetHtml("home-value") }}
+            />
             <p className="mt-8 text-center font-sans text-cream-300">
               Want to walk through the numbers together?{" "}
               <a href="#schedule" className="text-gold-300 underline-offset-4 hover:underline">

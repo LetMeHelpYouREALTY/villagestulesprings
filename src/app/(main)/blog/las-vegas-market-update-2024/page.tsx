@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { CalendlyButton } from "@/components/calendly-button";
 import { CalendlyInlineWidget } from "@/components/calendly-inline-widget";
 import { DrJanPortrait } from "@/components/dr-jan-portrait";
+import { FaqSection } from "@/components/faq-section";
 import { HeadingPhoto } from "@/components/heading-photo";
+import { JsonLd } from "@/components/json-ld";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { generateArticleMetadata } from "@/config/metadata-config";
 import { MEDIA } from "@/lib/media-catalog";
+import { articleJsonLd } from "@/lib/schema";
 
 // Generate article-specific metadata with all the required Open Graph properties
 export const metadata: Metadata = generateArticleMetadata({
@@ -31,9 +35,39 @@ export const metadata: Metadata = generateArticleMetadata({
   featuredImage: "/blog/las-vegas-market-2024.jpg",
 });
 
+const articleFaqs = [
+  {
+    question: "Is this 2024 market article current for Villages at Tule Springs?",
+    answer:
+      "It is dated January 15, 2024 and is valley context, not a live 89084 median. Call Dr. Janet Duffy at 702-222-1964 for a dated MLS pull.",
+  },
+  {
+    question: "Who wrote this market update?",
+    answer:
+      "Dr. Janet Duffy, REALTOR®, Berkshire Hathaway HomeServices Nevada Properties, Nevada license S.0197614.LLC.",
+  },
+];
+
+const articleSchema = articleJsonLd({
+  path: "/blog/las-vegas-market-update-2024",
+  title: "Las Vegas Real Estate Market Update: 2024 Trends & Insights",
+  description:
+    "Discover the latest Las Vegas real estate market trends for 2024. Dr. Janet Duffy shares expert insights on home prices, inventory levels, and what buyers and sellers need to know.",
+  datePublished: "2024-01-15T10:00:00Z",
+  dateModified: "2024-01-15T15:30:00Z",
+  faqs: articleFaqs,
+});
+
+const blogBreadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Market Insights", path: "/blog" },
+  { name: "2024 Market Update", path: "/blog/las-vegas-market-update-2024" },
+];
+
 export default function BlogPostPage() {
   return (
     <PublicPageShell
+      before={<JsonLd data={articleSchema} />}
       hero={
         <section className="bg-navy-800 px-4 py-20">
           <div className="container mx-auto max-w-4xl text-center">
@@ -45,6 +79,7 @@ export default function BlogPostPage() {
         </section>
       }
     >
+      <BreadcrumbNav items={blogBreadcrumbs} />
       <main className="bg-cream-50 px-4 py-16">
         <article className="container mx-auto max-w-4xl">
           <header className="mb-12">
@@ -57,9 +92,10 @@ export default function BlogPostPage() {
               <span>Dr. Janet Duffy</span>
             </div>
 
-            <p className="text-xl leading-relaxed text-navy-500">
+            <p className="seo-direct-answer text-xl leading-relaxed text-navy-500">
               As we move through 2024, the Las Vegas real estate market continues to evolve. Here&apos;s what buyers and
-              sellers need to know about current trends, pricing, and opportunities.
+              sellers need to know about current trends, pricing, and opportunities. For a current 89084 pull, call
+              702-222-1964 — this article is dated January 15, 2024.
             </p>
           </header>
 
@@ -135,8 +171,8 @@ export default function BlogPostPage() {
             <h3 className="mb-4 font-serif text-2xl text-navy-700">Henderson</h3>
             <HeadingPhoto asset={MEDIA.henderson} className="mb-4" />
             <p className="mb-4 text-navy-500">
-              Henderson&apos;s diverse neighborhoods offer opportunities for buyers at various price points. The
-              area&apos;s proximity to Las Vegas and strong school districts maintain its appeal.
+              Henderson&apos;s neighborhoods sit southeast of the Strip corridor with a mix of resale and master-planned
+              product. Drive time to Villages at Tule Springs is a cross-valley trip — time it from your workplace.
             </p>
 
             <h3 className="mb-4 font-serif text-2xl text-navy-700">Downtown Las Vegas</h3>
@@ -211,6 +247,7 @@ export default function BlogPostPage() {
           </footer>
         </article>
       </main>
+      <FaqSection items={articleFaqs} />
     </PublicPageShell>
   );
 }

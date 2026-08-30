@@ -8,8 +8,11 @@ import { Button } from "@/components/ui/button";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
+  { href: "/buyers", label: "Buyers" },
+  { href: "/sellers", label: "Sellers" },
+  { href: "/listings", label: "Listings" },
+  { href: "/neighborhoods", label: "Neighborhoods" },
   { href: "/about", label: "About" },
-  { href: "/blog/las-vegas-market-update-2024", label: "Market Insights" },
 ];
 
 export function SiteHeader() {
@@ -26,7 +29,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 font-sans text-sm uppercase tracking-widest text-cream-200 lg:flex">
+        <nav className="hidden flex-wrap items-center gap-6 font-sans text-sm uppercase tracking-widest text-cream-200 lg:flex">
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} className="transition-colors hover:text-gold-300">
               {link.label}

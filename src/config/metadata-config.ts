@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { APP_CONFIG } from "./app-config";
+import { BUSINESS } from "./business";
 
 // Base URL for the website
 const baseUrl = "https://villagestulesprings.com";
@@ -73,17 +74,17 @@ export const baseRobotsConfig = {
 
 // Custom meta tags for real estate business
 export const realEstateBusinessMeta = {
-  "business:contact_data:street_address": "123 Main Street, Las Vegas, NV 89101",
-  "business:contact_data:locality": "Las Vegas",
+  "business:contact_data:street_address": BUSINESS.streetAddress,
+  "business:contact_data:locality": BUSINESS.addressLocality,
   "business:contact_data:region": "Nevada",
-  "business:contact_data:postal_code": "89101",
+  "business:contact_data:postal_code": BUSINESS.postalCode,
   "business:contact_data:country_name": "United States",
-  "place:location:latitude": "36.1699",
-  "place:location:longitude": "-115.1398",
+  "place:location:latitude": String(BUSINESS.geo.latitude),
+  "place:location:longitude": String(BUSINESS.geo.longitude),
   "og:business:hours": "Mo-Fr 09:00-18:00",
   "og:business:category": "Real Estate Services",
-  "og:business:contact_data:email": APP_CONFIG.meta.email,
-  "og:business:contact_data:phone_number": APP_CONFIG.meta.phone,
+  "og:business:contact_data:email": BUSINESS.email,
+  "og:business:contact_data:phone_number": BUSINESS.telephoneDisplay,
 };
 
 // Function to generate page-specific metadata
@@ -103,6 +104,19 @@ export interface PageMetadataOptions {
   canonical?: string;
 }
 
+function canonicalPathFromOptions(options: PageMetadataOptions): string {
+  if (options.canonical) return options.canonical;
+  if (options.url && options.url !== baseUrl && options.url !== `${baseUrl}/`) {
+    try {
+      const pathname = new URL(options.url, baseUrl).pathname;
+      return pathname || "/";
+    } catch {
+      return "/";
+    }
+  }
+  return "/";
+}
+
 // eslint-disable-next-line complexity -- destructures many independent optional SEO fields, not deeply nested logic
 export function generatePageMetadata(options: PageMetadataOptions = {}): Metadata {
   const {
@@ -118,8 +132,9 @@ export function generatePageMetadata(options: PageMetadataOptions = {}): Metadat
     section,
     tags = [],
     noindex = false,
-    canonical,
   } = options;
+
+  const canonical = canonicalPathFromOptions(options);
 
   const metadata: Metadata = {
     title,
@@ -143,7 +158,7 @@ export function generatePageMetadata(options: PageMetadataOptions = {}): Metadat
       apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
     },
     alternates: {
-      canonical: canonical ?? "/",
+      canonical,
     },
     openGraph: {
       ...baseOpenGraphConfig,
@@ -186,19 +201,22 @@ export const homePageMetadata = generatePageMetadata({
   title: APP_CONFIG.meta.title,
   description: APP_CONFIG.meta.description,
   url: baseUrl,
+  canonical: "/",
 });
 
 export const aboutPageMetadata = generatePageMetadata({
-  title: `About Dr. Janet Duffy | ${APP_CONFIG.name}`,
-  description: `Learn about Dr. Janet Duffy, your trusted Las Vegas real estate expert with 15+ years of experience helping clients buy and sell homes in Las Vegas, Henderson, and surrounding areas.`,
+  title: `About Dr. Janet Duffy | Villages at Tule Springs REALTOR®`,
+  description: `Dr. Janet Duffy, Nevada license S.0197614.LLC, Berkshire Hathaway HomeServices Nevada Properties. Villages at Tule Springs, North Las Vegas, NV 89084. Call 702-222-1964.`,
   url: `${baseUrl}/about`,
+  canonical: "/about",
   type: "profile",
 });
 
 export const listingsPageMetadata = generatePageMetadata({
-  title: `Las Vegas Homes for Sale | ${APP_CONFIG.name}`,
-  description: `Browse exclusive Las Vegas home listings with Dr. Janet Duffy. Find your dream home with our comprehensive property search and expert real estate guidance.`,
+  title: `Homes for Sale | Villages at Tule Springs | Dr. Janet Duffy`,
+  description: `Browse homes for sale in Villages at Tule Springs, North Las Vegas 89084, with Dr. Janet Duffy. Live MLS widgets. Call 702-222-1964.`,
   url: `${baseUrl}/listings`,
+  canonical: "/listings",
   images: [
     {
       url: "/og-listings.jpg",
@@ -206,22 +224,24 @@ export const listingsPageMetadata = generatePageMetadata({
       type: "image/jpeg" as const,
       width: 1200,
       height: 630,
-      alt: "Las Vegas Homes for Sale - Exclusive Listings with Dr. Janet Duffy",
+      alt: "Homes for sale in Villages at Tule Springs with Dr. Janet Duffy",
     },
   ],
 });
 
 export const contactPageMetadata = generatePageMetadata({
-  title: `Contact Dr. Janet Duffy | ${APP_CONFIG.name}`,
-  description: `Get in touch with Dr. Janet Duffy for expert Las Vegas real estate services. Schedule a consultation for buying, selling, or home valuation services.`,
+  title: `Contact Dr. Janet Duffy | Villages at Tule Springs REALTOR®`,
+  description: `Contact Dr. Janet Duffy at 702-222-1964. Villages at Tule Springs, North Las Vegas, NV 89084. Book a 15-minute conversation.`,
   url: `${baseUrl}/contact`,
+  canonical: "/contact",
   type: "website",
 });
 
 export const homeValuationPageMetadata = generatePageMetadata({
-  title: `Free Home Valuation | ${APP_CONFIG.name}`,
-  description: `Get a free, professional home valuation for your Las Vegas property. Dr. Janet Duffy provides accurate market analysis and pricing insights for your home.`,
+  title: `Free Home Valuation | Villages at Tule Springs | Dr. Janet Duffy`,
+  description: `Get a Villages at Tule Springs home valuation from Dr. Janet Duffy. Instant estimate plus a 15-minute review. Call 702-222-1964.`,
   url: `${baseUrl}/home-valuation`,
+  canonical: "/home-valuation",
   images: [
     {
       url: "/og-valuation.jpg",
@@ -229,7 +249,7 @@ export const homeValuationPageMetadata = generatePageMetadata({
       type: "image/jpeg" as const,
       width: 1200,
       height: 630,
-      alt: "Free Home Valuation Service - Dr. Janet Duffy Las Vegas Real Estate",
+      alt: "Home valuation in Villages at Tule Springs with Dr. Janet Duffy",
     },
   ],
 });
@@ -282,5 +302,6 @@ export function generateArticleMetadata(options: {
     author,
     section,
     tags,
+    canonical: new URL(url, baseUrl).pathname,
   });
 }
