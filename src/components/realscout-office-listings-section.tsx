@@ -1,4 +1,5 @@
 import { HeadingPhoto } from "@/components/heading-photo";
+import { SectionIntro } from "@/components/section-intro";
 import { getRealScoutAgentId } from "@/config/env";
 import { MEDIA } from "@/lib/media-catalog";
 
@@ -13,15 +14,16 @@ export function RealScoutOfficeListingsSection() {
   return (
     <section className="bg-cream-50 py-16" aria-label="Office listings">
       <div className="container mx-auto px-4">
-        <div className="mb-10 text-center">
-          <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-600">Current Inventory</p>
-          <h2 className="mb-3 mt-2 font-serif text-3xl text-navy-800 md:text-4xl">
-            Homes for Sale <span className="text-gold-600">$800K–$1M</span>
-          </h2>
-          <p className="mx-auto max-w-2xl font-sans text-lg font-light text-navy-500">
-            Single-family homes currently listed through our office — sorted by newest sold activity.
-          </p>
-        </div>
+        <SectionIntro
+          kicker="Current Inventory"
+          title={
+            <>
+              Homes for Sale <span className="text-gold-600">$800K–$1M</span>
+            </>
+          }
+          subtitle="Single-family homes currently listed through our office — sorted by newest sold activity."
+          className="mb-10"
+        />
         <HeadingPhoto asset={MEDIA.homes800k1m} className="mx-auto mb-10 max-w-5xl" />
         <style
           dangerouslySetInnerHTML={{

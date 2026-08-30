@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { CalendlyScheduleSection } from "@/components/calendly-schedule-section";
 import { RealScoutOfficeListingsSection } from "@/components/realscout-office-listings-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -14,7 +15,7 @@ type PublicPageShellProps = {
 
 /**
  * Shared chrome for every public marketing page:
- * header → optional hero → RealScout office listings → page content → footer.
+ * header → optional hero → RealScout office listings → page content → Calendly → footer.
  */
 export function PublicPageShell({ children, hero, before }: PublicPageShellProps) {
   return (
@@ -24,6 +25,7 @@ export function PublicPageShell({ children, hero, before }: PublicPageShellProps
       {hero}
       <RealScoutOfficeListingsSection />
       {children}
+      <CalendlyScheduleSection />
       <SiteFooter />
     </>
   );

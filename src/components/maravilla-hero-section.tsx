@@ -1,5 +1,7 @@
-import { MapPin, Star, Phone, Search, ArrowRight, CheckCircle } from "lucide-react";
+import { MapPin, Star, Search, ArrowRight, CheckCircle, Calendar } from "lucide-react";
 
+import { CalendlyButton } from "@/components/calendly-button";
+import { DrJanPortrait } from "@/components/dr-jan-portrait";
 import { SiteImage } from "@/components/site-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,13 +22,16 @@ export function MaravillaHeroSection() {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <Badge
-                variant="secondary"
-                className="w-fit border border-gold-400/40 bg-transparent font-sans uppercase tracking-widest text-gold-300 duration-1000 animate-in fade-in"
-              >
-                <MapPin className="mr-2 h-4 w-4" />
-                Las Vegas, NV &bull; Prime Location
-              </Badge>
+              <div className="flex items-center gap-4 duration-1000 animate-in fade-in">
+                <DrJanPortrait size="lg" priority className="ring-2 ring-gold-300" />
+                <Badge
+                  variant="secondary"
+                  className="w-fit border border-gold-400/40 bg-transparent font-sans uppercase tracking-widest text-gold-300"
+                >
+                  <MapPin className="mr-2 h-4 w-4" />
+                  Las Vegas, NV &bull; Prime Location
+                </Badge>
+              </div>
               <h1 className="font-serif text-5xl leading-tight text-cream-100 duration-1000 animate-in slide-in-from-bottom-4 lg:text-7xl">
                 Find Your <span className="text-gold-300">Dream Home</span>
               </h1>
@@ -43,11 +48,11 @@ export function MaravillaHeroSection() {
                 className="group bg-gold-400 px-8 py-4 font-sans text-lg uppercase tracking-wide text-navy-800 hover:bg-gold-300"
                 asChild
               >
-                <a href="tel:+17022221964">
-                  <Search className="mr-2 h-5 w-5" />
-                  Search Homes
+                <CalendlyButton event="homeTour" utmMedium="hero" utmCampaign="hero-tour">
+                  <Calendar className="mr-2 h-5 w-5" />
+                  Schedule a Tour
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </a>
+                </CalendlyButton>
               </Button>
               <Button
                 size="lg"
@@ -56,7 +61,7 @@ export function MaravillaHeroSection() {
                 asChild
               >
                 <a href="#home-valuation">
-                  <Phone className="mr-2 h-5 w-5" />
+                  <Search className="mr-2 h-5 w-5" />
                   Get Home Valuation
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </a>
@@ -127,35 +132,35 @@ export function MaravillaHeroSection() {
               </CardContent>
             </Card>
 
-            <Card className="group absolute -bottom-6 -left-6 border-gold-200/40 shadow-lg transition-all duration-300 hover:shadow-xl">
-              <CardContent className="p-4">
-                <div className="flex items-center space-x-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gold-100 transition-colors group-hover:bg-gold-200">
-                    <MapPin className="h-6 w-6 text-gold-600" />
+            <CalendlyButton event="homeTour" utmMedium="hero" utmCampaign="hero-showing-card" className="block">
+              <Card className="group absolute -bottom-6 -left-6 border-gold-200/40 shadow-lg transition-all duration-300 hover:shadow-xl">
+                <CardContent className="p-4">
+                  <div className="flex items-center space-x-3">
+                    <DrJanPortrait size="xs" />
+                    <div>
+                      <div className="font-serif text-navy-800">Schedule Showing</div>
+                      <div className="text-sm text-navy-400">Available Daily</div>
+                      <div className="text-xs uppercase tracking-widest text-gold-600">Book Online</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-serif text-navy-800">Schedule Showing</div>
-                    <div className="text-sm text-navy-400">Available Daily</div>
-                    <div className="text-xs uppercase tracking-widest text-gold-600">Book Online</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </CalendlyButton>
 
-            <Card className="group absolute -right-6 -top-6 border-gold-200/40 shadow-lg transition-all duration-300 hover:shadow-xl">
-              <CardContent className="p-4">
-                <div className="flex items-center space-x-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-navy-100 transition-colors group-hover:bg-navy-200">
-                    <Phone className="h-6 w-6 text-navy-600" />
+            <a href="tel:+17022221964" className="block">
+              <Card className="group absolute -right-6 -top-6 border-gold-200/40 shadow-lg transition-all duration-300 hover:shadow-xl">
+                <CardContent className="p-4">
+                  <div className="flex items-center space-x-3">
+                    <DrJanPortrait size="xs" />
+                    <div>
+                      <div className="font-serif text-navy-800">Call Now</div>
+                      <div className="text-sm text-navy-400">702-222-1964</div>
+                      <div className="text-xs uppercase tracking-widest text-navy-500">Free Consultation</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-serif text-navy-800">Call Now</div>
-                    <div className="text-sm text-navy-400">702-222-1964</div>
-                    <div className="text-xs uppercase tracking-widest text-navy-500">Free Consultation</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </a>
           </div>
         </div>
       </div>

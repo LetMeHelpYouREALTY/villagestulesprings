@@ -2,10 +2,14 @@ import Link from "next/link";
 
 import { Mail, MapPin, Phone } from "lucide-react";
 
+import { CalendlyButton } from "@/components/calendly-button";
+import { DrJanPortrait } from "@/components/dr-jan-portrait";
+
 const FOOTER_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Dr. Duffy" },
   { href: "/blog/las-vegas-market-update-2024", label: "Market Insights" },
+  { href: "/#schedule", label: "Schedule a Call" },
 ];
 
 export function SiteFooter() {
@@ -13,8 +17,16 @@ export function SiteFooter() {
     <footer className="bg-navy-800 font-sans text-cream-200">
       <div className="container mx-auto grid gap-10 px-4 py-16 md:grid-cols-3">
         <div>
-          <p className="font-serif text-2xl text-cream-100">Villages at Tule Springs</p>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-cream-300">
+          <div className="flex items-center gap-4">
+            <DrJanPortrait size="md" className="ring-2 ring-gold-300" />
+            <div>
+              <p className="font-serif text-2xl text-cream-100">Villages at Tule Springs</p>
+              <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-300">
+                Dr. Janet Duffy, REALTOR&reg;
+              </p>
+            </div>
+          </div>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream-300">
             Institutional-grade market knowledge, delivered with local execution &mdash; guiding buyers and sellers
             through the Las Vegas luxury market.
           </p>
@@ -38,15 +50,29 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm">
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-gold-300" />
-              702-222-1964
+              <a href="tel:+17022221964" className="hover:text-gold-300">
+                702-222-1964
+              </a>
             </li>
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-gold-300" />
-              DrDuffySells@VillagesTuleSprings.com
+              <a href="mailto:DrDuffySells@VillagesTuleSprings.com" className="hover:text-gold-300">
+                DrDuffySells@VillagesTuleSprings.com
+              </a>
             </li>
-            <li className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-gold-300" />
-              Las Vegas &amp; Henderson, NV
+            <li className="flex items-start gap-2">
+              <MapPin className="mt-0.5 h-4 w-4 text-gold-300" />
+              Villages at Tule Springs, North Las Vegas, NV 89084
+            </li>
+            <li>
+              <CalendlyButton
+                event="conversation"
+                utmMedium="footer"
+                utmCampaign="footer-portrait"
+                className="inline-flex rounded-md bg-gold-400 px-4 py-2 font-sans text-xs uppercase tracking-widest text-navy-800 hover:bg-gold-300"
+              >
+                Schedule 15 Minutes
+              </CalendlyButton>
             </li>
           </ul>
         </div>

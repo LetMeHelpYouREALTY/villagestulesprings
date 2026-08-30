@@ -8,7 +8,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  Calendar,
   Clock,
   Star,
   Users,
@@ -30,6 +29,9 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { CalendlyButton } from "@/components/calendly-button";
+import { CalendlyInlineWidget } from "@/components/calendly-inline-widget";
+import { DrJanPortrait } from "@/components/dr-jan-portrait";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -87,32 +89,18 @@ const virtualTours: VirtualTour[] = [
 
 const maravillaContact: MaravillaContactInfo = {
   salesOffice: {
-    phone: "(702) 555-MARAVILLA",
-    email: "sales@maravillahomes.com",
-    address: "123 Maravilla Boulevard, Las Vegas, NV 89134",
+    phone: "702-222-1964",
+    email: "DrDuffySells@VillagesTuleSprings.com",
+    address: "Villages at Tule Springs, North Las Vegas, NV 89084",
     hours: "Mon-Sun: 9AM-6PM",
   },
   salesTeam: [
     {
-      name: "Sarah Johnson",
-      title: "Senior Sales Consultant",
-      phone: "(702) 555-0101",
-      email: "sarah.johnson@maravillahomes.com",
-      specialties: ["First-time Buyers", "Family Homes", "Investment Properties"],
-    },
-    {
-      name: "Michael Chen",
-      title: "Luxury Sales Specialist",
-      phone: "(702) 555-0102",
-      email: "michael.chen@maravillahomes.com",
-      specialties: ["Executive Homes", "Custom Builds", "Relocation Services"],
-    },
-    {
-      name: "Elena Rodriguez",
-      title: "Community Relations Manager",
-      phone: "(702) 555-0103",
-      email: "elena.rodriguez@maravillahomes.com",
-      specialties: ["Community Events", "Amenities Tours", "New Resident Services"],
+      name: "Dr. Janet Duffy",
+      title: "REALTOR®, BHHS Nevada Properties",
+      phone: "702-222-1964",
+      email: "DrDuffySells@VillagesTuleSprings.com",
+      specialties: ["Villages at Tule Springs", "North Las Vegas", "Luxury Homes"],
     },
   ],
 };
@@ -234,7 +222,9 @@ export function MaravillaContactSection() {
                   </div>
                   <div className="flex items-center">
                     <Phone className="mr-2 h-4 w-4 text-green-600" />
-                    <span className="font-semibold">{maravillaContact.salesOffice.phone}</span>
+                    <a href="tel:+17022221964" className="font-semibold">
+                      {maravillaContact.salesOffice.phone}
+                    </a>
                   </div>
                   <div className="flex items-center">
                     <Mail className="mr-2 h-4 w-4 text-green-600" />
@@ -256,11 +246,16 @@ export function MaravillaContactSection() {
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900">{member.name}</h4>
-                        <p className="mb-2 text-sm text-gray-600">{member.title}</p>
+                        <div className="mb-2 flex items-center gap-3">
+                          <DrJanPortrait size="sm" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900">{member.name}</h4>
+                            <p className="text-sm text-gray-600">{member.title}</p>
+                          </div>
+                        </div>
                         <div className="mb-2 flex items-center text-sm text-gray-600">
                           <Phone className="mr-1 h-3 w-3" />
-                          {member.phone}
+                          <a href="tel:+17022221964">{member.phone}</a>
                         </div>
                         <div className="mb-3 flex items-center text-sm text-gray-600">
                           <Mail className="mr-1 h-3 w-3" />
@@ -274,8 +269,10 @@ export function MaravillaContactSection() {
                           ))}
                         </div>
                       </div>
-                      <Button size="sm" variant="outline">
-                        Contact
+                      <Button size="sm" variant="outline" asChild>
+                        <CalendlyButton event="conversation" utmMedium="tours" utmCampaign="sales-team">
+                          Book a Call
+                        </CalendlyButton>
                       </Button>
                     </div>
                   </CardContent>
@@ -284,7 +281,7 @@ export function MaravillaContactSection() {
             </div>
           </div>
 
-          {/* Quick Contact Form */}
+          {/* Calendly booking */}
           <div>
             <Card>
               <CardHeader>
@@ -292,106 +289,29 @@ export function MaravillaContactSection() {
               </CardHeader>
               <CardContent>
                 <Tabs defaultValue="tour" className="w-full">
-                  <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="tour">Schedule Tour</TabsTrigger>
-                    <TabsTrigger value="info">Get Info</TabsTrigger>
-                    <TabsTrigger value="consultation">Consultation</TabsTrigger>
+                  <TabsList className="grid w-full grid-cols-2">
+                    <TabsTrigger value="tour">Home Tour</TabsTrigger>
+                    <TabsTrigger value="consultation">Conversation</TabsTrigger>
                   </TabsList>
 
-                  <TabsContent value="tour" className="space-y-4">
-                    <div className="space-y-4">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <label className="text-sm font-medium">Preferred Date</label>
-                          <input type="date" className="w-full rounded-md border p-2" />
-                        </div>
-                        <div>
-                          <label className="text-sm font-medium">Preferred Time</label>
-                          <select className="w-full rounded-md border p-2">
-                            <option>9:00 AM</option>
-                            <option>10:00 AM</option>
-                            <option>11:00 AM</option>
-                            <option>2:00 PM</option>
-                            <option>3:00 PM</option>
-                            <option>4:00 PM</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium">Your Name</label>
-                        <input type="text" className="w-full rounded-md border p-2" />
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium">Phone Number</label>
-                        <input type="tel" className="w-full rounded-md border p-2" />
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium">Email</label>
-                        <input type="email" className="w-full rounded-md border p-2" />
-                      </div>
-                      <Button className="w-full bg-green-600 hover:bg-green-700">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Schedule Tour
-                      </Button>
-                    </div>
+                  <TabsContent value="tour" className="pt-4">
+                    <CalendlyInlineWidget
+                      event="homeTour"
+                      title="Schedule a 30-minute home tour"
+                      utmMedium="tours"
+                      utmCampaign="virtual-tours-tour"
+                      height={620}
+                    />
                   </TabsContent>
 
-                  <TabsContent value="info" className="space-y-4">
-                    <div className="space-y-4">
-                      <div>
-                        <label className="text-sm font-medium">Your Name</label>
-                        <input type="text" className="w-full rounded-md border p-2" />
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium">Email</label>
-                        <input type="email" className="w-full rounded-md border p-2" />
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium">What information are you looking for?</label>
-                        <textarea
-                          className="h-20 w-full rounded-md border p-2"
-                          placeholder="Tell us about your home buying needs..."
-                        ></textarea>
-                      </div>
-                      <Button className="w-full bg-green-600 hover:bg-green-700">
-                        <Mail className="mr-2 h-4 w-4" />
-                        Send Request
-                      </Button>
-                    </div>
-                  </TabsContent>
-
-                  <TabsContent value="consultation" className="space-y-4">
-                    <div className="space-y-4">
-                      <div>
-                        <label className="text-sm font-medium">Your Name</label>
-                        <input type="text" className="w-full rounded-md border p-2" />
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium">Phone Number</label>
-                        <input type="tel" className="w-full rounded-md border p-2" />
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium">Best time to call</label>
-                        <select className="w-full rounded-md border p-2">
-                          <option>Morning (9AM-12PM)</option>
-                          <option>Afternoon (12PM-5PM)</option>
-                          <option>Evening (5PM-8PM)</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label className="text-sm font-medium">Budget Range</label>
-                        <select className="w-full rounded-md border p-2">
-                          <option>$400K - $500K</option>
-                          <option>$500K - $600K</option>
-                          <option>$600K - $700K</option>
-                          <option>$700K+</option>
-                        </select>
-                      </div>
-                      <Button className="w-full bg-green-600 hover:bg-green-700">
-                        <Phone className="mr-2 h-4 w-4" />
-                        Request Consultation
-                      </Button>
-                    </div>
+                  <TabsContent value="consultation" className="pt-4">
+                    <CalendlyInlineWidget
+                      event="conversation"
+                      title="Schedule a 15-minute conversation"
+                      utmMedium="tours"
+                      utmCampaign="virtual-tours-consult"
+                      height={620}
+                    />
                   </TabsContent>
                 </Tabs>
               </CardContent>

@@ -39,6 +39,8 @@ import {
   Share2,
 } from "lucide-react";
 
+import { CalendlyButton } from "@/components/calendly-button";
+import { DrJanPortrait } from "@/components/dr-jan-portrait";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -408,16 +410,25 @@ export function MaravillaVirtualTours() {
         <div className="mt-16 text-center">
           <Card className="mx-auto max-w-2xl border-green-200 bg-gradient-to-r from-green-50 to-blue-50">
             <CardContent className="p-8">
+              <div className="mb-4 flex justify-center">
+                <DrJanPortrait size="md" className="ring-2 ring-gold-300" />
+              </div>
               <h3 className="mb-4 text-2xl font-bold text-gray-900">Ready for an In-Person Tour?</h3>
-              <p className="mb-6 text-gray-600">Experience Maravilla in person with a guided tour by our sales team.</p>
+              <p className="mb-6 text-gray-600">
+                Walk the homes with Dr. Jan Duffy — book a 30-minute tour or call 702-222-1964.
+              </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                <Button size="lg" className="bg-green-600 hover:bg-green-700">
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Schedule In-Person Tour
+                <Button size="lg" className="bg-green-600 hover:bg-green-700" asChild>
+                  <CalendlyButton event="homeTour" utmMedium="tours-v2" utmCampaign="in-person">
+                    <Calendar className="mr-2 h-5 w-5" />
+                    Schedule In-Person Tour
+                  </CalendlyButton>
                 </Button>
-                <Button size="lg" variant="outline">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Call (702) 555-MARAVILLA
+                <Button size="lg" variant="outline" asChild>
+                  <a href="tel:+17022221964">
+                    <Phone className="mr-2 h-5 w-5" />
+                    Call 702-222-1964
+                  </a>
                 </Button>
               </div>
             </CardContent>

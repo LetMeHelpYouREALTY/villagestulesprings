@@ -1,6 +1,9 @@
 import { MapPin, Navigation } from "lucide-react";
 
+import { CalendlyButton } from "@/components/calendly-button";
+import { CalendlyInlineWidget } from "@/components/calendly-inline-widget";
 import { HeadingPhoto } from "@/components/heading-photo";
+import { SectionIntro } from "@/components/section-intro";
 import { Button } from "@/components/ui/button";
 import { getMapEmbedUrl } from "@/config/env";
 import { MEDIA } from "@/lib/media-catalog";
@@ -11,15 +14,15 @@ export function LocationMapSection() {
   return (
     <section className="bg-cream-50 py-24">
       <div className="container mx-auto px-4">
-        <div className="mb-12 text-center">
-          <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-600">Location</p>
-          <h2 className="mb-4 mt-2 font-serif text-4xl text-navy-800 lg:text-5xl">
-            Visit <span className="text-gold-600">Villages at Tule Springs</span>
-          </h2>
-          <p className="mx-auto max-w-2xl font-sans text-xl font-light text-navy-500">
-            North Las Vegas master-planned living — minutes from shopping, dining, and the Strip corridor.
-          </p>
-        </div>
+        <SectionIntro
+          kicker="Location"
+          title={
+            <>
+              Visit <span className="text-gold-600">Villages at Tule Springs</span>
+            </>
+          }
+          subtitle="North Las Vegas master-planned living — minutes from shopping, dining, and the Strip corridor."
+        />
 
         <HeadingPhoto asset={MEDIA.tuleSprings} className="mx-auto mb-8 max-w-5xl" />
 
@@ -38,6 +41,11 @@ export function LocationMapSection() {
 
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button asChild className="bg-gold-400 font-sans uppercase tracking-widest text-navy-800 hover:bg-gold-300">
+            <CalendlyButton event="homeTour" utmMedium="map" utmCampaign="location-tour">
+              Schedule a Visit
+            </CalendlyButton>
+          </Button>
+          <Button asChild className="bg-navy-700 font-sans uppercase tracking-widest text-cream-100 hover:bg-navy-800">
             <a
               href="https://www.google.com/maps/dir/?api=1&destination=Villages+at+Tule+Springs,+North+Las+Vegas,+NV"
               target="_blank"
@@ -57,6 +65,17 @@ export function LocationMapSection() {
               Call 702-222-1964
             </a>
           </Button>
+        </div>
+
+        <div className="mx-auto mt-12 max-w-4xl">
+          <h3 className="mb-4 text-center font-serif text-2xl text-navy-800">Book a 30-Minute Home Tour</h3>
+          <CalendlyInlineWidget
+            event="homeTour"
+            title="Schedule a 30-minute home tour at Villages at Tule Springs"
+            utmMedium="map"
+            utmCampaign="location-inline-tour"
+            height={680}
+          />
         </div>
       </div>
     </section>

@@ -220,6 +220,15 @@ export const MEDIA = {
     "Luxury home at Villages at Tule Springs, North Las Vegas",
     "1:1",
   ),
+  drJanDuffy: {
+    id: "vts-dr-jan-duffy",
+    gitSrc: "/images/dr-jan-duffy.png",
+    alt: "Dr. Jan Duffy, REALTOR, Berkshire Hathaway HomeServices Nevada Properties",
+    heading: "Dr. Jan Duffy",
+    aspect: "1:1",
+    width: 800,
+    height: 800,
+  },
 } as const;
 
 export type MediaKey = keyof typeof MEDIA;

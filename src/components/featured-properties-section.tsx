@@ -1,5 +1,7 @@
 import { Bath, Bed, MapPin, Ruler } from "lucide-react";
 
+import { CalendlyButton } from "@/components/calendly-button";
+import { SectionIntro } from "@/components/section-intro";
 import { SiteImage } from "@/components/site-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -46,16 +48,16 @@ export function FeaturedPropertiesSection() {
   return (
     <section className="bg-cream-50 py-24">
       <div className="container mx-auto px-4">
-        <div className="mb-16 text-center">
-          <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-600">Available Now</p>
-          <h2 className="mb-4 mt-2 font-serif text-4xl text-navy-800 lg:text-5xl">
-            Featured <span className="text-gold-600">Properties</span>
-          </h2>
-          <p className="mx-auto max-w-2xl font-sans text-xl font-light text-navy-500">
-            A curated selection of homes in and around Villages at Tule Springs — each presented with institutional
-            care.
-          </p>
-        </div>
+        <SectionIntro
+          kicker="Available Now"
+          title={
+            <>
+              Featured <span className="text-gold-600">Properties</span>
+            </>
+          }
+          subtitle="A curated selection of homes in and around Villages at Tule Springs — each presented with institutional care."
+          className="mb-16"
+        />
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {FEATURED_PROPERTIES.map((property) => (
@@ -97,7 +99,9 @@ export function FeaturedPropertiesSection() {
                   className="w-full rounded-lg border-navy-200/40 font-sans uppercase tracking-widest text-navy-700 hover:border-gold-400 hover:bg-gold-50 hover:text-navy-800"
                   asChild
                 >
-                  <a href="tel:+17022221964">View Details</a>
+                  <CalendlyButton event="homeTour" utmMedium="featured" utmCampaign={`featured-${property.id}`}>
+                    Schedule a Showing
+                  </CalendlyButton>
                 </Button>
               </CardContent>
             </Card>

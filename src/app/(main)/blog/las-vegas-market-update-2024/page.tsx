@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { CalendlyButton } from "@/components/calendly-button";
+import { CalendlyInlineWidget } from "@/components/calendly-inline-widget";
+import { DrJanPortrait } from "@/components/dr-jan-portrait";
 import { HeadingPhoto } from "@/components/heading-photo";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { generateArticleMetadata } from "@/config/metadata-config";
@@ -45,11 +48,12 @@ export default function BlogPostPage() {
       <main className="bg-cream-50 px-4 py-16">
         <article className="container mx-auto max-w-4xl">
           <header className="mb-12">
-            <div className="mb-4 text-sm uppercase tracking-widest text-gold-600">
+            <div className="mb-4 flex flex-wrap items-center gap-3 text-sm uppercase tracking-widest text-gold-600">
+              <DrJanPortrait size="xs" className="ring-2 ring-gold-300" />
               <time dateTime="2024-01-15T10:00:00Z">January 15, 2024</time>
-              <span className="mx-2">•</span>
+              <span>•</span>
               <span>Market Analysis</span>
-              <span className="mx-2">•</span>
+              <span>•</span>
               <span>Dr. Janet Duffy</span>
             </div>
 
@@ -143,7 +147,10 @@ export default function BlogPostPage() {
             </p>
 
             <div className="my-8 rounded-lg border border-gold-300 bg-navy-700 p-8 text-cream-100">
-              <h2 className="mb-4 font-serif text-2xl text-cream-100">Expert Insight</h2>
+              <div className="mb-4 flex items-center gap-3">
+                <DrJanPortrait size="sm" className="ring-2 ring-gold-300" />
+                <h2 className="font-serif text-2xl text-cream-100">Expert Insight</h2>
+              </div>
               <blockquote className="mb-4 text-lg italic text-cream-200">
                 &quot;The Las Vegas market in 2024 presents opportunities for both buyers and sellers, but success
                 requires understanding current conditions and working with experienced professionals who know the local
@@ -162,26 +169,44 @@ export default function BlogPostPage() {
 
           <footer className="mt-12 border-t border-gold-200 pt-8">
             <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-              <div>
+              <div className="flex items-start gap-4">
+                <DrJanPortrait size="md" className="ring-2 ring-gold-300" />
                 <p className="text-navy-500">
                   <strong>About the Author:</strong> Dr. Janet Duffy is a licensed real estate professional with over 15
                   years of experience in the Las Vegas market.
                 </p>
               </div>
-              <div className="flex gap-4">
-                <a
-                  href="tel:+17022221964"
+              <div className="flex flex-wrap gap-4">
+                <CalendlyButton
+                  event="conversation"
+                  utmMedium="blog"
+                  utmCampaign="market-update-2024"
                   className="rounded-lg bg-navy-700 px-4 py-2 font-sans uppercase tracking-widest text-cream-100 transition-colors hover:bg-navy-800"
                 >
-                  Contact Dr. Duffy
+                  Book a Consult
+                </CalendlyButton>
+                <a
+                  href="tel:+17022221964"
+                  className="rounded-lg border border-gold-400 px-4 py-2 font-sans uppercase tracking-widest text-gold-600 transition-colors hover:bg-gold-400 hover:text-navy-800"
+                >
+                  Call 702-222-1964
                 </a>
                 <Link
                   href="/"
-                  className="rounded-lg border border-gold-400 px-4 py-2 font-sans uppercase tracking-widest text-gold-600 transition-colors hover:bg-gold-400 hover:text-navy-800"
+                  className="rounded-lg border border-navy-200 px-4 py-2 font-sans uppercase tracking-widest text-navy-700 transition-colors hover:bg-navy-700 hover:text-cream-100"
                 >
                   View Listings
                 </Link>
               </div>
+            </div>
+            <div className="mt-10">
+              <h2 className="mb-4 font-serif text-2xl text-navy-700">Talk Through This Market with Dr. Duffy</h2>
+              <CalendlyInlineWidget
+                event="conversation"
+                title="Schedule a market consultation with Dr. Jan Duffy"
+                utmMedium="blog"
+                utmCampaign="market-update-2024-inline"
+              />
             </div>
           </footer>
         </article>
