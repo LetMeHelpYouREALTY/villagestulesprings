@@ -55,20 +55,9 @@ const nextConfig = {
         destination: "/dashboard/default",
         permanent: false,
       },
-      {
-        source: "/",
-        has: [{ type: "host", value: "www.villagestulesprings.com" }],
-        destination: "https://villagestulesprings.com/",
-        permanent: true,
-      },
-      {
-        // Keep /sitemap.xml and /robots.txt on the requested host so GSC
-        // URL-prefix properties (www vs apex) only see same-host <loc> URLs.
-        source: "/:path((?!sitemap\\.xml|robots\\.txt).*)",
-        has: [{ type: "host", value: "www.villagestulesprings.com" }],
-        destination: "https://villagestulesprings.com/:path",
-        permanent: true,
-      },
+      // Do not redirect www ↔ apex here. Vercel Domains already 307s
+      // villagestulesprings.com → www.villagestulesprings.com. A Next.js
+      // www → apex 308 against that 307 is ERR_TOO_MANY_REDIRECTS.
     ];
   },
 };

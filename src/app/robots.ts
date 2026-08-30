@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { APEX_HOST, WWW_HOST } from "@/lib/site-urls";
+import { WWW_HOST } from "@/lib/site-urls";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -11,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/dashboard/", "/admin/", "/api/", "/auth/"],
       },
     ],
-    host: `https://${APEX_HOST}`,
-    sitemap: [`https://${WWW_HOST}/sitemap.xml`, `https://${APEX_HOST}/sitemap.xml`],
+    host: `https://${WWW_HOST}`,
+    sitemap: [`https://${WWW_HOST}/sitemap.xml`],
   };
 }
