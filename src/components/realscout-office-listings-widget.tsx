@@ -10,7 +10,7 @@ export function RealScoutOfficeListingsWidget() {
   return (
     <div
       dangerouslySetInnerHTML={{
-        __html: `<realscout-office-listings agent-encoded-id="${agentId}" sort-order="STATUS_AND_SIGNIFICANT_CHANGE" listing-status="For Sale" property-types="SFR,TC"></realscout-office-listings>`,
+        __html: `<realscout-office-listings agent-encoded-id="${agentId}" sort-order="PRICE_LOW" listing-status="For Sale" property-types=",SFR" price-min="600000" price-max="900000"></realscout-office-listings>`,
       }}
     />
   );
