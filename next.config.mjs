@@ -49,26 +49,14 @@ const nextConfig = {
       },
     ];
   },
+  // Host canonicalization lives in Vercel Domains: apex 307s to www.
+  // Do not add a Next.js www → apex redirect; that pair loops (ERR_TOO_MANY_REDIRECTS).
   async redirects() {
     return [
       {
         source: "/dashboard",
         destination: "/dashboard/default",
         permanent: false,
-      },
-      {
-        source: "/",
-        has: [{ type: "host", value: "www.villagestulesprings.com" }],
-        destination: "https://villagestulesprings.com/",
-        permanent: true,
-      },
-      {
-        // Keep /sitemap.xml and /robots.txt on the requested host so GSC
-        // URL-prefix properties (www vs apex) only see same-host <loc> URLs.
-        source: "/:path((?!sitemap\\.xml|robots\\.txt).*)",
-        has: [{ type: "host", value: "www.villagestulesprings.com" }],
-        destination: "https://villagestulesprings.com/:path",
-        permanent: true,
       },
     ];
   },
