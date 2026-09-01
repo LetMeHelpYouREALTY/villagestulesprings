@@ -2,8 +2,8 @@ import { buildSitemapXml } from "@/lib/site-urls";
 
 /**
  * Host-matched sitemap so GSC "URL not allowed" cannot recur.
- * www.villagestulesprings.com/sitemap.xml lists only www URLs;
- * villagestulesprings.com/sitemap.xml lists only apex URLs.
+ * The Host header decides apex vs www <loc> URLs. Vercel 307s apex → www,
+ * so production requests typically hit this route on www.
  * Foreign hosts (lasvegasrealestate.com) are never emitted.
  */
 export function GET(request: Request): Response {
