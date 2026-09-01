@@ -1,9 +1,11 @@
+import { BuyerServicesSection } from "@/components/buyer-services-section";
 import { FeaturedPropertiesSection } from "@/components/featured-properties-section";
 import { HeadingPhoto } from "@/components/heading-photo";
 import { LocationMapSection } from "@/components/location-map-section";
 import { MaravillaHeroSection } from "@/components/maravilla-hero-section";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { SectionIntro } from "@/components/section-intro";
+import { TuleSpringsLocalGuide } from "@/components/tule-springs-local-guide";
 import { getRealScoutAgentId } from "@/config/env";
 import { MEDIA } from "@/lib/media-catalog";
 
@@ -11,7 +13,8 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
   name: "Dr. Janet Duffy",
-  description: "Expert Las Vegas real estate services with 15+ years experience",
+  description:
+    "Tule Springs buyer specialist for The Villages at Tule Springs and Heartland Cottages in North Las Vegas 89084",
   url: "https://villagestulesprings.com",
   telephone: "702-222-1964",
   email: "DrDuffySells@VillagesTuleSprings.com",
@@ -30,11 +33,14 @@ const structuredData = {
   },
   areaServed: [
     {
-      "@type": "City",
-      name: "Las Vegas",
-      containedInPlace: {
-        "@type": "State",
-        name: "Nevada",
+      "@type": "Place",
+      name: "The Villages at Tule Springs",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "North Las Vegas",
+        addressRegion: "NV",
+        postalCode: "89084",
+        addressCountry: "US",
       },
     },
     {
@@ -45,42 +51,45 @@ const structuredData = {
         name: "Nevada",
       },
     },
-    {
-      "@type": "City",
-      name: "Henderson",
-      containedInPlace: {
-        "@type": "State",
-        name: "Nevada",
-      },
-    },
   ],
-  serviceType: ["Real Estate Sales", "Property Valuation", "Home Buying Consultation", "Home Selling Consultation"],
+  knowsAbout: [
+    "The Villages at Tule Springs",
+    "Heartland Cottages",
+    "North Las Vegas 89084 new construction",
+    "D.R. Horton buyer representation",
+  ],
+  serviceType: [
+    "Tule Springs buyer representation",
+    "New-construction purchase",
+    "Home valuation",
+    "Resale search in 89084",
+  ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Real Estate Services",
+    name: "Tule Springs Buyer Services",
     itemListElement: [
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Home Buying Services",
-          description: "Expert assistance finding and purchasing your dream home",
+          name: "Buy a home in Tule Springs",
+          description: "Independent buyer representation for Villages at Tule Springs and Heartland Cottages",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Home Selling Services",
-          description: "Professional marketing and sales support for your property",
+          name: "Heartland Cottages model tours",
+          description: "Tour the 1,700 and 1,865 sq ft gated models with Dr. Jan Duffy",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Property Valuation",
-          description: "Free home valuation and market analysis",
+          name: "89084 market analysis",
+          description: "Comps, SID and LID review, and closing-cost math for North Las Vegas 89084",
         },
       },
     ],
@@ -112,13 +121,13 @@ export default function Home() {
         <section className="bg-cream-100 py-24">
           <div className="container mx-auto px-4">
             <SectionIntro
-              kicker="Advanced Search"
+              kicker="Tule Springs Search"
               title={
                 <>
-                  Find Your <span className="text-gold-600">Perfect Home</span>
+                  Search homes in <span className="text-gold-600">89084</span>
                 </>
               }
-              subtitle="Use our advanced search to find properties that match your exact criteria and budget."
+              subtitle="Filter Villages at Tule Springs and North Las Vegas listings with Dr. Jan Duffy's RealScout search."
             />
             <HeadingPhoto asset={MEDIA.perfectHome} className="mx-auto mb-10 max-w-5xl" />
             <div className="mx-auto max-w-4xl rounded-lg border border-navy-200/20 bg-cream-50 p-6 md:p-8">
@@ -129,18 +138,20 @@ export default function Home() {
 
         {/* Featured Properties — luxury card grid */}
         <FeaturedPropertiesSection />
+        <BuyerServicesSection />
+        <TuleSpringsLocalGuide />
 
         {/* RealScout Your Listings */}
         <section className="bg-cream-100 py-24">
           <div className="container mx-auto px-4">
             <SectionIntro
-              kicker="Exclusive Listings"
+              kicker="89084 Inventory"
               title={
                 <>
-                  My <span className="text-gold-600">Featured Listings</span>
+                  More <span className="text-gold-600">Tule Springs</span> listings
                 </>
               }
-              subtitle="Explore my exclusive listings across Las Vegas. Each property is carefully selected and professionally marketed for the best results."
+              subtitle="Resale and new-construction homes Dr. Jan Duffy can tour with you across The Villages at Tule Springs."
             />
             <HeadingPhoto asset={MEDIA.featuredListings} className="mx-auto mb-10 max-w-5xl" />
             <realscout-your-listings
@@ -166,7 +177,7 @@ export default function Home() {
                   Get Your <span className="text-gold-300">Home Valuation</span>
                 </>
               }
-              subtitle="Discover your home's current market value with our free, professional valuation service. Accurate insights based on recent sales and market trends in your area."
+              subtitle="Discover your home's current market value in 89084 and nearby North Las Vegas. Dr. Jan Duffy walks the comps with you."
             />
             <HeadingPhoto asset={MEDIA.homeValuation} className="mx-auto mb-10 max-w-5xl" />
             <div className="mx-auto max-w-3xl rounded-lg border border-gold-200/20 bg-navy-700/50 p-8">

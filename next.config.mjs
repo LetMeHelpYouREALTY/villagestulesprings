@@ -30,7 +30,7 @@ const nextConfig = {
       "img-src 'self' data: blob: https: https://res.cloudinary.com https://maps.gstatic.com https://maps.googleapis.com https://*.googleusercontent.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com",
       "font-src 'self' data: https://fonts.gstatic.com",
-      "frame-src 'self' https://www.google.com https://maps.google.com https://www.google.com/maps/ https://calendly.com https://assets.calendly.com",
+      "frame-src 'self' https://www.google.com https://maps.google.com https://www.google.com/maps/ https://calendly.com https://assets.calendly.com https://www.youtube.com https://www.youtube-nocookie.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self' https://calendly.com",
@@ -54,6 +54,11 @@ const nextConfig = {
         source: "/dashboard",
         destination: "/dashboard/default",
         permanent: false,
+      },
+      {
+        source: "/listings",
+        destination: "/heartland-cottages",
+        permanent: true,
       },
       {
         source: "/",

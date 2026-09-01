@@ -19,6 +19,9 @@ export default function NotFound() {
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <Button asChild className="bg-navy-700 text-cream-100 hover:bg-navy-800">
+            <Link href="/heartland-cottages">View Model Homes</Link>
+          </Button>
+          <Button asChild variant="outline">
             <Link href="/">Back to Home</Link>
           </Button>
           <Button asChild variant="outline">

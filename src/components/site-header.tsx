@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
+  { href: "/buyers", label: "Buy" },
+  { href: "/heartland-cottages", label: "Model Homes" },
   { href: "/about", label: "About" },
   { href: "/blog/las-vegas-market-update-2024", label: "Market Insights" },
 ];

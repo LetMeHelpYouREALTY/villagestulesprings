@@ -189,16 +189,18 @@ export const homePageMetadata = generatePageMetadata({
 });
 
 export const aboutPageMetadata = generatePageMetadata({
-  title: `About Dr. Janet Duffy | ${APP_CONFIG.name}`,
-  description: `Learn about Dr. Janet Duffy, your trusted Las Vegas real estate expert with 15+ years of experience helping clients buy and sell homes in Las Vegas, Henderson, and surrounding areas.`,
+  title: `Tule Springs Buyer Agent | About Dr. Jan Duffy`,
+  description: `Dr. Jan Duffy is a licensed Nevada REALTOR® representing buyers in The Villages at Tule Springs and Heartland Cottages, North Las Vegas 89084. Call 702-222-1964.`,
   url: `${baseUrl}/about`,
   type: "profile",
+  canonical: "/about",
 });
 
 export const listingsPageMetadata = generatePageMetadata({
-  title: `Las Vegas Homes for Sale | ${APP_CONFIG.name}`,
-  description: `Browse exclusive Las Vegas home listings with Dr. Janet Duffy. Find your dream home with our comprehensive property search and expert real estate guidance.`,
-  url: `${baseUrl}/listings`,
+  title: `Heartland Cottages Model Homes | ${APP_CONFIG.name}`,
+  description: `Browse gated Heartland Cottages model homes in The Villages at Tule Springs with Dr. Janet Duffy. 1,700 and 1,865 sq ft plans in North Las Vegas 89084.`,
+  url: `${baseUrl}/heartland-cottages`,
+  canonical: "/heartland-cottages",
   images: [
     {
       url: "/og-listings.jpg",

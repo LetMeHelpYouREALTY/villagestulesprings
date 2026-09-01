@@ -1,4 +1,4 @@
-import { MapPin, Star, Search, ArrowRight, CheckCircle, Calendar } from "lucide-react";
+import { ArrowRight, Calendar, CheckCircle, MapPin, Search } from "lucide-react";
 
 import { CalendlyButton } from "@/components/calendly-button";
 import { DrJanPortrait } from "@/components/dr-jan-portrait";
@@ -29,15 +29,15 @@ export function MaravillaHeroSection() {
                   className="w-fit border border-gold-400/40 bg-transparent font-sans uppercase tracking-widest text-gold-300"
                 >
                   <MapPin className="mr-2 h-4 w-4" />
-                  Las Vegas, NV &bull; Prime Location
+                  Tule Springs · North Las Vegas 89084
                 </Badge>
               </div>
               <h1 className="font-serif text-5xl leading-tight text-cream-100 duration-1000 animate-in slide-in-from-bottom-4 lg:text-7xl">
-                Find Your <span className="text-gold-300">Dream Home</span>
+                Buy in <span className="text-gold-300">Tule Springs</span>
               </h1>
               <p className="max-w-lg font-sans text-xl font-light leading-relaxed text-cream-300 delay-300 duration-1000 animate-in fade-in">
-                Institutional-grade market knowledge, local execution. Whether you&apos;re buying, selling, or
-                investing, navigate the Las Vegas market with a verified specialist.
+                Dr. Jan Duffy is the buyer&apos;s agent for The Villages at Tule Springs. Heartland Cottages models,
+                89084 comps, and new-construction contracts — one local desk.
               </p>
             </div>
 
@@ -79,22 +79,23 @@ export function MaravillaHeroSection() {
             {/* Enhanced Stats */}
             <div className="grid grid-cols-3 gap-6 border-t border-cream-100/10 pt-8 delay-1000 duration-1000 animate-in fade-in">
               <div className="group text-center">
-                <div className="font-serif text-4xl text-gold-300 transition-transform group-hover:scale-110">500+</div>
-                <div className="text-sm text-cream-300">Homes Sold</div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-gold-400">Trusted Experience</div>
+                <div className="font-serif text-4xl text-gold-300 transition-transform group-hover:scale-110">
+                  1,280
+                </div>
+                <div className="text-sm text-cream-300">Master-plan acres</div>
+                <div className="mt-1 text-xs uppercase tracking-widest text-gold-400">Villages at Tule Springs</div>
               </div>
               <div className="group text-center">
-                <div className="font-serif text-4xl text-gold-300 transition-transform group-hover:scale-110">4.9</div>
-                <div className="flex items-center justify-center text-sm text-cream-300">
-                  <Star className="mr-1 h-4 w-4 fill-current" />
-                  Rating
+                <div className="font-serif text-4xl text-gold-300 transition-transform group-hover:scale-110">
+                  8,683
                 </div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-gold-400">Based on 200+ Reviews</div>
+                <div className="text-sm text-cream-300">Homes planned</div>
+                <div className="mt-1 text-xs uppercase tracking-widest text-gold-400">Master-plan build-out</div>
               </div>
               <div className="group text-center">
                 <div className="font-serif text-4xl text-gold-300 transition-transform group-hover:scale-110">15+</div>
                 <div className="text-sm text-cream-300">Years Experience</div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-gold-400">Las Vegas Market</div>
+                <div className="mt-1 text-xs uppercase tracking-widest text-gold-400">Nevada REALTOR&reg;</div>
               </div>
             </div>
 
@@ -110,7 +111,7 @@ export function MaravillaHeroSection() {
               </div>
               <div className="flex items-center text-sm text-cream-300">
                 <CheckCircle className="mr-2 h-4 w-4 text-gold-300" />
-                Local Expert
+                Tule Springs specialist
               </div>
             </div>
           </div>

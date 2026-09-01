@@ -7,6 +7,10 @@ import { DrJanPortrait } from "@/components/dr-jan-portrait";
 
 const FOOTER_LINKS = [
   { href: "/", label: "Home" },
+  { href: "/buyers", label: "Buy in Tule Springs" },
+  { href: "/heartland-cottages", label: "Heartland Cottages Models" },
+  { href: "/heartland-cottages/1865-plan", label: "1865 Plan Model Home" },
+  { href: "/heartland-cottages/1700-plan", label: "1700 Plan Model Home" },
   { href: "/about", label: "About Dr. Duffy" },
   { href: "/blog/las-vegas-market-update-2024", label: "Market Insights" },
   { href: "/#schedule", label: "Schedule a Call" },
@@ -27,8 +31,7 @@ export function SiteFooter() {
             </div>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream-300">
-            Institutional-grade market knowledge, delivered with local execution &mdash; guiding buyers and sellers
-            through the Las Vegas luxury market.
+            Buyer representation for The Villages at Tule Springs and Heartland Cottages in North Las Vegas 89084.
           </p>
         </div>
 
