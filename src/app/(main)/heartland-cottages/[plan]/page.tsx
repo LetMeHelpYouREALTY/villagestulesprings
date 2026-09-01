@@ -7,6 +7,7 @@ import { CommunityHighlights } from "@/components/listings/community-highlights"
 import { MlsDisclaimer } from "@/components/listings/mls-disclaimer";
 import { ModelHomeDetail } from "@/components/listings/model-home-detail";
 import { ModelHomeFaq } from "@/components/listings/model-home-faq";
+import { ModelHomeHero } from "@/components/listings/model-home-hero";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { generatePageMetadata } from "@/config/metadata-config";
 import { SITE_NAP } from "@/config/site-nap";
@@ -52,7 +53,7 @@ export default async function HeartlandPlanPage({ params }: PlanPageProps) {
   if (!plan) notFound();
 
   return (
-    <PublicPageShell before={<JsonLd data={heartlandPlanGraph(plan)} />}>
+    <PublicPageShell before={<JsonLd data={heartlandPlanGraph(plan)} />} hero={<ModelHomeHero plan={plan} />}>
       <ModelHomeDetail plan={plan} />
       <CommunityHighlights />
       <BuilderFinancing />

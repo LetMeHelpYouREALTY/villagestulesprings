@@ -6,10 +6,17 @@ import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
-    <PublicPageShell>
+    <PublicPageShell
+      hero={
+        <section className="bg-navy-800 px-4 py-16">
+          <div className="container mx-auto max-w-4xl text-center">
+            <h1 className="font-serif text-3xl text-cream-100">Page not found</h1>
+          </div>
+        </section>
+      }
+    >
       <main className="flex min-h-[50vh] flex-col items-center justify-center space-y-4 bg-cream-50 px-4 py-24 text-center">
         <DrJanPortrait size="lg" className="ring-2 ring-gold-300" />
-        <h1 className="font-serif text-3xl text-navy-800">Page not found</h1>
         <p className="max-w-md font-sans text-navy-500">
           That page is not on villagestulesprings.com. Browse homes below, or call Dr. Jan Duffy at{" "}
           <a href="tel:+17022221964" className="text-gold-600 underline-offset-4 hover:underline">
