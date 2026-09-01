@@ -6,6 +6,7 @@ import { DrJanPortrait } from "@/components/dr-jan-portrait";
 import { HeadingPhoto } from "@/components/heading-photo";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { aboutPageMetadata } from "@/config/metadata-config";
+import { SITE_NAP } from "@/config/site-nap";
 import { MEDIA } from "@/lib/media-catalog";
 
 export const metadata: Metadata = aboutPageMetadata;
@@ -18,7 +19,8 @@ function AboutHero() {
         <p className="font-sans text-xs uppercase tracking-[0.2em] text-gold-300">Meet Your Specialist</p>
         <h1 className="mt-3 font-serif text-4xl text-cream-100 md:text-5xl">About Dr. Janet Duffy</h1>
         <p className="mx-auto mt-4 max-w-2xl font-sans text-lg font-light text-cream-300">
-          Licensed Nevada REALTOR&reg; with 15+ years guiding buyers and sellers across Las Vegas and North Las Vegas.
+          Tule Springs buyer specialist. Licensed Nevada REALTOR&reg; for The Villages at Tule Springs and Heartland
+          Cottages in North Las Vegas 89084.
         </p>
         <HeadingPhoto asset={MEDIA.aboutHero} className="mx-auto mt-10 max-w-3xl" />
       </div>
@@ -33,8 +35,8 @@ export default function AboutPage() {
         <div className="container mx-auto max-w-4xl">
           <div className="max-w-none">
             <p className="mb-8 text-xl leading-relaxed text-navy-500">
-              Dr. Janet Duffy is a licensed real estate professional with over 15 years of experience helping clients
-              buy and sell homes in the Las Vegas metropolitan area.
+              Dr. Jan Duffy represents buyers in The Villages at Tule Springs. New construction, Heartland Cottages
+              models, and 89084 resale search — one local desk at {SITE_NAP.phoneDisplay}.
             </p>
 
             <div className="mb-12 grid gap-8 md:grid-cols-2">
@@ -45,11 +47,11 @@ export default function AboutPage() {
                 </div>
                 <HeadingPhoto asset={MEDIA.experienceExpertise} className="mb-4" />
                 <ul className="space-y-2 text-navy-500">
-                  <li>&bull; 15+ years in Las Vegas real estate</li>
-                  <li>&bull; Licensed Nevada Real Estate Agent</li>
-                  <li>&bull; Certified Home Valuation Specialist</li>
-                  <li>&bull; Luxury Home Marketing Expert</li>
-                  <li>&bull; First-Time Homebuyer Specialist</li>
+                  <li>&bull; Tule Springs buyer representation</li>
+                  <li>&bull; Licensed Nevada REALTOR&reg;, BHHS Nevada Properties</li>
+                  <li>&bull; Heartland Cottages new-construction contracts</li>
+                  <li>&bull; 89084 comps, SID/LID, and HOA review</li>
+                  <li>&bull; Model tours at 1,700 and 1,865 sq ft plans</li>
                 </ul>
               </div>
 
@@ -60,11 +62,11 @@ export default function AboutPage() {
                 </div>
                 <HeadingPhoto asset={MEDIA.areasServed} className="mb-4" />
                 <ul className="space-y-2 text-navy-500">
-                  <li>&bull; Las Vegas</li>
-                  <li>&bull; Henderson</li>
-                  <li>&bull; Summerlin</li>
-                  <li>&bull; Green Valley</li>
-                  <li>&bull; Anthem</li>
+                  <li>&bull; The Villages at Tule Springs</li>
+                  <li>&bull; Heartland Cottages (gated)</li>
+                  <li>&bull; North Las Vegas 89084</li>
+                  <li>&bull; Aliante</li>
+                  <li>&bull; North 215 Beltway corridor</li>
                 </ul>
               </div>
             </div>
@@ -76,14 +78,11 @@ export default function AboutPage() {
               </div>
               <HeadingPhoto asset={MEDIA.professionalApproach} className="mb-6" />
               <p className="mb-4 text-navy-500">
-                Dr. Janet Duffy combines deep local market knowledge with a personalized approach to help clients
-                achieve their real estate goals. Whether you&apos;re buying your first home, selling a residence, or
-                investing in Las Vegas real estate, Dr. Duffy provides expert guidance every step of the way.
+                Builder sales teams represent the builder. Dr. Duffy represents you. She walks Heartland lots, checks
+                SID and LID line items, and lines list price against current 89084 comps before you write.
               </p>
               <p className="text-navy-500">
-                Her commitment to excellence and client satisfaction has earned her recognition as one of Las
-                Vegas&apos;s top real estate professionals, with hundreds of successful transactions and satisfied
-                clients.
+                Call 702-222-1964 to tour the standing 1,700 and 1,865 sq ft models in gated Heartland Cottages.
               </p>
             </div>
 

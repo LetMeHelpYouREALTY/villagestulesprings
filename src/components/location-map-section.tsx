@@ -21,7 +21,7 @@ export function LocationMapSection() {
               Visit <span className="text-gold-600">Villages at Tule Springs</span>
             </>
           }
-          subtitle="North Las Vegas master-planned living — minutes from shopping, dining, and the Strip corridor."
+          subtitle="North Las Vegas 89084 — The Villages at Tule Springs on the North 215 Beltway, next to Tule Springs Fossil Beds National Monument."
         />
 
         <HeadingPhoto asset={MEDIA.tuleSprings} className="mx-auto mb-8 max-w-5xl" />

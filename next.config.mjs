@@ -25,12 +25,13 @@ const nextConfig = {
     // Google Maps: embeds from maps.google.com / www.google.com.
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://em.realscout.com https://www.realscout.com https://maps.googleapis.com https://assets.calendly.com https://calendly.com",
-      "connect-src 'self' https://em.realscout.com https://www.realscout.com https://res.cloudinary.com https://api.cloudinary.com https://maps.googleapis.com https://calendly.com https://api.calendly.com https://assets.calendly.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://em.realscout.com https://www.realscout.com https://maps.googleapis.com https://api.mapbox.com https://assets.calendly.com https://calendly.com",
+      "connect-src 'self' https://em.realscout.com https://www.realscout.com https://res.cloudinary.com https://api.cloudinary.com https://maps.googleapis.com https://api.mapbox.com https://events.mapbox.com https://calendly.com https://api.calendly.com https://assets.calendly.com",
       "img-src 'self' data: blob: https: https://res.cloudinary.com https://maps.gstatic.com https://maps.googleapis.com https://*.googleusercontent.com",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com https://em.realscout.com https://www.realscout.com",
       "font-src 'self' data: https://fonts.gstatic.com",
-      "frame-src 'self' https://www.google.com https://maps.google.com https://www.google.com/maps/ https://calendly.com https://assets.calendly.com",
+      "frame-src 'self' https://www.google.com https://maps.google.com https://www.google.com/maps/ https://calendly.com https://assets.calendly.com https://www.youtube.com https://www.youtube-nocookie.com https://www.realscout.com https://em.realscout.com",
+      "worker-src 'self' blob: https://em.realscout.com https://www.realscout.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self' https://calendly.com",

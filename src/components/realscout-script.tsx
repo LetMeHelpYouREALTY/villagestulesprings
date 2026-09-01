@@ -1,16 +1,9 @@
-import Script from "next/script";
-
 /**
- * Loads the RealScout widget script once globally.
- * Widgets call em.realscout.com for the script and www.realscout.com for API data —
- * both must be allowed in CSP (see next.config.mjs).
+ * Loads the RealScout web-component module once in the document head.
+ * A native type="module" tag is required: next/script afterInteractive only
+ * preloads this file, and beforeInteractive is rejected outside _document.
+ * Script host: em.realscout.com. API host: www.realscout.com.
  */
 export function RealScoutScript() {
-  return (
-    <Script
-      src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-      type="module"
-      strategy="afterInteractive"
-    />
-  );
+  return <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module" async />;
 }

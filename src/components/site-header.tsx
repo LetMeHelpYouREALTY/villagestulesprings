@@ -8,8 +8,10 @@ import { Button } from "@/components/ui/button";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
+  { href: "/listings", label: "Residences" },
+  { href: "/communities", label: "Neighborhoods" },
+  { href: "/sellers", label: "Sell" },
   { href: "/about", label: "About" },
-  { href: "/blog/las-vegas-market-update-2024", label: "Market Insights" },
 ];
 
 export function SiteHeader() {
@@ -55,6 +57,16 @@ export function SiteHeader() {
           </Button>
         </div>
       </div>
+      <nav
+        className="flex flex-wrap justify-center gap-x-5 gap-y-2 border-t border-gold-300/20 px-4 py-3 font-sans text-xs uppercase tracking-widest text-cream-200 lg:hidden"
+        aria-label="Primary"
+      >
+        {NAV_LINKS.filter((link) => link.href !== "/").map((link) => (
+          <Link key={link.href} href={link.href} className="transition-colors hover:text-gold-300">
+            {link.label}
+          </Link>
+        ))}
+      </nav>
     </header>
   );
 }

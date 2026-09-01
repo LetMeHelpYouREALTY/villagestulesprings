@@ -42,9 +42,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     >
       <head>
         <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
+        <RealScoutScript />
       </head>
       <body className={`${inter.className} ${luxurySerif.variable} ${luxurySans.variable} min-h-screen antialiased`}>
-        <RealScoutScript />
         <CalendlyScript />
         <PreferencesStoreProvider themeMode={themeMode} themePreset={themePreset}>
           {children}
