@@ -14,10 +14,17 @@ export const PUBLIC_SITEMAP_PATHS: readonly {
   priority: number;
 }[] = [
   { path: "/", changeFrequency: "weekly", priority: 1 },
+  { path: "/listings", changeFrequency: "weekly", priority: 0.9 },
   { path: "/buyers", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/sellers", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/communities", changeFrequency: "weekly", priority: 0.9 },
   { path: "/heartland-cottages", changeFrequency: "weekly", priority: 0.9 },
   { path: "/heartland-cottages/1865-plan", changeFrequency: "weekly", priority: 0.9 },
   { path: "/heartland-cottages/1700-plan", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/new-construction", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/private-client", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/home-valuation", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/contact", changeFrequency: "monthly", priority: 0.8 },
   { path: "/about", changeFrequency: "monthly", priority: 0.8 },
   { path: "/blog/las-vegas-market-update-2024", changeFrequency: "monthly", priority: 0.7 },
 ];

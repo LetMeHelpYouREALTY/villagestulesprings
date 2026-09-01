@@ -57,11 +57,6 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: "/listings",
-        destination: "/heartland-cottages",
-        permanent: true,
-      },
-      {
         source: "/",
         has: [{ type: "host", value: "www.villagestulesprings.com" }],
         destination: "https://villagestulesprings.com/",

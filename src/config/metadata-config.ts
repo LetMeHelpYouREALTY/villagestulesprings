@@ -197,10 +197,10 @@ export const aboutPageMetadata = generatePageMetadata({
 });
 
 export const listingsPageMetadata = generatePageMetadata({
-  title: `Heartland Cottages Model Homes | ${APP_CONFIG.name}`,
-  description: `Browse gated Heartland Cottages model homes in The Villages at Tule Springs with Dr. Janet Duffy. 1,700 and 1,865 sq ft plans in North Las Vegas 89084.`,
-  url: `${baseUrl}/heartland-cottages`,
-  canonical: "/heartland-cottages",
+  title: `Homes for Sale in Tule Springs | Residences | North Las Vegas 89084`,
+  description: `Browse live MLS residences and gated Heartland Cottages model homes in The Villages at Tule Springs with Dr. Janet Duffy. Call 702-222-1964.`,
+  url: `${baseUrl}/listings`,
+  canonical: "/listings",
   images: [
     {
       url: "/og-listings.jpg",
@@ -214,16 +214,18 @@ export const listingsPageMetadata = generatePageMetadata({
 });
 
 export const contactPageMetadata = generatePageMetadata({
-  title: `Contact Dr. Janet Duffy | ${APP_CONFIG.name}`,
-  description: `Get in touch with Dr. Janet Duffy for expert Las Vegas real estate services. Schedule a consultation for buying, selling, or home valuation services.`,
+  title: `Contact Dr. Jan Duffy | Villages at Tule Springs | North Las Vegas 89084`,
+  description: `Call Dr. Jan Duffy at 702-222-1964. Villages at Tule Springs, North Las Vegas, NV 89084. Monday–Friday 9:00 AM–6:00 PM. Book a 15-minute consult.`,
   url: `${baseUrl}/contact`,
+  canonical: "/contact",
   type: "website",
 });
 
 export const homeValuationPageMetadata = generatePageMetadata({
-  title: `Free Home Valuation | ${APP_CONFIG.name}`,
-  description: `Get a free, professional home valuation for your Las Vegas property. Dr. Janet Duffy provides accurate market analysis and pricing insights for your home.`,
+  title: `89084 Home Valuation | Tule Springs | Dr. Jan Duffy`,
+  description: `Complimentary RealScout value plus a 15-minute consult for North Las Vegas 89084. September 2026 median list $459,999. Call 702-222-1964.`,
   url: `${baseUrl}/home-valuation`,
+  canonical: "/home-valuation",
   images: [
     {
       url: "/og-valuation.jpg",

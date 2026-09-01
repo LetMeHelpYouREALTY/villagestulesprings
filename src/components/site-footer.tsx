@@ -5,21 +5,27 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { CalendlyButton } from "@/components/calendly-button";
 import { DrJanPortrait } from "@/components/dr-jan-portrait";
 
-const FOOTER_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/buyers", label: "Buy in Tule Springs" },
-  { href: "/heartland-cottages", label: "Heartland Cottages Models" },
-  { href: "/heartland-cottages/1865-plan", label: "1865 Plan Model Home" },
-  { href: "/heartland-cottages/1700-plan", label: "1700 Plan Model Home" },
+const BUY_LINKS = [
+  { href: "/listings", label: "Residences" },
+  { href: "/buyers", label: "Buyer Representation" },
+  { href: "/heartland-cottages", label: "Heartland Cottages" },
+  { href: "/new-construction", label: "New Construction" },
+  { href: "/private-client", label: "Private Client" },
+];
+
+const SELL_LINKS = [
+  { href: "/sellers", label: "Sell Your Home" },
+  { href: "/home-valuation", label: "Home Valuation" },
+  { href: "/communities", label: "Neighborhoods" },
   { href: "/about", label: "About Dr. Duffy" },
+  { href: "/contact", label: "Contact" },
   { href: "/blog/las-vegas-market-update-2024", label: "Market Insights" },
-  { href: "/#schedule", label: "Schedule a Call" },
 ];
 
 export function SiteFooter() {
   return (
     <footer className="bg-navy-800 font-sans text-cream-200">
-      <div className="container mx-auto grid gap-10 px-4 py-16 md:grid-cols-3">
+      <div className="container mx-auto grid gap-10 px-4 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-4">
             <DrJanPortrait size="md" className="ring-2 ring-gold-300" />
@@ -31,14 +37,28 @@ export function SiteFooter() {
             </div>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream-300">
-            Buyer representation for The Villages at Tule Springs and Heartland Cottages in North Las Vegas 89084.
+            Buy and sell representation for The Villages at Tule Springs and Heartland Cottages in North Las Vegas
+            89084.
           </p>
         </div>
 
         <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Explore</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Buy</p>
           <ul className="mt-4 space-y-2 text-sm">
-            {FOOTER_LINKS.map((link) => (
+            {BUY_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="transition-colors hover:text-gold-300">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Sell &amp; Areas</p>
+          <ul className="mt-4 space-y-2 text-sm">
+            {SELL_LINKS.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="transition-colors hover:text-gold-300">
                   {link.label}
