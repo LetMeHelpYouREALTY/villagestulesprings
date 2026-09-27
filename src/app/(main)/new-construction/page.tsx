@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { NearbyAmenitiesSection } from "@/components/amenities/nearby-amenities-section";
 import { JsonLd } from "@/components/json-ld";
 import { BuilderFinancing } from "@/components/listings/builder-financing";
 import { MlsDisclaimer } from "@/components/listings/mls-disclaimer";
@@ -72,6 +73,7 @@ export default function NewConstructionPage() {
           </div>
         </section>
         <BuilderFinancing />
+        <NearbyAmenitiesSection variant="preview" kicker="Live near the 215" />
         <LuxuryFaq title="New-construction questions" items={NEW_CONSTRUCTION_FAQS} />
         <MlsDisclaimer />
       </main>

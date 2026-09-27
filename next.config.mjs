@@ -26,7 +26,7 @@ const nextConfig = {
     const csp = [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://em.realscout.com https://www.realscout.com https://maps.googleapis.com https://api.mapbox.com https://assets.calendly.com https://calendly.com",
-      "connect-src 'self' https://em.realscout.com https://www.realscout.com https://res.cloudinary.com https://api.cloudinary.com https://maps.googleapis.com https://api.mapbox.com https://events.mapbox.com https://calendly.com https://api.calendly.com https://assets.calendly.com",
+      "connect-src 'self' https://em.realscout.com https://www.realscout.com https://res.cloudinary.com https://api.cloudinary.com https://maps.googleapis.com https://places.googleapis.com https://api.mapbox.com https://events.mapbox.com https://calendly.com https://api.calendly.com https://assets.calendly.com",
       "img-src 'self' data: blob: https: https://res.cloudinary.com https://maps.gstatic.com https://maps.googleapis.com https://*.googleusercontent.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com https://em.realscout.com https://www.realscout.com",
       "font-src 'self' data: https://fonts.gstatic.com",

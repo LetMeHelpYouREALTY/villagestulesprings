@@ -1,3 +1,4 @@
+import { NearbyAmenitiesSection } from "@/components/amenities/nearby-amenities-section";
 import { BuyerServicesSection } from "@/components/buyer-services-section";
 import { FeaturedPropertiesSection } from "@/components/featured-properties-section";
 import { HeadingPhoto } from "@/components/heading-photo";
@@ -44,6 +45,7 @@ export default function Home() {
         <FeaturedPropertiesSection />
         <BuyerServicesSection />
         <TuleSpringsLocalGuide />
+        <NearbyAmenitiesSection variant="preview" />
 
         {/* RealScout Your Listings */}
         <section className="bg-cream-100 py-24">

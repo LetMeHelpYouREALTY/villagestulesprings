@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/listings", label: "Residences" },
   { href: "/communities", label: "Neighborhoods" },
+  { href: "/amenities", label: "Amenities" },
   { href: "/sellers", label: "Sell" },
   { href: "/about", label: "About" },
 ];

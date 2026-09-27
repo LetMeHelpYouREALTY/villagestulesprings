@@ -10,6 +10,7 @@ const BUY_LINKS = [
   { href: "/buyers", label: "Buyer Representation" },
   { href: "/heartland-cottages", label: "Heartland Cottages" },
   { href: "/new-construction", label: "New Construction" },
+  { href: "/amenities", label: "Nearby Amenities" },
   { href: "/private-client", label: "Private Client" },
 ];
 

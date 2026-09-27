@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { NearbyAmenitiesSection } from "@/components/amenities/nearby-amenities-section";
 import { CommunityGrid } from "@/components/community-grid";
 import { JsonLd } from "@/components/json-ld";
 import { LuxuryCtaBand } from "@/components/luxury-cta-band";
@@ -39,6 +40,7 @@ export default function CommunitiesPage() {
       <main>
         <CommunityGrid />
         <TuleSpringsLocalGuide />
+        <NearbyAmenitiesSection variant="preview" kicker="Location & lifestyle" />
         <LuxuryFaq title="Neighborhood questions" items={COMMUNITIES_FAQS} />
         <LuxuryCtaBand
           kicker="Tour the map"

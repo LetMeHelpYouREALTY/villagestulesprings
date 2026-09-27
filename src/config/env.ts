@@ -62,3 +62,13 @@ export function getMapEmbedUrl(): string | undefined {
 export function isMapsConfigured(): boolean {
   return Boolean(getMapEmbedUrl());
 }
+
+/** Google Maps JavaScript API key for interactive amenity maps. */
+export function getGoogleMapsApiKey(): string | undefined {
+  return nonempty(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
+}
+
+/** Optional Map ID for Advanced Markers styling. */
+export function getGoogleMapsMapId(): string | undefined {
+  return nonempty(process.env.NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID);
+}

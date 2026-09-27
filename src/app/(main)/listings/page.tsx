@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { NearbyAmenitiesSection } from "@/components/amenities/nearby-amenities-section";
 import { JsonLd } from "@/components/json-ld";
 import { MlsDisclaimer } from "@/components/listings/mls-disclaimer";
 import { ModelHomeCard } from "@/components/listings/model-home-card";
@@ -53,6 +54,7 @@ export default function ListingsPage() {
             </p>
           </div>
         </section>
+        <NearbyAmenitiesSection variant="preview" kicker="89084 lifestyle" />
         <LuxuryFaq title="Residences questions" items={LISTINGS_FAQS} />
         <MlsDisclaimer />
       </main>
