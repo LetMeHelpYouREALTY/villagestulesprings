@@ -1,3 +1,4 @@
+import { NearbyAmenitiesSection } from "@/components/amenities/amenity-map-client";
 import { BuyerServicesSection } from "@/components/buyer-services-section";
 import { FeaturedPropertiesSection } from "@/components/featured-properties-section";
 import { HeadingPhoto } from "@/components/heading-photo";
@@ -6,6 +7,7 @@ import { MaravillaHeroSection } from "@/components/maravilla-hero-section";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { SectionIntro } from "@/components/section-intro";
 import { TuleSpringsLocalGuide } from "@/components/tule-springs-local-guide";
+import { COMMUNITY_MAP_CENTER } from "@/config/community-map";
 import { getRealScoutAgentId } from "@/config/env";
 import { MEDIA } from "@/lib/media-catalog";
 
@@ -28,8 +30,8 @@ const structuredData = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: "36.2850",
-    longitude: "-115.2000",
+    latitude: String(COMMUNITY_MAP_CENTER.lat),
+    longitude: String(COMMUNITY_MAP_CENTER.lng),
   },
   areaServed: [
     {
@@ -140,6 +142,7 @@ export default function Home() {
         <FeaturedPropertiesSection />
         <BuyerServicesSection />
         <TuleSpringsLocalGuide />
+        <NearbyAmenitiesSection variant="preview" />
 
         {/* RealScout Your Listings */}
         <section className="bg-cream-100 py-24">

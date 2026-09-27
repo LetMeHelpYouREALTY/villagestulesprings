@@ -18,6 +18,7 @@ export const PUBLIC_SITEMAP_PATHS: readonly {
   { path: "/buyers", changeFrequency: "weekly", priority: 0.9 },
   { path: "/sellers", changeFrequency: "weekly", priority: 0.9 },
   { path: "/communities", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/amenities", changeFrequency: "weekly", priority: 0.85 },
   { path: "/heartland-cottages", changeFrequency: "weekly", priority: 0.9 },
   { path: "/heartland-cottages/1865-plan", changeFrequency: "weekly", priority: 0.9 },
   { path: "/heartland-cottages/1700-plan", changeFrequency: "weekly", priority: 0.9 },

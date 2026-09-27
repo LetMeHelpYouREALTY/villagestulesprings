@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { NearbyAmenitiesSection } from "@/components/amenities/amenity-map-client";
 import { BuyerServicesSection } from "@/components/buyer-services-section";
 import { JsonLd } from "@/components/json-ld";
 import { BuilderFinancing } from "@/components/listings/builder-financing";
@@ -72,6 +73,7 @@ export default function HeartlandCottagesPage() {
         </section>
         <BuyerServicesSection />
         <CommunityHighlights />
+        <NearbyAmenitiesSection variant="preview" kicker="Gated village location" />
         <BuilderFinancing />
         <ModelHomeFaq />
         <MlsDisclaimer />
