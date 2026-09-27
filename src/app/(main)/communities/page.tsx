@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { NearbyAmenitiesSection } from "@/components/amenities/amenity-map-client";
+import { NearbyAmenitiesSection } from "@/components/amenities/nearby-amenities-section";
 import { CommunityGrid } from "@/components/community-grid";
 import { JsonLd } from "@/components/json-ld";
 import { LuxuryCtaBand } from "@/components/luxury-cta-band";

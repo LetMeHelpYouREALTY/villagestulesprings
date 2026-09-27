@@ -41,7 +41,7 @@ export type AmenityCategory = {
   ariaLabel: string;
 };
 
-/** Master-planned family community: parks and daily errands first; schools included. */
+/** Master-planned community: parks and daily errands first; schools included. */
 export const AMENITY_CATEGORIES: readonly AmenityCategory[] = [
   {
     id: "parks",

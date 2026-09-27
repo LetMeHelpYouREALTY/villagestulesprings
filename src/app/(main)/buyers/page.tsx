@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { NearbyAmenitiesSection } from "@/components/amenities/amenity-map-client";
+import { NearbyAmenitiesSection } from "@/components/amenities/nearby-amenities-section";
 import { BuyerServicesSection } from "@/components/buyer-services-section";
 import { JsonLd } from "@/components/json-ld";
 import { MlsDisclaimer } from "@/components/listings/mls-disclaimer";

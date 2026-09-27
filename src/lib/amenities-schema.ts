@@ -32,22 +32,25 @@ function featuredPlacesItemList(): Record<string, unknown> {
     "@type": "ItemList",
     "@id": `${BASE_URL}${AMENITIES_PAGE_PATH}#nearby-places`,
     name: `Featured places near ${COMMUNITY_MAP_LABEL}`,
-    itemListElement: CURATED_NEARBY_PLACES.map((place, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
+    itemListElement: CURATED_NEARBY_PLACES.map((place, index) => {
+      const item: Record<string, unknown> = {
         "@type": place.schemaType,
         name: place.name,
-        address: {
+        url: place.sourceUrl,
+      };
+      if (place.schemaAddress) {
+        item.address = {
           "@type": "PostalAddress",
-          streetAddress: place.address,
-          addressLocality: SITE_NAP.city,
-          addressRegion: SITE_NAP.region,
-          postalCode: SITE_NAP.postalCode,
+          ...place.schemaAddress,
           addressCountry: SITE_NAP.country,
-        },
-      },
-    })),
+        };
+      }
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        item,
+      };
+    }),
   };
 }
 

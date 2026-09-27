@@ -43,6 +43,17 @@ export type MarketingPageGraphOptions = {
   breadcrumbs: readonly { name: string; path: string }[];
 };
 
+export function homePageGraph(faqs: readonly FaqItem[]): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      localBusinessSchema(),
+      heartlandBreadcrumbSchema([{ name: "Home", path: "/" }]),
+      faqPageSchema("/", faqs),
+    ],
+  };
+}
+
 export function marketingPageGraph(options: MarketingPageGraphOptions): Record<string, unknown> {
   const url = `${BASE_URL}${options.path}`;
   const graph: Record<string, unknown>[] = [

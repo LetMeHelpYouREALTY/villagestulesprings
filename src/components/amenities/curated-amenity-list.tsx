@@ -29,8 +29,19 @@ export function CuratedAmenityList({
         {items.map((place) => (
           <li key={place.name} className="rounded-lg border border-navy-200/20 bg-white p-5">
             <p className="font-serif text-lg text-navy-800">{place.name}</p>
-            <p className="mt-1 font-sans text-sm text-navy-600">{place.address}</p>
+            {place.address ? <p className="mt-1 font-sans text-sm text-navy-600">{place.address}</p> : null}
             <p className="mt-2 font-sans text-sm text-navy-500">{place.note}</p>
+            <p className="mt-2 font-sans text-xs text-navy-400">
+              Source:{" "}
+              <a
+                href={place.sourceUrl}
+                className="text-gold-700 underline-offset-2 hover:underline"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Official listing
+              </a>
+            </p>
           </li>
         ))}
       </ul>

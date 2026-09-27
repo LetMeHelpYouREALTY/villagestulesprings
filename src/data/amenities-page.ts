@@ -1,3 +1,4 @@
+import type { AmenityCategoryId } from "@/config/community-map";
 import type { FaqItem } from "@/data/luxury-pages";
 import { SMITHS_MARKETPLACE, TULE_SPRINGS_MASTER_PLAN } from "@/data/tule-springs-local";
 
@@ -5,7 +6,16 @@ export const AMENITIES_PAGE_PATH = "/amenities" as const;
 
 export type CuratedPlace = {
   name: string;
-  address: string;
+  /** Full line for UI; omit when not verified for street-level JSON-LD. */
+  address?: string;
+  schemaAddress?: {
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+  };
+  sourceUrl: string;
+  categoryIds: readonly AmenityCategoryId[];
   schemaType:
     | "Park"
     | "Restaurant"
@@ -19,57 +29,120 @@ export type CuratedPlace = {
   note: string;
 };
 
-/** Verified or site-documented places only — used for SSR copy, fallback list, and ItemList schema. */
+/** Verified from primary sources — used for SSR copy, fallback list, and ItemList schema. */
 export const CURATED_NEARBY_PLACES: readonly CuratedPlace[] = [
   {
     name: "Tule Springs Fossil Beds National Monument",
-    address: "6016 N Aliante Pkwy, North Las Vegas, NV 89084",
+    sourceUrl: "https://www.nps.gov/tusk/planyourvisit/",
+    categoryIds: ["parks"],
     schemaType: "Park",
-    note: "Federal preserve along the master plan edge with trail access from the northwest valley.",
+    note:
+      "Urban national monument along the master plan; NPS lists trailheads at Aliante Parkway & Moonlight Falls Ave and Durango Drive & Moccasin Road (no single street address).",
   },
   {
     name: "Floyd Lamb Park at Tule Springs",
-    address: "9200 Tule Springs Rd, Las Vegas, NV 89149",
+    address: "9200 Tule Springs Rd, Las Vegas, NV 89131",
+    schemaAddress: {
+      streetAddress: "9200 Tule Springs Rd",
+      addressLocality: "Las Vegas",
+      addressRegion: "NV",
+      postalCode: "89131",
+    },
+    sourceUrl: "https://www.lasvegasnevada.gov/Residents/Parks-Facilities/Floyd-Lamb-Park",
+    categoryIds: ["parks"],
     schemaType: "Park",
-    note: "City park with lakes, picnic areas, and equestrian trails west of the North 215 corridor.",
+    note: "City of Las Vegas day-use park with lakes, picnic areas, and equestrian trails west of the North 215 corridor.",
   },
   {
     name: SMITHS_MARKETPLACE.name,
     address: `${SMITHS_MARKETPLACE.address}, North Las Vegas, NV 89084`,
+    schemaAddress: {
+      streetAddress: SMITHS_MARKETPLACE.address,
+      addressLocality: "North Las Vegas",
+      addressRegion: "NV",
+      postalCode: "89084",
+    },
+    sourceUrl:
+      "https://www.reviewjournal.com/business/vegas-business/building-las-vegas/smiths-is-building-36m-supermarket-in-north-las-vegas-3844909/",
+    categoryIds: ["grocery"],
     schemaType: "GroceryStore",
-    note: `${SMITHS_MARKETPLACE.squareFeet.toLocaleString("en-US")} sq ft store planned at ${SMITHS_MARKETPLACE.intersection}. Targeted ${SMITHS_MARKETPLACE.completionYear} opening. Source: ${SMITHS_MARKETPLACE.source}.`,
+    note: `${SMITHS_MARKETPLACE.squareFeet.toLocaleString("en-US")} sq ft store planned at ${SMITHS_MARKETPLACE.intersection}. Targeted ${SMITHS_MARKETPLACE.completionYear} opening (${SMITHS_MARKETPLACE.source}).`,
   },
   {
     name: "Aliante Golf Club",
-    address: "2400 Falstaff Ave, North Las Vegas, NV 89084",
+    address: "3100 W Elkhorn Rd, North Las Vegas, NV 89084",
+    schemaAddress: {
+      streetAddress: "3100 W Elkhorn Rd",
+      addressLocality: "North Las Vegas",
+      addressRegion: "NV",
+      postalCode: "89084",
+    },
+    sourceUrl: "https://www.aliantegolf.com/",
+    categoryIds: ["golf"],
     schemaType: "GolfCourse",
-    note: "Public course and practice facilities in the Aliante master plan south of Tule Springs Parkway.",
+    note: "Public 18-hole course in the Aliante master plan south of Tule Springs Parkway.",
   },
   {
     name: "Centennial Hills Hospital Medical Center",
     address: "6900 N Durango Dr, Las Vegas, NV 89149",
+    schemaAddress: {
+      streetAddress: "6900 N Durango Dr",
+      addressLocality: "Las Vegas",
+      addressRegion: "NV",
+      postalCode: "89149",
+    },
+    sourceUrl: "https://www.centennialhillshospital.com/patients-visitors/maps-directions",
+    categoryIds: ["healthcare"],
     schemaType: "Hospital",
     note: "Full-service hospital serving Centennial Hills and northwest Las Vegas.",
   },
   {
     name: "Aliante Casino-Hotel",
     address: "7300 Aliante Pkwy, North Las Vegas, NV 89084",
+    schemaAddress: {
+      streetAddress: "7300 Aliante Pkwy",
+      addressLocality: "North Las Vegas",
+      addressRegion: "NV",
+      postalCode: "89084",
+    },
+    sourceUrl: "https://www.aliantecasino.com/",
+    categoryIds: ["shopping", "restaurants"],
     schemaType: "ShoppingCenter",
     note: "Dining, entertainment, and hotel along Aliante Parkway — a regional anchor south of the 215.",
   },
   {
     name: "Legacy High School",
-    address: "6701 W Charleston Blvd, North Las Vegas, NV 89084",
+    address: "150 W Deer Springs Way, North Las Vegas, NV 89084",
+    schemaAddress: {
+      streetAddress: "150 W Deer Springs Way",
+      addressLocality: "North Las Vegas",
+      addressRegion: "NV",
+      postalCode: "89084",
+    },
+    sourceUrl: "https://legacyhigh.net/apps/contact/",
+    categoryIds: ["schools"],
     schemaType: "School",
     note: "Clark County School District high school serving the northwest North Las Vegas area.",
   },
   {
     name: "Vincent L Triggs Elementary School",
-    address: "7445 Guardia Dr, Las Vegas, NV 89131",
+    address: "4470 W Rome Blvd, North Las Vegas, NV 89084",
+    schemaAddress: {
+      streetAddress: "4470 W Rome Blvd",
+      addressLocality: "North Las Vegas",
+      addressRegion: "NV",
+      postalCode: "89084",
+    },
+    sourceUrl: "https://triggses.com/",
+    categoryIds: ["schools"],
     schemaType: "School",
-    note: "CCSD elementary school in the Aliante area, commonly referenced for Tule Springs buyers.",
+    note: "CCSD elementary school in the Aliante area; confirm assignment for your lot on CCSD's site.",
   },
 ] as const;
+
+export function curatedPlacesForCategory(categoryId: AmenityCategoryId): readonly CuratedPlace[] {
+  return CURATED_NEARBY_PLACES.filter((place) => place.categoryIds.includes(categoryId));
+}
 
 export type AmenityProseSection = {
   id: string;
@@ -91,7 +164,7 @@ export const AMENITY_PROSE_SECTIONS: readonly AmenityProseSection[] = [
     heading: "Parks and recreation",
     paragraphs: [
       `${TULE_SPRINGS_MASTER_PLAN.monument} borders the master plan. Floyd Lamb Park at Tule Springs adds lakes, trails, and picnic grounds to the west.`,
-      "Heartland Cottages and future villages will add their own pools, trails, and club amenities as phases build out inside the 1,280-acre plan.",
+      `Heartland Cottages and future villages will add pools, trails, and club amenities as phases build out inside the ${TULE_SPRINGS_MASTER_PLAN.acres.toLocaleString("en-US")}-acre plan (${TULE_SPRINGS_MASTER_PLAN.acresSource}).`,
     ],
   },
   {
@@ -158,7 +231,7 @@ export const AMENITIES_FAQS: readonly FaqItem[] = [
   {
     question: "Is there golf near The Villages at Tule Springs?",
     answer:
-      "Aliante Golf Club on Falstaff Avenue is the nearest public course; additional resort courses sit farther south toward the Strip.",
+      "Aliante Golf Club on Elkhorn Road is the nearest public course; additional resort courses sit farther south toward the Strip.",
   },
   {
     question: "Which schools serve The Villages at Tule Springs?",

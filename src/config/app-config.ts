@@ -9,7 +9,7 @@ export const APP_CONFIG = {
   meta: {
     title: "Buy a Home in Tule Springs Las Vegas | Dr. Jan Duffy",
     description:
-      "Dr. Jan Duffy is the Tule Springs buyer's agent for The Villages at Tule Springs and Heartland Cottages in North Las Vegas 89084. Model tours, new construction, and 89084 comps. Call 702-222-1964.",
+      "Buyer agent for Villages at Tule Springs and Heartland Cottages in North Las Vegas 89084. Model tours, new construction, and resale search. Call 702-222-1964.",
     keywords: [
       "Tule Springs homes for sale",
       "Villages at Tule Springs realtor",
