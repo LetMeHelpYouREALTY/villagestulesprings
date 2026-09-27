@@ -197,6 +197,29 @@ export const VALUATION_FAQS: readonly FaqItem[] = [
   },
 ] as const;
 
+export const HOME_FAQS: readonly FaqItem[] = [
+  {
+    question: "What areas does Dr. Jan Duffy cover on this site?",
+    answer:
+      "The Villages at Tule Springs and gated Heartland Cottages in North Las Vegas 89084, including new construction and resale homes in the master plan.",
+  },
+  {
+    question: "Why use a buyer's agent for new construction?",
+    answer:
+      "The builder's sales team represents the builder. A licensed buyer's agent represents you on price, upgrades, timelines, and contract terms before you sign.",
+  },
+  {
+    question: "How do I tour Heartland Cottages model homes?",
+    answer:
+      "Call 702-222-1964 or book a 15-minute consult on this site. Dr. Jan Duffy can walk the standing 1,700 and 1,865 sq ft models with you.",
+  },
+  {
+    question: "Where is The Villages at Tule Springs?",
+    answer:
+      "The community sits in North Las Vegas, Nevada 89084, north of the 215 Beltway near Aliante. Use the map on this page for directions.",
+  },
+] as const;
+
 export const CONTACT_FAQS: readonly FaqItem[] = [
   {
     question: "What are the office hours?",

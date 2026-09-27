@@ -7,6 +7,7 @@ import { DrJanPortrait } from "@/components/dr-jan-portrait";
 import { HeadingPhoto } from "@/components/heading-photo";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { generateArticleMetadata } from "@/config/metadata-config";
+import { SITE_NAP } from "@/config/site-nap";
 import { MEDIA } from "@/lib/media-catalog";
 
 // Generate article-specific metadata with all the required Open Graph properties
@@ -14,7 +15,7 @@ export const metadata: Metadata = generateArticleMetadata({
   title: "Las Vegas Real Estate Market Update: 2024 Trends & Insights",
   description:
     "Discover the latest Las Vegas real estate market trends for 2024. Dr. Janet Duffy shares expert insights on home prices, inventory levels, and what buyers and sellers need to know.",
-  url: "https://villagestulesprings.com/blog/las-vegas-market-update-2024",
+  url: `${SITE_NAP.url}/blog/las-vegas-market-update-2024`,
   publishedTime: "2024-01-15T10:00:00Z",
   modifiedTime: "2024-01-15T15:30:00Z",
   author: "Dr. Janet Duffy",

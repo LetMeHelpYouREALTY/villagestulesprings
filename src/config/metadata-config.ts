@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 
+import { siteOrigin } from "@/lib/site-urls";
+
 import { APP_CONFIG } from "./app-config";
 
-// Base URL for the website
-const baseUrl = "https://villagestulesprings.com";
+// Production canonical host (Vercel redirects apex → www).
+const baseUrl = siteOrigin("www");
 
 const homebuyerOgAlt = "Luxury home for sale at Villages at Tule Springs, North Las Vegas — Dr. Janet Duffy";
 

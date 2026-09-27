@@ -1,121 +1,25 @@
 import { BuyerServicesSection } from "@/components/buyer-services-section";
 import { FeaturedPropertiesSection } from "@/components/featured-properties-section";
 import { HeadingPhoto } from "@/components/heading-photo";
+import { JsonLd } from "@/components/json-ld";
 import { LocationMapSection } from "@/components/location-map-section";
+import { LuxuryFaq } from "@/components/luxury-faq";
 import { MaravillaHeroSection } from "@/components/maravilla-hero-section";
 import { PublicPageShell } from "@/components/public-page-shell";
 import { SectionIntro } from "@/components/section-intro";
 import { TuleSpringsLocalGuide } from "@/components/tule-springs-local-guide";
 import { getRealScoutAgentId } from "@/config/env";
+import { HOME_FAQS } from "@/data/luxury-pages";
+import { homePageGraph } from "@/lib/marketing-schema";
 import { MEDIA } from "@/lib/media-catalog";
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  name: "Dr. Janet Duffy",
-  description:
-    "Tule Springs buyer specialist for The Villages at Tule Springs and Heartland Cottages in North Las Vegas 89084",
-  url: "https://villagestulesprings.com",
-  telephone: "702-222-1964",
-  email: "DrDuffySells@VillagesTuleSprings.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Villages at Tule Springs",
-    addressLocality: "North Las Vegas",
-    addressRegion: "NV",
-    postalCode: "89084",
-    addressCountry: "US",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: "36.2850",
-    longitude: "-115.2000",
-  },
-  areaServed: [
-    {
-      "@type": "Place",
-      name: "The Villages at Tule Springs",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "North Las Vegas",
-        addressRegion: "NV",
-        postalCode: "89084",
-        addressCountry: "US",
-      },
-    },
-    {
-      "@type": "City",
-      name: "North Las Vegas",
-      containedInPlace: {
-        "@type": "State",
-        name: "Nevada",
-      },
-    },
-  ],
-  knowsAbout: [
-    "The Villages at Tule Springs",
-    "Heartland Cottages",
-    "North Las Vegas 89084 new construction",
-    "D.R. Horton buyer representation",
-  ],
-  serviceType: [
-    "Tule Springs buyer representation",
-    "New-construction purchase",
-    "Home valuation",
-    "Resale search in 89084",
-  ],
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Tule Springs Buyer Services",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Buy a home in Tule Springs",
-          description: "Independent buyer representation for Villages at Tule Springs and Heartland Cottages",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Heartland Cottages model tours",
-          description: "Tour the 1,700 and 1,865 sq ft gated models with Dr. Jan Duffy",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "89084 market analysis",
-          description: "Comps, SID and LID review, and closing-cost math for North Las Vegas 89084",
-        },
-      },
-    ],
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "200",
-  },
-  sameAs: [
-    "https://www.facebook.com/villagestulesprings",
-    "https://www.instagram.com/villagestulesprings",
-    "https://www.linkedin.com/in/drjanetduffy",
-  ],
-};
+const homeGraph = homePageGraph(HOME_FAQS);
 
 export default function Home() {
   const agentId = getRealScoutAgentId();
 
   return (
-    <PublicPageShell
-      before={
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      }
-      hero={<MaravillaHeroSection />}
-    >
+    <PublicPageShell before={<JsonLd data={homeGraph} />} hero={<MaravillaHeroSection />}>
       <main>
         {/* RealScout Advanced Search */}
         <section className="bg-cream-100 py-24">
@@ -165,6 +69,8 @@ export default function Home() {
 
         {/* Location map — uses NEXT_PUBLIC_OPEN_HOUSES_MAP_EMBED_URL or Google Maps API key */}
         <LocationMapSection />
+
+        <LuxuryFaq title="Tule Springs buyer questions" items={HOME_FAQS} />
 
         {/* RealScout Home Valuation */}
         <section id="home-valuation" className="bg-navy-800 py-24">
