@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 import type { Metadata } from "next";
 import { Inter, Jost, Playfair_Display } from "next/font/google";
+import Script from "next/script";
 
 import { CalendlyScript } from "@/components/calendly-script";
 import { RealScoutScript } from "@/components/realscout-script";
@@ -13,7 +14,6 @@ import { THEME_MODE_VALUES, THEME_PRESET_VALUES, type ThemePreset, type ThemeMod
 
 import "./globals.css";
 
-import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 const luxurySerif = Playfair_Display({
   subsets: ["latin"],
@@ -51,7 +51,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           {children}
           <Toaster />
         </PreferencesStoreProvider>
-      
+
         {/* Follow Up Boss pixel (Widget Tracker) */}
         <Script id="fub-widget-tracker" strategy="afterInteractive">{`
 (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
