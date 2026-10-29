@@ -66,8 +66,8 @@ const features: Feature[] = [
   },
   {
     icon: GraduationCap,
-    title: "Top Schools",
-    description: "Access to highly-rated schools in the area",
+    title: "Nearby Public Schools",
+    description: "Access to public schools",
     category: "location",
   },
   {
@@ -196,7 +196,7 @@ export function CommunityFeatures() {
                 </Badge>
                 <Badge variant="secondary" className="px-4 py-2">
                   <Heart className="mr-2 h-4 w-4" />
-                  Family Friendly
+                  Parks & Recreation
                 </Badge>
               </div>
             </CardContent>

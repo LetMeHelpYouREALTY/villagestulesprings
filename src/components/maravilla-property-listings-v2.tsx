@@ -103,7 +103,7 @@ const maravillaProperties: MaravillaProperty[] = [
     image: MEDIA.listingTwoStory.gitSrc,
     images: [MEDIA.listingTwoStory.gitSrc, MEDIA.interiorMaster.gitSrc],
     features: ["Master Suite", "Gourmet Kitchen", "Two-Car Garage", "Patio", "Waves Ready"],
-    description: "Perfect for growing families with spacious rooms, modern amenities, and pool-ready backyard.",
+    description: "Perfect for move-up buyers with spacious rooms, modern amenities, and pool-ready backyard.",
     yearBuilt: 2024,
     lotSize: "7,200 sq ft",
     garage: 2,
