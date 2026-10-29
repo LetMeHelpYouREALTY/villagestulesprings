@@ -75,7 +75,7 @@ const testimonials: Testimonial[] = [
     verified: true,
     homeType: "Two-Story Family Home",
     moveInDate: "November 2024",
-    features: ["Family Friendly", "Great Schools", "Walking Trails", "Modern Design"],
+    features: ["Parks", "Nearby Schools", "Walking Trails", "Modern Design"],
   },
   {
     id: "3",

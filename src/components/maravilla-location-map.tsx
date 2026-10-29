@@ -95,7 +95,7 @@ const nearbyLocations: LocationFeature[] = [
     distance: "3.7 miles",
     driveTime: "8 min",
     rating: 4.0,
-    description: "Top-rated schools serving the community",
+    description: "Nearby public schools serving the community",
     icon: GraduationCap,
     coordinates: { lat: 36.1699, lng: -115.1398 },
   },

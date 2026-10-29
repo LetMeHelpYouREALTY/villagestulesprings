@@ -243,7 +243,7 @@ export function MaravillaCommunityFeatures() {
             <CardContent className="p-8">
               <h3 className="mb-4 text-2xl font-bold text-gray-900">Ready to Experience Maravilla Living?</h3>
               <p className="mb-6 text-gray-600">
-                Join our exclusive community and discover why Maravilla is Las Vegas&apos; premier destination for
+                Join our community and discover why Maravilla is Las Vegas&apos; premier destination for
                 luxury living.
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">

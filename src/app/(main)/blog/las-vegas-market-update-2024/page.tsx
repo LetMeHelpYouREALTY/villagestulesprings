@@ -137,7 +137,7 @@ export default function BlogPostPage() {
             <HeadingPhoto asset={MEDIA.henderson} className="mb-4" />
             <p className="mb-4 text-navy-500">
               Henderson&apos;s diverse neighborhoods offer opportunities for buyers at various price points. The
-              area&apos;s proximity to Las Vegas and strong school districts maintain its appeal.
+              area&apos;s proximity to Las Vegas maintains its appeal.
             </p>
 
             <h3 className="mb-4 font-serif text-2xl text-navy-700">Downtown Las Vegas</h3>
