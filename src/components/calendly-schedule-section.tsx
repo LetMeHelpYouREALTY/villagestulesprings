@@ -49,8 +49,8 @@ export function CalendlyScheduleSection({
           <p className={`mx-auto max-w-2xl font-sans text-lg font-light ${styles.subtitle}`}>{subtitle}</p>
           <p className={`mt-3 font-sans text-sm ${styles.subtitle}`}>
             Or call{" "}
-            <a href="tel:+17022221964" className={styles.phone}>
-              702-222-1964
+            <a href="tel:+17025001955" className={styles.phone}>
+              702-500-1955
             </a>
           </p>
         </div>

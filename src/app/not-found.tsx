@@ -19,8 +19,8 @@ export default function NotFound() {
         <DrJanPortrait size="lg" className="ring-2 ring-gold-300" />
         <p className="max-w-md font-sans text-navy-500">
           That page is not on villagestulesprings.com. Browse homes below, or call Dr. Jan Duffy at{" "}
-          <a href="tel:+17022221964" className="text-gold-600 underline-offset-4 hover:underline">
-            702-222-1964
+          <a href="tel:+17025001955" className="text-gold-600 underline-offset-4 hover:underline">
+            702-500-1955
           </a>
           .
         </p>

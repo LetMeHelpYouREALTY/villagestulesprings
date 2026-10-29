@@ -187,10 +187,10 @@ export default function BlogPostPage() {
                   Book a Consult
                 </CalendlyButton>
                 <a
-                  href="tel:+17022221964"
+                  href="tel:+17025001955"
                   className="rounded-lg border border-gold-400 px-4 py-2 font-sans uppercase tracking-widest text-gold-600 transition-colors hover:bg-gold-400 hover:text-navy-800"
                 >
-                  Call 702-222-1964
+                  Call 702-500-1955
                 </a>
                 <Link
                   href="/"

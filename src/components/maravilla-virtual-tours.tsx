@@ -89,7 +89,7 @@ const virtualTours: VirtualTour[] = [
 
 const maravillaContact: MaravillaContactInfo = {
   salesOffice: {
-    phone: "702-222-1964",
+    phone: "702-500-1955",
     email: "DrDuffySells@VillagesTuleSprings.com",
     address: "Villages at Tule Springs, North Las Vegas, NV 89084",
     hours: "Mon-Sun: 9AM-6PM",
@@ -98,7 +98,7 @@ const maravillaContact: MaravillaContactInfo = {
     {
       name: "Dr. Janet Duffy",
       title: "REALTOR®, BHHS Nevada Properties",
-      phone: "702-222-1964",
+      phone: "702-500-1955",
       email: "DrDuffySells@VillagesTuleSprings.com",
       specialties: ["Villages at Tule Springs", "North Las Vegas", "Luxury Homes"],
     },
@@ -222,7 +222,7 @@ export function MaravillaContactSection() {
                   </div>
                   <div className="flex items-center">
                     <Phone className="mr-2 h-4 w-4 text-green-600" />
-                    <a href="tel:+17022221964" className="font-semibold">
+                    <a href="tel:+17025001955" className="font-semibold">
                       {maravillaContact.salesOffice.phone}
                     </a>
                   </div>
@@ -255,7 +255,7 @@ export function MaravillaContactSection() {
                         </div>
                         <div className="mb-2 flex items-center text-sm text-gray-600">
                           <Phone className="mr-1 h-3 w-3" />
-                          <a href="tel:+17022221964">{member.phone}</a>
+                          <a href="tel:+17025001955">{member.phone}</a>
                         </div>
                         <div className="mb-3 flex items-center text-sm text-gray-600">
                           <Mail className="mr-1 h-3 w-3" />

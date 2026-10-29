@@ -415,7 +415,7 @@ export function MaravillaVirtualTours() {
               </div>
               <h3 className="mb-4 text-2xl font-bold text-gray-900">Ready for an In-Person Tour?</h3>
               <p className="mb-6 text-gray-600">
-                Walk the homes with Dr. Jan Duffy — book a 30-minute tour or call 702-222-1964.
+                Walk the homes with Dr. Jan Duffy — book a 30-minute tour or call 702-500-1955.
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
                 <Button size="lg" className="bg-green-600 hover:bg-green-700" asChild>
@@ -425,9 +425,9 @@ export function MaravillaVirtualTours() {
                   </CalendlyButton>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <a href="tel:+17022221964">
+                  <a href="tel:+17025001955">
                     <Phone className="mr-2 h-5 w-5" />
-                    Call 702-222-1964
+                    Call 702-500-1955
                   </a>
                 </Button>
               </div>

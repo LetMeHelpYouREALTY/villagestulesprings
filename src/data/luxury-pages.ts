@@ -27,7 +27,7 @@ export const SELLER_SERVICES: readonly CopyBlock[] = [
   },
   {
     title: "Photography and showing desk",
-    body: "She sets the photo date, showing window, and offer review. One phone for sellers in North Las Vegas 89084: 702-222-1964.",
+    body: "She sets the photo date, showing window, and offer review. One phone for sellers in North Las Vegas 89084: 702-500-1955.",
   },
   {
     title: "Close on the calendar you need",
@@ -39,7 +39,7 @@ export const SELLER_FAQS: readonly FaqItem[] = [
   {
     question: "What is my 89084 home worth?",
     answer:
-      "Start with the complimentary valuation, then walk September 2026 comps: $459,999 median list, $238 per sq ft, 68 days on market. Call 702-222-1964.",
+      "Start with the complimentary valuation, then walk September 2026 comps: $459,999 median list, $238 per sq ft, 68 days on market. Call 702-500-1955.",
   },
   {
     question: "Do you list homes inside The Villages at Tule Springs?",
@@ -65,7 +65,7 @@ export const PRIVATE_CLIENT_SERVICES: readonly CopyBlock[] = [
   },
   {
     title: "Appointment-only model tours",
-    body: "Walk 7401 and 7343 Balenger Bay Ave with her, not the builder's rotation. Call 702-222-1964.",
+    body: "Walk 7401 and 7343 Balenger Bay Ave with her, not the builder's rotation. Call 702-500-1955.",
   },
   {
     title: "Remote video first",
@@ -81,7 +81,7 @@ export const PRIVATE_CLIENT_SERVICES: readonly CopyBlock[] = [
   },
   {
     title: "Single number",
-    body: "702-222-1964 is the client line. Fifteen minutes on Calendly if you would rather book than call.",
+    body: "702-500-1955 is the client line. Fifteen minutes on Calendly if you would rather book than call.",
   },
 ] as const;
 
@@ -89,7 +89,7 @@ export const PRIVATE_CLIENT_FAQS: readonly FaqItem[] = [
   {
     question: "What does private-client representation include?",
     answer:
-      "Coordinated buy and sell in 89084, Heartland Cottages model tours by appointment, and a confidential RealScout search. Call 702-222-1964.",
+      "Coordinated buy and sell in 89084, Heartland Cottages model tours by appointment, and a confidential RealScout search. Call 702-500-1955.",
   },
   {
     question: "Do you offer off-market inventory?",
@@ -134,7 +134,7 @@ export const NEW_CONSTRUCTION_FAQS: readonly FaqItem[] = [
   {
     question: "Can I use my own agent on a D.R. Horton home?",
     answer:
-      "Yes. Register Dr. Jan Duffy before your first sales-office visit so the 3% co-op and your representation stay intact. Call 702-222-1964.",
+      "Yes. Register Dr. Jan Duffy before your first sales-office visit so the 3% co-op and your representation stay intact. Call 702-500-1955.",
   },
   {
     question: "Where is the Heartland Cottages sales office?",
@@ -162,7 +162,7 @@ export const LISTINGS_FAQS: readonly FaqItem[] = [
   {
     question: "How do I tour a home?",
     answer:
-      "Call 702-222-1964 or book 15 minutes. She schedules Heartland models and resale showings on the same day when lots line up.",
+      "Call 702-500-1955 or book 15 minutes. She schedules Heartland models and resale showings on the same day when lots line up.",
   },
 ] as const;
 
@@ -188,7 +188,7 @@ export const VALUATION_FAQS: readonly FaqItem[] = [
   {
     question: "Is the home valuation free?",
     answer:
-      "Yes. Instant RealScout value plus a 15-minute consult with Dr. Jan Duffy. Call 702-222-1964 if you would rather talk first.",
+      "Yes. Instant RealScout value plus a 15-minute consult with Dr. Jan Duffy. Call 702-500-1955 if you would rather talk first.",
   },
   {
     question: "What numbers does she use?",
@@ -211,7 +211,7 @@ export const HOME_FAQS: readonly FaqItem[] = [
   {
     question: "How do I tour Heartland Cottages model homes?",
     answer:
-      "Call 702-222-1964 or book a 15-minute consult on this site. Dr. Jan Duffy can walk the standing 1,700 and 1,865 sq ft models with you.",
+      "Call 702-500-1955 or book a 15-minute consult on this site. Dr. Jan Duffy can walk the standing 1,700 and 1,865 sq ft models with you.",
   },
   {
     question: "Where is The Villages at Tule Springs?",
@@ -224,7 +224,7 @@ export const CONTACT_FAQS: readonly FaqItem[] = [
   {
     question: "What are the office hours?",
     answer:
-      "Monday through Friday 9:00 AM to 6:00 PM. Saturday 10:00 AM to 5:00 PM. Sunday by appointment. Call 702-222-1964.",
+      "Monday through Friday 9:00 AM to 6:00 PM. Saturday 10:00 AM to 5:00 PM. Sunday by appointment. Call 702-500-1955.",
   },
   {
     question: "Where are you located?",
@@ -232,6 +232,6 @@ export const CONTACT_FAQS: readonly FaqItem[] = [
   },
   {
     question: "Do I need to fill out a form?",
-    answer: "No. Book 15 minutes on Calendly or call 702-222-1964. That is the client line.",
+    answer: "No. Book 15 minutes on Calendly or call 702-500-1955. That is the client line.",
   },
 ] as const;

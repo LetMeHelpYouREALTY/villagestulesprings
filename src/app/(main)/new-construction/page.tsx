@@ -84,7 +84,7 @@ function NewConstructionHero() {
     <PageHero
       kicker="New construction · Heartland Cottages"
       title="Buy a D.R. Horton home with your own agent"
-      lede="Gated 1,700 and 1,865 sq ft models in The Villages at Tule Springs. No SID or LID. Register her first at 702-222-1964."
+      lede="Gated 1,700 and 1,865 sq ft models in The Villages at Tule Springs. No SID or LID. Register her first at 702-500-1955."
     />
   );
 }
