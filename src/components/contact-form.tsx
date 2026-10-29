@@ -42,8 +42,8 @@ export function ContactForm() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <a href="tel:+17022221964" className="font-semibold text-navy-800 hover:text-gold-600">
-                  702-222-1964
+                <a href="tel:+17025001955" className="font-semibold text-navy-800 hover:text-gold-600">
+                  702-500-1955
                 </a>
                 <p className="text-sm text-navy-500">Monday – Sunday</p>
               </CardContent>

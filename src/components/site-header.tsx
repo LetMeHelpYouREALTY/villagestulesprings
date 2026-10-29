@@ -50,9 +50,9 @@ export function SiteHeader() {
             variant="outline"
             className="border-gold-300 bg-transparent font-sans uppercase tracking-widest text-gold-200 hover:bg-gold-300 hover:text-navy-800"
           >
-            <a href="tel:+17022221964">
+            <a href="tel:+17025001955">
               <Phone className="mr-2 h-4 w-4" />
-              702-222-1964
+              702-500-1955
             </a>
           </Button>
         </div>

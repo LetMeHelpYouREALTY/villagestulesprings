@@ -60,9 +60,9 @@ export function LocationMapSection() {
             variant="outline"
             className="border-navy-200/40 font-sans uppercase tracking-widest text-navy-700 hover:border-gold-400 hover:bg-gold-50"
           >
-            <a href="tel:+17022221964">
+            <a href="tel:+17025001955">
               <MapPin className="mr-2 h-4 w-4" />
-              Call 702-222-1964
+              Call 702-500-1955
             </a>
           </Button>
         </div>

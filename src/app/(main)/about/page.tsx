@@ -82,7 +82,7 @@ export default function AboutPage() {
                 SID and LID line items, and lines list price against current 89084 comps before you write.
               </p>
               <p className="text-navy-500">
-                Call 702-222-1964 to tour the standing 1,700 and 1,865 sq ft models in gated Heartland Cottages.
+                Call 702-500-1955 to tour the standing 1,700 and 1,865 sq ft models in gated Heartland Cottages.
               </p>
             </div>
 
@@ -92,8 +92,8 @@ export default function AboutPage() {
                 <h2 className="mb-4 font-serif text-2xl text-navy-700">Ready to Work Together?</h2>
                 <p className="mb-6 text-navy-500">
                   Book a 15-minute conversation with Dr. Janet Duffy — or call{" "}
-                  <a href="tel:+17022221964" className="text-gold-600 underline-offset-4 hover:underline">
-                    702-222-1964
+                  <a href="tel:+17025001955" className="text-gold-600 underline-offset-4 hover:underline">
+                    702-500-1955
                   </a>
                   .
                 </p>
@@ -107,10 +107,10 @@ export default function AboutPage() {
                     Book 15 Minutes
                   </CalendlyButton>
                   <a
-                    href="tel:+17022221964"
+                    href="tel:+17025001955"
                     className="rounded-lg border border-gold-400 px-6 py-3 font-sans uppercase tracking-widest text-gold-600 transition-colors hover:bg-gold-400 hover:text-navy-800"
                   >
-                    Call 702-222-1964
+                    Call 702-500-1955
                   </a>
                 </div>
               </div>

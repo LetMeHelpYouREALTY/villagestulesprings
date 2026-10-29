@@ -67,7 +67,7 @@ function PrivateClientHero() {
     <PageHero
       kicker="Private client · North Las Vegas 89084"
       title="Concierge buy and sell for Villages at Tule Springs"
-      lede="Appointment-only Heartland tours. Coordinated list and purchase. One number: 702-222-1964."
+      lede="Appointment-only Heartland tours. Coordinated list and purchase. One number: 702-500-1955."
     />
   );
 }

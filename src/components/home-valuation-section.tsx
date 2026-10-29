@@ -76,8 +76,8 @@ export function HomeValuationSection() {
               <h4 className="mb-2 font-serif text-lg text-navy-800">100% Free &amp; No Obligation</h4>
               <p className="text-sm text-navy-500">
                 Instant value plus a 15-minute conversation — call{" "}
-                <a href="tel:+17022221964" className="text-gold-600 underline-offset-4 hover:underline">
-                  702-222-1964
+                <a href="tel:+17025001955" className="text-gold-600 underline-offset-4 hover:underline">
+                  702-500-1955
                 </a>{" "}
                 if you would rather talk now.
               </p>

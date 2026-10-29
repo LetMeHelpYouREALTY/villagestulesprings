@@ -192,7 +192,7 @@ export const homePageMetadata = generatePageMetadata({
 
 export const aboutPageMetadata = generatePageMetadata({
   title: `Tule Springs Buyer Agent | About Dr. Jan Duffy`,
-  description: `Dr. Jan Duffy is a licensed Nevada REALTOR® representing buyers in The Villages at Tule Springs and Heartland Cottages, North Las Vegas 89084. Call 702-222-1964.`,
+  description: `Dr. Jan Duffy is a licensed Nevada REALTOR® representing buyers in The Villages at Tule Springs and Heartland Cottages, North Las Vegas 89084. Call 702-500-1955.`,
   url: `${baseUrl}/about`,
   type: "profile",
   canonical: "/about",
@@ -200,7 +200,7 @@ export const aboutPageMetadata = generatePageMetadata({
 
 export const listingsPageMetadata = generatePageMetadata({
   title: `Homes for Sale in Tule Springs | Residences | North Las Vegas 89084`,
-  description: `Browse live MLS residences and gated Heartland Cottages model homes in The Villages at Tule Springs with Dr. Janet Duffy. Call 702-222-1964.`,
+  description: `Browse live MLS residences and gated Heartland Cottages model homes in The Villages at Tule Springs with Dr. Janet Duffy. Call 702-500-1955.`,
   url: `${baseUrl}/listings`,
   canonical: "/listings",
   images: [
@@ -217,7 +217,7 @@ export const listingsPageMetadata = generatePageMetadata({
 
 export const contactPageMetadata = generatePageMetadata({
   title: `Contact Dr. Jan Duffy | Villages at Tule Springs | North Las Vegas 89084`,
-  description: `Call Dr. Jan Duffy at 702-222-1964. Villages at Tule Springs, North Las Vegas, NV 89084. Monday–Friday 9:00 AM–6:00 PM. Book a 15-minute consult.`,
+  description: `Call Dr. Jan Duffy at 702-500-1955. Villages at Tule Springs, North Las Vegas, NV 89084. Monday–Friday 9:00 AM–6:00 PM. Book a 15-minute consult.`,
   url: `${baseUrl}/contact`,
   canonical: "/contact",
   type: "website",
@@ -225,7 +225,7 @@ export const contactPageMetadata = generatePageMetadata({
 
 export const homeValuationPageMetadata = generatePageMetadata({
   title: `89084 Home Valuation | Tule Springs | Dr. Jan Duffy`,
-  description: `Complimentary RealScout value plus a 15-minute consult for North Las Vegas 89084. September 2026 median list $459,999. Call 702-222-1964.`,
+  description: `Complimentary RealScout value plus a 15-minute consult for North Las Vegas 89084. September 2026 median list $459,999. Call 702-500-1955.`,
   url: `${baseUrl}/home-valuation`,
   canonical: "/home-valuation",
   images: [

@@ -145,7 +145,7 @@ export const HEARTLAND_FAQS: readonly { question: string; answer: string }[] = [
   {
     question: "When can I close on a current lot?",
     answer:
-      "Current cul-de-sac inventory is listed with an October closing. Tour dates and exact close dates with Dr. Jan Duffy at 702-222-1964.",
+      "Current cul-de-sac inventory is listed with an October closing. Tour dates and exact close dates with Dr. Jan Duffy at 702-500-1955.",
   },
   {
     question: "What financing is available?",
@@ -155,7 +155,7 @@ export const HEARTLAND_FAQS: readonly { question: string; answer: string }[] = [
   {
     question: "Why hire Dr. Jan Duffy instead of buying at the sales office?",
     answer:
-      "The sales office represents D.R. Horton. Dr. Jan Duffy represents you on lot choice, incentives, SID and LID review, and the purchase contract. Call 702-222-1964.",
+      "The sales office represents D.R. Horton. Dr. Jan Duffy represents you on lot choice, incentives, SID and LID review, and the purchase contract. Call 702-500-1955.",
   },
 ];
 

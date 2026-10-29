@@ -148,14 +148,14 @@ export function MaravillaHeroSection() {
               </Card>
             </CalendlyButton>
 
-            <a href="tel:+17022221964" className="block">
+            <a href="tel:+17025001955" className="block">
               <Card className="group absolute -right-6 -top-6 border-gold-200/40 shadow-lg transition-all duration-300 hover:shadow-xl">
                 <CardContent className="p-4">
                   <div className="flex items-center space-x-3">
                     <DrJanPortrait size="xs" />
                     <div>
                       <div className="font-serif text-navy-800">Call Now</div>
-                      <div className="text-sm text-navy-400">702-222-1964</div>
+                      <div className="text-sm text-navy-400">702-500-1955</div>
                       <div className="text-xs uppercase tracking-widest text-navy-500">Free Consultation</div>
                     </div>
                   </div>
