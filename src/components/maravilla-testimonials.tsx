@@ -64,20 +64,6 @@ const testimonials: Testimonial[] = [
     features: ["Waves Access", "Fitness Center", "Smart Home", "Energy Efficient"],
   },
   {
-    id: "2",
-    name: "Elena Rodriguez",
-    role: "Family of Four",
-    location: "Desert Vista Lane",
-    rating: 5,
-    review:
-      "Perfect for our growing family! The schools nearby are excellent and the community is so family-friendly. Our kids love the playground and walking trails. The home itself is beautifully designed with modern finishes.",
-    date: "1 month ago",
-    verified: true,
-    homeType: "Two-Story Family Home",
-    moveInDate: "November 2024",
-    features: ["Parks", "Nearby Schools", "Walking Trails", "Modern Design"],
-  },
-  {
     id: "3",
     name: "David Chen",
     role: "Executive",
