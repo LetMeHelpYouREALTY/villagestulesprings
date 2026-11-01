@@ -281,6 +281,7 @@ export function generateArticleMetadata(options: {
     title,
     description,
     url,
+    canonical: new URL(url, baseUrl).pathname,
     images: articleImages,
     type: "article",
     publishedTime,
