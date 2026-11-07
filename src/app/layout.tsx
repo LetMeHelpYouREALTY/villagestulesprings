@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 import { Inter, Jost, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
+import { SpeedInsights as VercelSpeedInsights } from "@vercel/speed-insights/next";
+
 import { CalendlyScript } from "@/components/calendly-script";
 import { RealScoutScript } from "@/components/realscout-script";
 import { Toaster } from "@/components/ui/sonner";
@@ -62,6 +65,8 @@ e.parentNode.insertBefore(t,e);})
 window.widgetTracker("create", "WT-XQHVYQWW");
 window.widgetTracker("send", "pageview");
         `}</Script>
+        <VercelAnalytics />
+        <VercelSpeedInsights />
 </body>
     </html>
   );
